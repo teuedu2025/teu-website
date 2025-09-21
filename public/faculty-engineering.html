@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>engineering</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Shared Styles (same as other faculty pages) */
+    body { font-family: "Times New Roman", Times, serif; margin:0; padding:0; background:#f4f6f8; color:#222; scroll-behavior:smooth; }
+    .navbar { display:flex; justify-content:space-between; align-items:center; background:#002b5c; padding:10px 20px; position:fixed; width:100%; top:0; z-index:10; flex-wrap:wrap; }
+    .navbar .logo img { height:80px; }
+    .navbar .logo a { display:inline-block; }
+    .navbar .menu a, .navbar .right-buttons a { color:white; margin:5px 10px; text-decoration:none; font-weight:bold; }
+    .navbar .menu a:hover, .navbar .right-buttons a:hover { text-decoration:underline; }
+    .navbar .apply-btn { background:#ff6600; padding:6px 12px; border-radius:5px; }
+    .navbar .apply-btn:hover { box-shadow:0 0 10px #ff6600; }
+    .hero { background:url('images/img_eng001.png') no-repeat center center; background-size:cover; height:350px; margin-top:100px; display:flex; align-items:center; justify-content:center; position:relative; text-align:center; color:white; flex-direction:column; }
+    .hero::before { content:""; position:absolute; top:0; left:0; right:0; bottom:0; background:rgba(0,43,92,0.5); z-index:0; }
+    .hero-text { position:relative; z-index:1; }
+    .hero-text h1 { font-size:56px; font-weight:900; text-transform:uppercase; margin:0; text-shadow:3px 3px 8px rgba(0,0,0,0.8); }
+    .hero-text p { font-size:22px; font-weight:600; margin-top:10px; text-shadow:2px 2px 6px rgba(0,0,0,0.7); }
+    .page-container { display:flex; max-width:1200px; margin:20px auto 100px; padding:20px; }
+    .sidebar { flex:0 0 250px; margin-right:20px; position:sticky; top:120px; }
+    .sidebar ul { list-style:none; padding:0; }
+    .sidebar li { margin-bottom:15px; }
+    .sidebar-link { color:#002b5c; text-decoration:none; transition:color 0.3s; }
+    .sidebar-link.active { color:#ff6600; font-weight:bold; }
+    .content { flex:1; }
+    .section { background:white; padding:25px; margin-bottom:25px; border-left:5px solid #ff6600; box-shadow:0 0 10px rgba(255,102,0,0.2); }
+    .section h2 { color:#002b5c; margin-bottom:15px; }
+    .section p, .section ul { font-size:16px; line-height:1.5; }
+    .section ul li { margin-bottom:8px; }
+    .section ul li a { color:#002b5c; text-decoration:none; font-weight:bold; }
+    .section ul li a:hover { color:#ff6600; }
+    @media (max-width:992px) { .page-container { flex-direction:column; } .sidebar { position:relative; top:0; margin-bottom:20px; } }
+    @media (max-width:600px) { .navbar { justify-content:center; } .navbar .menu, .navbar .right-buttons { flex-direction:column; align-items:center; margin-top:5px; } .hero-text h1 { font-size:32px; } .hero-text p { font-size:16px; } .sidebar { display:none; } }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo">
+      <a href="index.html"><img src="images/logo.png" alt="University Logo"></a>
+    </div>
+    <div class="menu">
+      <a href="index.html">Home</a>
+      <a href="index.html#vision">Vision</a>
+      <a href="index.html#mission">Mission</a>
+      <a href="index.html#global">Global Outlook</a>
+      <a href="index.html#programs">Programs</a>
+      <a href="index.html#career">Career Pathways</a>
+    </div>
+    <div class="right-buttons">
+      <a href="index.html" class="lang-switch">EN</a> |
+      <a href="index-ru.html" class="lang-switch">RU</a>
+      <a href="https://eduinrus.ru/en" target="_blank" class="apply-btn">Apply Now</a>
+    </div>
+  </div>
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Faculty of Engineering &amp; Technology</h1>
+      <p>Innovation • Research • Applied Sciences</p>
+    </div>
+  </section>
+
+  <!-- Page Container -->
+  <div class="page-container">
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+      <ul>
+        <li><a href="#overview" class="sidebar-link">Overview</a></li>
+        <li><a href="#departments" class="sidebar-link">Departments</a></li>
+        <li><a href="#programs" class="sidebar-link">Degree Programs</a></li>
+        <li><a href="#research" class="sidebar-link">Research & Centers</a></li>
+        <li><a href="#facilities" class="sidebar-link">Facilities</a></li>
+        <li><a href="#industry" class="sidebar-link">Industry & Global Links</a></li>
+        <li><a href="#achievements" class="sidebar-link">Achievements & Awards</a></li>
+        <li><a href="#contact" class="sidebar-link">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+
+      <section id="overview" class="section">
+        <h2>Overview</h2>
+        <p>As the flagship engineering faculty at Trans Eurasia University, we foster innovation, interdisciplinary collaboration, and applied research to address real-world challenges. Our curriculum emphasizes both theoretical depth and hands-on experience, tailored to cultivate future industry leaders and global technologists.</p>
+      </section>
+
+      <section id="departments" class="section">
+        <h2>Departments</h2>
+        <ul>
+          <li>Department of Computer Science & Engineering</li>
+          <li>Department of Civil Engineering</li>
+          <li>Department of Mechanical Engineering</li>
+          <li>Department of Electrical & Electronic Engineering</li>
+          <li>Department of Information Technology</li>
+          <li>Department of Materials & Manufacturing Engineering</li>
+        </ul>
+      </section>
+
+      <section id="programs" class="section">
+        <h2>Degree Programs</h2>
+        <h3>Undergraduate Programs</h3>
+        <ul>
+          <li>Bachelor of Science in Computer Science & Engineering</li>
+          <li>BSc in Civil Engineering</li>
+          <li>BSc in Mechanical Engineering</li>
+          <li>BSc in Electrical & Electronic Engineering</li>
+          <li>BSc in Information Technology</li>
+          <li>BSc in Materials & Manufacturing Engineering</li>
+        </ul>
+        <h3>Postgraduate Programs</h3>
+        <ul>
+          <li>Master of Science in Engineering (with streams in CSE, Civil, Mechanical, Electrical)</li>
+          <li>Master of Engineering Management</li>
+          <li>Master of Philosophy & Doctor of Philosophy (research-based)</li>
+        </ul>
+      </section>
+
+      <section id="research" class="section">
+        <h2>Research & Centers of Excellence</h2>
+        <p>We host multiple state-of-the-art research centers:</p>
+        <ul>
+          <li>Centre for Advanced AI & Robotics</li>
+          <li>Sustainable Infrastructure & Civil Innovation Hub</li>
+          <li>Materials Science & Nanotechnology Lab</li>
+          <li>Cyber Systems & IoT Research Unit</li>
+          <li>Engineering Consultancy Services & Outreach</li>
+        </ul>
+        <p>Students benefit from co-op placements and project-based learning, echoing top-tier global practices such as McMaster’s problem-based learning methodology :contentReference[oaicite:1]{index=1}.</p>
+      </section>
+
+      <section id="facilities" class="section">
+        <h2>Facilities & Infrastructure</h2>
+        <ul>
+          <li>Multi-disciplinary Laboratories (civil, mechanical, electronics, materials)</li>
+          <li>Innovation & Makerspace Hub—prototyping, CAD/CAM, 3D printing</li>
+          <li>High-Performance Computing Cluster</li>
+          <li>Dedicated research buildings with collaborative learning zones akin to University of Texas-Austin </li>
+          <li>Strong industry labs and virtual tour infrastructure</li>
+        </ul>
+      </section>
+
+      <section id="industry" class="section">
+        <h2>Industry Collaboration & Global Partnerships</h2>
+        <ul>
+          <li>Collaborations with national and international industry players for internships and research</li>
+          <li>Student exchange programs with partner universities</li>
+          <li>Active alumni network and tech-industry advisory board</li>
+          <li>Incubation support for student-led startups and innovations</li>
+        </ul>
+      </section>
+
+      <section id="achievements" class="section">
+        <h2>Achievements & Accolades</h2>
+        <ul>
+          <li>Accredited programs under international accords</li>
+          <li>Faculty and student awards in research, innovation, and design competitions</li>
+          <li>National championship wins in hackathons, project expos, and academic forums</li>
+          <li>Facilities recognized for sustainability and design excellence </li>
+        </ul>
+      </section>
+
+      <section id="contact" class="section">
+        <h2>Contact Us</h2>
+        <p>Email: engineering@teu.edu.com</p>
+        <p>Website: <a href="https://www.teu.edu.com/engineering" target="_blank">www.teu.edu.com/engineering</a></p>
+        <p>Dean: Prof. Serguei Yu. Ovchinnikov, available at office@teu.edu.com</p>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Scrollspy Script -->
+  <script>
+    const sections = document.querySelectorAll("section");
+    const links = document.querySelectorAll(".sidebar-link");
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+          current = section.getAttribute("id");
+        }
+      });
+      links.forEach(link => {
+        link.classList.toggle("active", link.getAttribute("href") === "#" + current);
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Faculty of Management - Trans Eurasia University</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family:"Times New Roman", Times, serif; margin:0; padding:0; background-color:#f4f6f8; color:#222; scroll-behavior:smooth; }
+        .navbar { display:flex; justify-content:space-between; align-items:center; background-color:#002b5c; padding:10px 20px; position:fixed; width:100%; top:0; z-index:10; flex-wrap:wrap; }
+        .navbar .logo img { height:80px; }
+        .navbar .menu { display:flex; flex-wrap:wrap; }
+        .navbar .menu a { color:white; margin:5px 10px; text-decoration:none; font-weight:bold; }
+        .navbar .menu a:hover { text-decoration:underline; }
+        .navbar .right-buttons { display:flex; align-items:center; margin-top:5px; }
+        .navbar .lang-switch { color:white; margin-right:10px; cursor:pointer; font-weight:bold; }
+        .navbar .apply-btn { background-color:#ff6600; color:white; padding:6px 12px; text-decoration:none; font-weight:bold; border-radius:5px; }
+        .navbar .apply-btn:hover { box-shadow:0 0 10px #ff6600; }
+        .hero { background:url('images/003.avif') no-repeat center center; background-size:cover; height:350px; margin-top:100px; display:flex; align-items:center; justify-content:center; position:relative; text-align:center; color:white; flex-direction:column; }
+        .hero::before { content:""; position:absolute; top:0; left:0; right:0; bottom:0; background-color:rgba(0,43,92,0.5); z-index:0; }
+        .hero-text { position:relative; z-index:1; }
+        .hero-text h1 { font-size:56px; font-weight:900; text-transform:uppercase; margin:0; color:#ffffff; text-shadow:3px 3px 8px rgba(0,0,0,0.8); }
+        .hero-text p { font-size:22px; font-weight:600; margin-top:10px; text-shadow:2px 2px 6px rgba(0,0,0,0.7); }
+        .page-container { display:flex; max-width:1200px; margin:20px auto 100px auto; padding:20px; }
+        .sidebar { flex:0 0 250px; margin-right:20px; position:sticky; top:120px; }
+        .sidebar ul { list-style:none; padding:0; }
+        .sidebar li { margin-bottom:15px; }
+        .sidebar-link { color:#002b5c; text-decoration:none; font-weight:normal; transition:color 0.3s; }
+        .sidebar-link.active { color:#ff6600; font-weight:bold; }
+        .content { flex:1; }
+        .section { background-color:white; padding:25px; margin-bottom:25px; border-left:5px solid #ff6600; box-shadow:0 0 10px rgba(255,102,0,0.2); }
+        .section h2 { color:#002b5c; margin-bottom:15px; }
+        .section p, .section ul { font-size:16px; line-height:1.5; }
+        .section ul li { margin-bottom:8px; }
+        @media (max-width:992px) { .page-container { flex-direction:column; } .sidebar { position:relative; top:0; margin-bottom:20px; } }
+        @media (max-width:600px) { .navbar { justify-content:center; } .navbar .menu, .navbar .right-buttons { flex-direction:column; align-items:center; margin-top:5px; } .hero-text h1 { font-size:32px; } .hero-text p { font-size:16px; } .sidebar { display:none; } }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+    <div class="logo">
+        <a href="index.html"><img src="images/logo.png" alt="University Logo"></a>
+    </div>
+    <div class="menu">
+        <a href="index.html">Home</a>
+        <a href="index.html#vision">Vision</a>
+        <a href="index.html#mission">Mission</a>
+        <a href="index.html#global">Global Outlook</a>
+        <a href="index.html#programs">Programs</a>
+        <a href="index.html#career">Career Pathways</a>
+    </div>
+    <div class="right-buttons">
+        <a href="#" class="lang-switch">EN</a> |
+        <a href="#" class="lang-switch">RU</a>
+        <a href="https://eduinrus.ru/en" target="_blank" class="apply-btn">Apply Now</a>
+    </div>
+</div>
+
+<!-- Hero Banner -->
+<section class="hero">
+    <div class="hero-text">
+        <h1>Faculty of Management</h1>
+        <p>Leadership, Innovation & Strategic Development</p>
+    </div>
+</section>
+
+<!-- Page Container -->
+<div class="page-container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <ul>
+            <li><a href="#overview" class="sidebar-link">Overview</a></li>
+            <li><a href="#departments" class="sidebar-link">Departments</a></li>
+            <li><a href="#programs" class="sidebar-link">Degree Programs</a></li>
+            <li><a href="#research" class="sidebar-link">Research</a></li>
+            <li><a href="#facilities" class="sidebar-link">Facilities</a></li>
+            <li><a href="#global" class="sidebar-link">Global Engagement</a></li>
+            <li><a href="#contact" class="sidebar-link">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+
+        <!-- Overview -->
+        <section id="overview" class="section">
+            <h2>Overview</h2>
+            <p>The Faculty of Management at Trans Eurasia University provides world-class education in leadership, organizational strategy, and business development. Our mission is to shape innovative and responsible leaders ready to address global challenges in management and entrepreneurship.</p>
+        </section>
+
+        <!-- Departments -->
+        <section id="departments" class="section">
+            <h2>Academic Departments</h2>
+            <ul>
+                <li>Department of Business Administration</li>
+                <li>Department of Finance & Accounting</li>
+                <li>Department of Marketing</li>
+                <li>Department of International Business</li>
+                <li>Department of Public Administration</li>
+            </ul>
+        </section>
+
+        <!-- Degree Programs -->
+        <section id="programs" class="section">
+            <h2>Degree Programs</h2>
+            <h3>Undergraduate Programs</h3>
+            <ul>
+                <li>Bachelor of Business Administration (BBA)</li>
+                <li>Bachelor of Management</li>
+                <li>Bachelor of International Business</li>
+                <li>Bachelor of Marketing</li>
+                <li>Bachelor of Public Administration</li>
+            </ul>
+            <h3>Postgraduate Programs</h3>
+            <ul>
+                <li>Master of Business Administration (MBA)</li>
+                <li>Master of Management</li>
+                <li>Master of Finance & Accounting</li>
+                <li>Master of International Business</li>
+                <li>Master of Public Administration</li>
+            </ul>
+        </section>
+
+        <!-- Research -->
+        <section id="research" class="section">
+            <h2>Research Opportunities</h2>
+            <p>The faculty encourages applied research in corporate strategy, financial systems, entrepreneurship, and global trade, fostering partnerships with leading businesses and research institutes.</p>
+        </section>
+
+        <!-- Facilities -->
+        <section id="facilities" class="section">
+            <h2>Facilities</h2>
+            <ul>
+                <li>Business Simulation Labs</li>
+                <li>Finance & Trading Rooms</li>
+                <li>Entrepreneurship Incubators</li>
+                <li>Conference Halls for Leadership Training</li>
+            </ul>
+        </section>
+
+        <!-- Global Engagement -->
+        <section id="global" class="section">
+            <h2>Global Engagement</h2>
+            <p>Through exchange programs, double-degree agreements, and research collaborations, our faculty prepares students to thrive in international business environments.</p>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="section">
+            <h2>Contact</h2>
+            <p>Email: management@teu.edu.com</p>
+            <p>Website: <a href="https://www.teu.edu.com/management" target="_blank">www.teu.edu.com/management</a></p>
+        </section>
+
+    </div>
+</div>
+
+<!-- Scrollspy + Language Switch -->
+<script>
+const enContent = {
+    heroTitle: "Faculty of Management",
+    heroSubtitle: "Leadership, Innovation & Strategic Development",
+    sidebar: ["Overview", "Academic Departments", "Degree Programs", "Research Opportunities", "Facilities", "Global Engagement", "Contact"],
+    overviewTitle: "Overview",
+    overviewText: "The Faculty of Management at Trans Eurasia University provides world-class education in leadership, organizational strategy, and business development. Our mission is to shape innovative and responsible leaders ready to address global challenges in management and entrepreneurship.",
+    departmentsTitle: "Academic Departments",
+    departmentsList: ["Department of Business Administration", "Department of Finance & Accounting", "Department of Marketing", "Department of International Business", "Department of Public Administration"],
+    programsTitle: "Degree Programs",
+    undergradTitle: "Undergraduate Programs",
+    undergradList: ["Bachelor of Business Administration (BBA)", "Bachelor of Management", "Bachelor of International Business", "Bachelor of Marketing", "Bachelor of Public Administration"],
+    postgradTitle: "Postgraduate Programs",
+    postgradList: ["Master of Business Administration (MBA)", "Master of Management", "Master of Finance & Accounting", "Master of International Business", "Master of Public Administration"],
+    researchTitle: "Research Opportunities",
+    researchText: "The faculty encourages applied research in corporate strategy, financial systems, entrepreneurship, and global trade, fostering partnerships with leading businesses and research institutes.",
+    facilitiesTitle: "Facilities",
+    facilitiesList: ["Business Simulation Labs", "Finance & Trading Rooms", "Entrepreneurship Incubators", "Conference Halls for Leadership Training"],
+    globalTitle: "Global Engagement",
+    globalText: "Through exchange programs, double-degree agreements, and research collaborations, our faculty prepares students to thrive in international business environments.",
+    contactTitle: "Contact",
+    contactEmail: "Email: management@teu.edu.com",
+    contactWebsite: 'Website: <a href="https://www.teu.edu.com/management" target="_blank">www.teu.edu.com/management</a>',
+    applyBtn: "Apply Now"
+};
+
+const ruContent = {
+    heroTitle: "Факультет менеджмента",
+    heroSubtitle: "Лидерство, инновации и стратегическое развитие",
+    sidebar: ["Обзор", "Академические отделы", "Программы обучения", "Возможности исследований", "Инфраструктура", "Глобальное взаимодействие", "Контакты"],
+    overviewTitle: "Обзор",
+    overviewText: "Факультет менеджмента Транс Евразийского университета предоставляет образование мирового уровня в области лидерства, организационной стратегии и развития бизнеса. Наша миссия — формировать инновационных и ответственных лидеров, готовых решать глобальные задачи в управлении и предпринимательстве.",
+    departmentsTitle: "Академические отделы",
+    departmentsList: ["Отделение бизнес-администрирования", "Отделение финансов и бухгалтерского учета", "Отделение маркетинга", "Отделение международного бизнеса", "Отделение государственного управления"],
+    programsTitle: "Программы обучения",
+    undergradTitle: "Бакалавриат",
+    undergradList: ["Бакалавр делового администрирования (BBA)", "Бакалавр менеджмента", "Бакалавр международного бизнеса", "Бакалавр маркетинга", "Бакалавр государственного управления"],
+    postgradTitle: "Магистратура",
+    postgradList: ["Магистр делового администрирования (MBA)", "Магистр менеджмента", "Магистр финансов и бухгалтерского учета", "Магистр международного бизнеса", "Магистр государственного управления"],
+    researchTitle: "Возможности исследований",
+    researchText: "Факультет поощряет прикладные исследования в области корпоративной стратегии, финансовых систем, предпринимательства и глобальной торговли, устанавливая партнерства с ведущими компаниями и исследовательскими институтами.",
+    facilitiesTitle: "Инфраструктура",
+    facilitiesList: ["Лаборатории бизнес-симуляций", "Финансовые и торговые кабинеты", "Инкубаторы предпринимательства", "Конференц-залы для тренингов по лидерству"],
+    globalTitle: "Глобальное взаимодействие",
+    globalText: "Через программы обмена, соглашения о двойных дипломах и исследовательские сотрудничества факультет готовит студентов к успешной работе в международной деловой среде.",
+    contactTitle: "Контакты",
+    contactEmail: "Эл. почта: management@teu.edu.com",
+    contactWebsite: 'Вебсайт: <a href="https://www.teu.edu.com/management" target="_blank">www.teu.edu.com/management</a>',
+    applyBtn: "Подать заявку"
+};
+
+function setLanguage(lang) {
+    const c = lang === "ru" ? ruContent : enContent;
+    document.querySelector(".hero h1").textContent = c.heroTitle;
+    document.querySelector(".hero p").textContent = c.heroSubtitle;
+    document.querySelectorAll(".sidebar-link").forEach((link,i)=>link.textContent=c.sidebar[i]);
+    document.querySelector("#overview h2").textContent=c.overviewTitle;
+    document.querySelector("#overview p").textContent=c.overviewText;
+    document.querySelector("#departments h2").textContent=c.departmentsTitle;
+    const deptUl=document.querySelector("#departments ul"); deptUl.innerHTML=""; c.departmentsList.forEach(li=>deptUl.innerHTML+=`<li>${li}</li>`);
+    document.querySelector("#programs h2").textContent=c.programsTitle;
+    document.querySelector("#programs h3:nth-of-type(1)").textContent=c.undergradTitle;
+    const ugUl=document.querySelector("#programs ul:nth-of-type(1)"); ugUl.innerHTML=""; c.undergradList.forEach(li=>ugUl.innerHTML+=`<li>${li}</li>`);
+    document.querySelector("#programs h3:nth-of-type(2)").textContent=c.postgradTitle;
+    const pgUl=document.querySelector("#programs ul:nth-of-type(2)"); pgUl.innerHTML=""; c.postgradList.forEach(li=>pgUl.innerHTML+=`<li>${li}</li>`);
+    document.querySelector("#research h2").textContent=c.researchTitle;
+    document.querySelector("#research p").textContent=c.researchText;
+    document.querySelector("#facilities h2").textContent=c.facilitiesTitle;
+    const fUl=document.querySelector("#facilities ul"); fUl.innerHTML=""; c.facilitiesList.forEach(li=>fUl.innerHTML+=`<li>${li}</li>`);
+    document.querySelector("#global h2").textContent=c.globalTitle;
+    document.querySelector("#global p").textContent=c.globalText;
+    document.querySelector("#contact h2").textContent=c.contactTitle;
+    document.querySelector("#contact p:nth-of-type(1)").innerHTML=c.contactEmail;
+    document.querySelector("#contact p:nth-of-type(2)").innerHTML=c.contactWebsite;
+    document.querySelector(".apply-btn").textContent=c.applyBtn;
+    localStorage.setItem("lang",lang);
+}
+
+document.addEventListener("DOMContentLoaded", ()=>{
+    const saved=localStorage.getItem("lang")||"en";
+    setLanguage(saved);
+    document.querySelectorAll(".lang-switch").forEach(btn=>{
+        btn.addEventListener("click",e=>{
+            e.preventDefault();
+            setLanguage(btn.textContent.trim().toLowerCase());
+        });
+    });
+});
+
+// Scrollspy
+const sections=document.querySelectorAll("section");
+const links=document.querySelectorAll(".sidebar-link");
+window.addEventListener("scroll",()=>{
+    let current="";
+    sections.forEach(s=>{const t=s.offsetTop-120,h=s.clientHeight; if(pageYOffset>=t && pageYOffset<t+h) current=s.getAttribute("id");});
+    links.forEach(l=>l.classList.toggle("active",l.getAttribute("href")==="#"+current));
+});
+</script>
+
+</body>
+</html>

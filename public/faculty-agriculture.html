@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Faculty of Agriculture & Environmental Studies - Trans Eurasia University</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Faculty of Agriculture & Environmental Studies at Trans Eurasia University: Agronomy, Environmental Science, Animal Science programs with global opportunities.">
+<style>
+body {font-family:"Times New Roman",Times,serif;margin:0;padding:0;background:#d5f7c8;color:#222;scroll-behavior:smooth;}
+nav.navbar {display:flex;justify-content:space-between;align-items:center;background:#04075c;padding:15px 25px;position:fixed;width:100%;top:0;z-index:10;flex-wrap:wrap;}
+.navbar .logo img {height:100px;}
+.navbar .menu {display:flex;flex-wrap:wrap;font-size:18px;}
+.navbar .menu a {color:white;margin:5px 12px;text-decoration:none;font-weight:bold;position:relative;}
+.navbar .menu a::after {content:"";position:absolute;bottom:-3px;left:0;width:0;height:2px;background:#00b050;transition:width .3s;}
+.navbar .menu a:hover::after {width:100%;}
+.navbar .right-buttons {display:flex;align-items:center;margin-top:5px;font-size:18px;}
+.navbar .lang-switch {color:white;margin-right:10px;cursor:pointer;font-weight:bold;}
+.navbar .lang-switch.active {color:#ff6600;}
+.navbar .apply-btn {padding:8px 15px;border-radius:5px;font-weight:bold;text-decoration:none;background:#00b050;color:white;}
+.navbar .apply-btn:hover {box-shadow:0 0 10px #00b050;}
+
+.faculty-menu {background:#00b050;display:flex;justify-content:center;position:sticky;top:130px;z-index:11;box-shadow:0 2px 8px rgba(0,0,0,.1);}
+.faculty-menu ul {display:flex;flex-wrap:wrap;gap:20px;list-style:none;margin:0;padding:10px 0;}
+.faculty-menu a {color:white;text-decoration:none;font-weight:bold;padding:5px 10px;transition:background .3s,color .3s;}
+.faculty-menu a:hover,.faculty-menu a.active {background:white;color:#00b050;border-radius:5px;}
+
+.hero {background:url('images/agri001.png') no-repeat center center;background-size:cover;height:350px;margin-top:140px;display:flex;align-items:center;justify-content:center;position:relative;text-align:center;color:white;flex-direction:column;}
+.hero::before {content:"";position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,43,92,0.5);z-index:0;}
+.hero-text {position:relative;z-index:1;}
+.hero-text h1 {font-size:56px;font-weight:900;margin:0;color:white;text-shadow:3px 3px 8px rgba(0,0,0,0.8);}
+.hero-text p {font-size:22px;margin-top:10px;text-shadow:2px 2px 6px rgba(0,0,0,0.7);}
+
+.page-container {max-width:1200px;margin:20px auto 100px;padding:20px;}
+.section {background:white;padding:25px;margin-bottom:25px;border-left:5px solid #00b050;box-shadow:0 0 10px rgba(255,102,0,0.2);}
+.section h2 {color:#002b5c;margin-bottom:15px;}
+.section p,.section ul {font-size:16px;line-height:1.5;}
+.section ul {padding-left:20px;}
+.section ul li {margin-bottom:8px;}
+.section img {max-width:100%;height:auto;border-radius:8px;margin-bottom:10px;transition:transform .3s;}
+.section img:hover {transform:scale(1.05);}
+.section-flex {display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start;}
+.section-flex .section-images {flex:1;min-width:250px;}
+.section-flex .section-content {flex:2;min-width:300px;}
+
+.faculty-image-gallery {text-align:center;margin:10px 0;}
+.large-faculty-image {width:90%;max-width:1000px;border-radius:10px;margin-bottom:15px;}
+.thumbnail-images {display:flex;justify-content:center;gap:10px;flex-wrap:wrap;}
+.thumbnail-images img {width:120px;border-radius:8px;cursor:pointer;transition:transform .3s;}
+.thumbnail-images img:hover {transform:scale(1.05);}
+
+footer.footer {background:#002b5c;color:white;padding:30px 20px;margin-top:40px;text-align:center;}
+
+/* Responsive */
+@media (max-width:768px){
+  .faculty-menu ul {overflow-x:auto;white-space:nowrap;gap:10px;padding:8px;}
+  .hero-text h1 {font-size:40px;}
+  .hero-text p {font-size:18px;}
+  .section-flex {flex-direction:column;}
+  .section-flex .section-images {order:-1;}
+}
+@media (max-width:600px){
+  nav.navbar {justify-content:center;}
+  .navbar .menu,.navbar .right-buttons {flex-direction:column;align-items:center;margin-top:5px;}
+  .hero-text h1 {font-size:32px;}
+  .hero-text p {font-size:16px;}
+}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="logo"><a href="index.html"><img src="images/logo.png" alt="University Logo"></a></div>
+  <div class="menu">
+    <a href="index.html" id="nav-home">Home</a>
+    <a href="index.html#vision" id="nav-vision">Vision</a>
+    <a href="index.html#mission" id="nav-mission">Mission</a>
+    <a href="index.html#global" id="nav-global">Global Outlook</a>
+    <a href="index.html#programs" id="nav-programs">Programs</a>
+    <a href="index.html#career" id="nav-career">Career Pathways</a>
+    <a href="student-portal.html" id="nav-portal">Student Portal</a>
+  </div>
+  <div class="right-buttons">
+    <a href="#" id="btn-en" class="lang-switch active">EN</a> |
+    <a href="#" id="btn-ru" class="lang-switch">RU</a>
+    <a href="https://eduinrus.ru/en" target="_blank" id="apply-btn" class="apply-btn">Apply Now</a>
+  </div>
+</nav>
+
+<!-- Faculty Menu -->
+<div class="faculty-menu">
+  <ul>
+    <li><a href="#overview" class="faculty-link">Overview</a></li>
+    <li><a href="#departments" class="faculty-link">Departments</a></li>
+    <li><a href="#programs" class="faculty-link">Programs</a></li>
+    <li><a href="#research" class="faculty-link">Research</a></li>
+    <li><a href="#facilities" class="faculty-link">Facilities</a></li>
+    <li><a href="#global" class="faculty-link">Global Outlook</a></li>
+    <li><a href="#contact" class="faculty-link">Contact</a></li>
+  </ul>
+</div>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-text">
+    <h1 id="hero-title">Faculty of Agriculture & Environmental Studies</h1>
+    <p id="hero-subtitle">Cultivating Knowledge for a Sustainable Future</p>
+  </div>
+</header>
+
+<div class="page-container">
+
+  <!-- Faculty Image Gallery -->
+  <div class="faculty-image-gallery">
+    <img id="main-faculty-img" src="images/agri003.jpg" alt="Faculty Image" class="large-faculty-image">
+    <div class="thumbnail-images">
+      <img src="images/agri002.jpg" alt="Image 2" class="thumb">
+      <img src="images/agri004.jpg" alt="Image 4" class="thumb">
+      <img src="images/agri005.jpg" alt="Image 5" class="thumb">
+      <img src="images/agri006.jpg" alt="Image 2" class="thumb">
+      <img src="images/agri007.jpg" alt="Image 2" class="thumb">
+      <img src="images/agri003.jpg" alt="Image 2" class="thumb">
+    </div>
+  </div>
+
+  <section id="overview" class="section">
+    <h2 id="overview-title">Overview</h2>
+    <p id="overview-text">
+      The Faculty of Agriculture & Environmental Studies equips students with knowledge and skills in sustainable farming, environmental management, and agricultural innovation to meet global food and climate challenges.
+    </p>
+    <p>
+      Our programs combine theoretical learning with hands-on practical experiences, giving students the opportunity to work in experimental farms, laboratories, and field research projects. We emphasize interdisciplinary approaches, integrating agronomy, environmental science, and animal husbandry, ensuring graduates are versatile and industry-ready.
+    </p>
+    <p>
+      The faculty also fosters strong global connections, enabling students to participate in exchange programs, international research collaborations, and conferences. Our aim is to produce environmentally conscious leaders and innovators who can address the challenges of food security, climate change, and sustainable development worldwide.
+    </p>
+  </section>
+
+  <section id="departments" class="section">
+    <h2 id="departments-title">Departments</h2>
+    <ul id="departments-list">
+      <li data-en="Department of Agronomy" data-ru="Кафедра агрономии">Department of Agronomy</li>
+      <li data-en="Department of Environmental Science" data-ru="Кафедра экологии">Department of Environmental Science</li>
+      <li data-en="Department of Animal Science" data-ru="Кафедра животноводства">Department of Animal Science</li>
+      <li data-en="Department of Horticulture" data-ru="Кафедра садоводства">Department of Horticulture</li>
+      <li data-en="Department of Agricultural Economics" data-ru="Кафедра агроэкономики">Department of Agricultural Economics</li>
+    </ul>
+  </section>
+
+  <section id="programs" class="section">
+    <h2 id="programs-title">Programs</h2>
+    <h3 id="ug-title">Undergraduate Programs</h3>
+    <ul id="ug-programs">
+      <li data-en="BSc in Agriculture" data-ru="Бакалавр сельского хозяйства">BSc in Agriculture</li>
+      <li data-en="BSc in Environmental Science" data-ru="Бакалавр экологии">BSc in Environmental Science</li>
+      <li data-en="BSc in Animal Science" data-ru="Бакалавр животноводства">BSc in Animal Science</li>
+    </ul>
+    <h3 id="pg-title">Postgraduate Programs</h3>
+    <ul id="pg-programs">
+      <li data-en="MSc in Crop Science" data-ru="Магистр растениеводства">MSc in Crop Science</li>
+      <li data-en="MSc in Soil & Water Management" data-ru="Магистр управления почвой и водой">MSc in Soil & Water Management</li>
+      <li data-en="MSc in Environmental Management" data-ru="Магистр управления окружающей средой">MSc in Environmental Management</li>
+    </ul>
+  </section>
+
+  <section id="research" class="section">
+    <h2 id="research-title">Research</h2>
+    <p id="research-text">Our faculty drives research in sustainable farming techniques, climate change adaptation, soil fertility, biodiversity conservation, and renewable agricultural technology.</p>
+  </section>
+
+  <section id="facilities" class="section">
+    <h2 id="facilities-title">Facilities</h2>
+    <ul id="facilities-list">
+      <li data-en="Experimental Farms" data-ru="Экспериментальные фермы">Experimental Farms</li>
+      <li data-en="Greenhouses & Plant Labs" data-ru="Теплицы и лаборатории растений">Greenhouses & Plant Labs</li>
+      <li data-en="Soil & Water Testing Labs" data-ru="Лаборатории анализа почвы и воды">Soil & Water Testing Labs</li>
+      <li data-en="Environmental Monitoring Centers" data-ru="Центры экологического мониторинга">Environmental Monitoring Centers</li>
+    </ul>
+  </section>
+
+  <section id="global" class="section">
+    <h2 id="global-title">Global Outlook</h2>
+    <p id="global-text">We collaborate with agricultural universities and research centers worldwide to promote food security, sustainable farming, and climate resilience initiatives.</p>
+  </section>
+
+  <section id="contact" class="section">
+    <h2 id="contact-title">Contact</h2>
+    <p id="contact-email">Email: agriculture@teu.edu.com</p>
+    <p id="contact-website">Website: <a href="https://www.teu.edu.com/agriculture" target="_blank">www.teu.edu.com/agriculture</a></p>
+  </section>
+
+</div>
+
+<footer class="footer" id="footer-text">
+  © 2025 Trans Eurasia University. All Rights Reserved.
+</footer>
+
+<script>
+// --- Language Data ---
+const langData = {
+  en: {
+    "hero-title":"Faculty of Agriculture & Environmental Studies",
+    "hero-subtitle":"Cultivating Knowledge for a Sustainable Future",
+    "overview-title":"Overview",
+    "overview-text":"The Faculty of Agriculture & Environmental Studies equips students with knowledge and skills in sustainable farming, environmental management, and agricultural innovation to meet global food and climate challenges.",
+    "programs-title":"Programs",
+    "ug-title":"Undergraduate Programs",
+    "pg-title":"Postgraduate Programs",
+    "research-title":"Research",
+    "research-text":"Our faculty drives research in sustainable farming techniques, climate change adaptation, soil fertility, biodiversity conservation, and renewable agricultural technology.",
+    "facilities-title":"Facilities",
+    "global-title":"Global Outlook",
+    "global-text":"We collaborate with agricultural universities and research centers worldwide to promote food security, sustainable farming, and climate resilience initiatives.",
+    "contact-title":"Contact",
+    "nav-home":"Home","nav-vision":"Vision","nav-mission":"Mission","nav-global":"Global Outlook","nav-programs":"Programs","nav-career":"Career Pathways","nav-portal":"Student Portal"
+  },
+  ru: {
+    "hero-title":"Факультет сельского хозяйства и экологии",
+    "hero-subtitle":"Взращиваем знания для устойчивого будущего",
+    "overview-title":"Обзор",
+    "overview-text":"Факультет сельского хозяйства и экологии обучает студентов устойчивому земледелию, управлению окружающей средой и аграрным инновациям для решения глобальных продовольственных и климатических проблем.",
+    "programs-title":"Программы",
+    "ug-title":"Бакалавриат",
+    "pg-title":"Магистратура",
+    "research-title":"Научные исследования",
+    "research-text":"Наш факультет проводит исследования в области устойчивых сельскохозяйственных технологий, адаптации к изменению климата, плодородия почв, сохранения биоразнообразия и возобновляемых технологий.",
+    "facilities-title":"Инфраструктура",
+    "global-title":"Международное сотрудничество",
+    "global-text":"Мы сотрудничаем с сельскохозяйственными университетами и исследовательскими центрами по всему миру для продвижения продовольственной безопасности и устойчивого земледелия.",
+    "contact-title":"Контакты",
+    "nav-home":"Главная","nav-vision":"Видение","nav-mission":"Миссия","nav-global":"Международное сотрудничество","nav-programs":"Программы","nav-career":"Карьера","nav-portal":"Студенческий портал"
+  }
+};
+
+function setLang(lang){
+  document.querySelectorAll("[id]").forEach(el=>{ if(langData[lang][el.id]) el.textContent = langData[lang][el.id]; });
+  document.querySelectorAll("[data-en]").forEach(el=>{ el.textContent = lang==="ru" ? el.dataset.ru : el.dataset.en; });
+  document.querySelectorAll(".lang-switch").forEach(el=>el.classList.remove("active"));
+  document.getElementById("btn-"+lang).classList.add("active");
+  localStorage.setItem("lang",lang);
+}
+
+document.getElementById("btn-en").addEventListener("click",e=>{e.preventDefault();setLang("en");});
+document.getElementById("btn-ru").addEventListener("click",e=>{e.preventDefault();setLang("ru");});
+document.addEventListener("DOMContentLoaded",()=>{setLang(localStorage.getItem("lang")||"en");});
+
+// --- Scrollspy ---
+const links = document.querySelectorAll(".faculty-link");
+const sections = document.querySelectorAll(".page-container section");
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      links.forEach(l=>l.classList.toggle("active",l.getAttribute("href")==="#"+entry.target.id));
+    }
+  });
+},{rootMargin:"-50% 0px -50% 0px"});
+sections.forEach(s=>observer.observe(s));
+links.forEach(link=>{
+  link.addEventListener("click",e=>{
+    e.preventDefault();
+    document.querySelector(link.getAttribute("href")).scrollIntoView({behavior:"smooth"});
+  });
+});
+
+// --- Image gallery ---
+const mainImg = document.getElementById("main-faculty-img");
+document.querySelectorAll(".thumbnail-images img").forEach(img=>{
+  img.addEventListener("click",()=>{ mainImg.src = img.src; });
+});
+</script>
+
+</body>
+</html>

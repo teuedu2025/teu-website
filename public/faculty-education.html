@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Faculty of Education - Trans Eurasia University</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body { font-family:"Times New Roman", Times, serif; margin:0; padding:0; background:#f4f6f8; color:#222; scroll-behavior:smooth; }
+.navbar { display:flex; justify-content:space-between; align-items:center; background:#002b5c; padding:10px 20px; position:fixed; width:100%; top:0; z-index:10; flex-wrap:wrap; }
+.navbar .logo img { height:80px; }
+.navbar .menu { display:flex; flex-wrap:wrap; }
+.navbar .menu a, .navbar .right-buttons a { color:white; margin:5px 10px; text-decoration:none; font-weight:bold; }
+.navbar .menu a:hover, .navbar .right-buttons a:hover { text-decoration:underline; }
+.navbar .apply-btn { padding:6px 12px; border-radius:5px; font-weight:bold; text-decoration:none; }
+.navbar .apply-btn:hover { box-shadow:0 0 10px; }
+.lang-switch.active { color:#ff6600; cursor:pointer; }
+.hero { background:url('images/002.png') no-repeat center center; background-size:cover; height:350px; margin-top:100px; display:flex; align-items:center; justify-content:center; position:relative; text-align:center; color:white; flex-direction:column; }
+.hero::before { content:""; position:absolute; top:0; left:0; right:0; bottom:0; background:rgba(0,43,92,0.5); z-index:0; }
+.hero-text { position:relative; z-index:1; }
+.hero-text h1 { font-size:56px; font-weight:900; margin:0; text-shadow:3px 3px 8px rgba(0,0,0,0.8); }
+.hero-text p { font-size:22px; margin-top:10px; text-shadow:2px 2px 6px rgba(0,0,0,0.7); }
+.page-container { display:flex; max-width:1200px; margin:20px auto 100px; padding:20px; }
+.sidebar { flex:0 0 250px; margin-right:20px; position:sticky; top:120px; }
+.sidebar ul { list-style:none; padding:0; }
+.sidebar li { margin-bottom:15px; }
+.sidebar-link { color:#002b5c; text-decoration:none; transition:color 0.3s; }
+.sidebar-link.active { color:#ff6600; font-weight:bold; }
+.content { flex:1; }
+.section { background:white; padding:25px; margin-bottom:25px; border-left:5px solid #ff6600; box-shadow:0 0 10px rgba(255,102,0,0.2); }
+.section h2 { color:#002b5c; margin-bottom:15px; }
+.section h3 { color:#002b5c; margin-bottom:10px; }
+.section p, .section ul { font-size:16px; line-height:1.5; }
+.section ul li { margin-bottom:8px; }
+.section ul li a { color:#002b5c; text-decoration:none; font-weight:bold; }
+.section ul li a:hover { color:#ff6600; }
+@media(max-width:992px){ .page-container{flex-direction:column;} .sidebar{position:relative;top:0;margin-bottom:20px;} }
+@media(max-width:600px){ .navbar{justify-content:center;} .navbar .menu,.navbar .right-buttons{flex-direction:column;align-items:center;margin-top:5px;} .hero-text h1{font-size:32px;} .hero-text p{font-size:16px;} .sidebar{display:none;} }
+.footer { background:#002b5c; color:white; padding:30px 20px; text-align:center; }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+    <div class="logo"><a href="index.html"><img src="images/logo.png" alt="University Logo"></a></div>
+    <div class="menu">
+        <a href="index.html" id="nav-home">Home</a>
+        <a href="index.html#vision" id="nav-vision">Vision</a>
+        <a href="index.html#mission" id="nav-mission">Mission</a>
+        <a href="index.html#global" id="nav-global">Global Outlook</a>
+        <a href="index.html#programs" id="nav-programs">Programs</a>
+        <a href="index.html#career" id="nav-career">Career Pathways</a>
+        <a href="student-portal.html" id="nav-portal">Student Portal</a>
+    </div>
+    <div class="right-buttons">
+        <a href="#" id="btn-en" class="lang-switch active">EN</a> |
+        <a href="#" id="btn-ru" class="lang-switch">RU</a>
+        <a href="https://eduinrus.ru/en" target="_blank" id="apply-btn" class="apply-btn">Apply Now</a>
+    </div>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-text">
+        <h1 id="hero-title">Faculty of Education</h1>
+        <p id="hero-subtitle">Empowering Teachers, Innovators & Leaders in Education</p>
+    </div>
+</section>
+
+<!-- Page Container -->
+<div class="page-container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <ul>
+            <li><a href="#overview" id="side-overview" class="sidebar-link">Overview</a></li>
+            <li><a href="#departments" id="side-departments" class="sidebar-link">Departments</a></li>
+            <li><a href="#programs" id="side-programs" class="sidebar-link">Degree Programs</a></li>
+            <li><a href="#research" id="side-research" class="sidebar-link">Research Opportunities</a></li>
+            <li><a href="#facilities" id="side-facilities" class="sidebar-link">Facilities</a></li>
+            <li><a href="#global" id="side-global" class="sidebar-link">Global Engagement</a></li>
+            <li><a href="#contact" id="side-contact" class="sidebar-link">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <section id="overview" class="section">
+            <h2 id="overview-title">Overview</h2>
+            <p id="overview-text">The Faculty of Education at Trans Eurasia University is committed to preparing future educators and leaders who are equipped with modern teaching skills, innovative approaches, and the ability to shape learning environments for the 21st century.</p>
+        </section>
+
+        <section id="departments" class="section">
+            <h2 id="departments-title">Academic Departments</h2>
+            <ul id="departments-list">
+                <li>Department of Teacher Training</li>
+                <li>Department of Curriculum & Instruction</li>
+                <li>Department of Educational Leadership & Policy</li>
+                <li>Department of Special & Inclusive Education</li>
+            </ul>
+        </section>
+
+        <section id="programs" class="section">
+            <h2 id="programs-title">Degree Programs</h2>
+            <h3 id="programs-ug-title">Undergraduate Programs</h3>
+            <ul id="programs-ug-list">
+                <li>Bachelor of Education (Primary Education)</li>
+                <li>Bachelor of Education (Secondary Education)</li>
+                <li>Bachelor of Educational Psychology</li>
+            </ul>
+            <h3 id="programs-pg-title">Postgraduate Programs</h3>
+            <ul id="programs-pg-list">
+                <li>Master of Education (M.Ed.)</li>
+                <li>Master in Curriculum Studies</li>
+                <li>Master in Educational Leadership</li>
+                <li>Doctor of Philosophy (PhD) in Education</li>
+            </ul>
+        </section>
+
+        <section id="research" class="section">
+            <h2 id="research-title">Research Opportunities</h2>
+            <p id="research-text">Research areas include teacher development, inclusive education, digital learning, curriculum innovation, and leadership in educational policy. Students collaborate with schools, ministries, and international institutions.</p>
+        </section>
+
+        <section id="facilities" class="section">
+            <h2 id="facilities-title">Facilities</h2>
+            <ul id="facilities-list">
+                <li>Modern Classrooms with Smart Boards</li>
+                <li>Educational Research Centers</li>
+                <li>Teacher Training Laboratories</li>
+                <li>Digital Learning & E-Library</li>
+            </ul>
+        </section>
+
+        <section id="global" class="section">
+            <h2 id="global-title">Global Engagement</h2>
+            <p id="global-text">We maintain partnerships with educational institutions worldwide, providing exchange opportunities, international teaching internships, and joint research projects.</p>
+        </section>
+
+        <section id="contact" class="section">
+            <h2 id="contact-title">Contact</h2>
+            <p id="contact-email">Email: education@teu.edu.ru</p>
+            <p id="contact-web">Website: <a href="https://www.teu.edu.ru/faculties/education" target="_blank">www.teu.edu.ru/faculties/education</a></p>
+        </section>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer" id="footer-text">© 2025 Trans Eurasia University. All Rights Reserved.</footer>
+
+<script>
+// Scrollspy
+const sections=document.querySelectorAll("section");
+const links=document.querySelectorAll(".sidebar-link");
+window.addEventListener("scroll",()=>{
+    let current="";
+    sections.forEach(section=>{
+        const sectionTop=section.offsetTop-120;
+        const sectionHeight=section.clientHeight;
+        if(pageYOffset>=sectionTop && pageYOffset<sectionTop+sectionHeight) current=section.getAttribute("id");
+    });
+    links.forEach(link=>link.classList.toggle("active",link.getAttribute("href")==="#"+current));
+});
+
+// Language Content
+const enContent={
+    heroTitle:"Faculty of Education", heroSubtitle:"Empowering Teachers, Innovators & Leaders in Education",
+    nav:["Home","Vision","Mission","Global Outlook","Programs","Career Pathways","Student Portal"],
+    sidebar:["Overview","Academic Departments","Degree Programs","Research Opportunities","Facilities","Global Engagement","Contact"],
+    overview:"The Faculty of Education at Trans Eurasia University is committed to preparing future educators and leaders who are equipped with modern teaching skills, innovative approaches, and the ability to shape learning environments for the 21st century.",
+    departments:["Department of Teacher Training","Department of Curriculum & Instruction","Department of Educational Leadership & Policy","Department of Special & Inclusive Education"],
+    programsUG:["Bachelor of Education (Primary Education)","Bachelor of Education (Secondary Education)","Bachelor of Educational Psychology"],
+    programsPG:["Master of Education (M.Ed.)","Master in Curriculum Studies","Master in Educational Leadership","Doctor of Philosophy (PhD) in Education"],
+    research:"Research areas include teacher development, inclusive education, digital learning, curriculum innovation, and leadership in educational policy. Students collaborate with schools, ministries, and international institutions.",
+    facilities:["Modern Classrooms with Smart Boards","Educational Research Centers","Teacher Training Laboratories","Digital Learning & E-Library"],
+    global:"We maintain partnerships with educational institutions worldwide, providing exchange opportunities, international teaching internships, and joint research projects.",
+    contactEmail:"Email: education@teu.edu.ru",
+    contactWeb:"Website: www.teu.edu.ru/faculties/education",
+    applyBtn:"Apply Now", footer:"© 2025 Trans Eurasia University. All Rights Reserved."
+};
+const ruContent={
+    heroTitle:"Факультет образования", heroSubtitle:"Подготовка учителей, новаторов и лидеров в области образования",
+    nav:["Главная","Видение","Миссия","Глобальный взгляд","Программы","Карьера","Студенческий портал"],
+    sidebar:["Обзор","Кафедры","Программы","Исследования","Инфраструктура","Международное сотрудничество","Контакты"],
+    overview:"Факультет образования Транс Евразийского Университета готовит будущих педагогов и лидеров, оснащенных современными методами преподавания, инновационными подходами и способностью формировать образовательные среды 21 века.",
+    departments:["Кафедра подготовки учителей","Кафедра учебных программ и инструкций","Кафедра образовательного лидерства и политики","Кафедра специального и инклюзивного образования"],
+    programsUG:["Бакалавр образования (начальное образование)","Бакалавр образования (среднее образование)","Бакалавр образовательной психологии"],
+    programsPG:["Магистр образования (M.Ed.)","Магистр учебных программ","Магистр образовательного лидерства","Доктор философии (PhD) в области образования"],
+    research:"Области исследований включают развитие учителей, инклюзивное образование, цифровое обучение, инновации учебных программ и лидерство в образовательной политике. Студенты сотрудничают со школами, министерствами и международными учреждениями.",
+    facilities:["Современные аудитории с интерактивными досками","Центры образовательных исследований","Лаборатории подготовки учителей","Цифровое обучение и электронная библиотека"],
+    global:"Мы поддерживаем партнерские отношения с образовательными учреждениями по всему миру, предоставляя возможности обмена, международные стажировки и совместные исследовательские проекты.",
+    contactEmail:"Email: education@teu.edu.ru",
+    contactWeb:"Сайт: www.teu.edu.ru/faculties/education",
+    applyBtn:"Подать заявку", footer:"© 2025 Транс Евразийский Университет. Все права защищены."
+};
+
+function setLanguage(lang){
+    const c = lang==="ru"?ruContent:enContent;
+    // Hero
+    document.getElementById("hero-title").textContent = c.heroTitle;
+    document.getElementById("hero-subtitle").textContent = c.heroSubtitle;
+    // Navbar
+    document.getElementById("nav-home").textContent=c.nav[0];
+    document.getElementById("nav-vision").textContent=c.nav[1];
+    document.getElementById("nav-mission").textContent=c.nav[2];
+    document.getElementById("nav-global").textContent=c.nav[3];
+    document.getElementById("nav-programs").textContent=c.nav[4];
+    document.getElementById("nav-career").textContent=c.nav[5];
+    document.getElementById("nav-portal").textContent=c.nav[6];
+    // Sidebar
+    document.getElementById("side-overview").textContent=c.sidebar[0];
+    document.getElementById("side-departments").textContent=c.sidebar[1];
+    document.getElementById("side-programs").textContent=c.sidebar[2];
+    document.getElementById("side-research").textContent=c.sidebar[3];
+    document.getElementById("side-facilities").textContent=c.sidebar[4];
+    document.getElementById("side-global").textContent=c.sidebar[5];
+    document.getElementById("side-contact").textContent=c.sidebar[6];
+    // Section Titles
+    document.getElementById("overview-title").textContent=c.sidebar[0];
+    document.getElementById("departments-title").textContent=c.sidebar[1];
+    document.getElementById("programs-title").textContent=c.sidebar[2];
+    document.getElementById("programs-ug-title").textContent=lang==="ru"?"Бакалавриат":"Undergraduate Programs";
+    document.getElementById("programs-pg-title").textContent=lang==="ru"?"Магистратура":"Postgraduate Programs";
+    document.getElementById("research-title").textContent=lang==="ru"?"Исследования":"Research Opportunities";
+    document.getElementById("facilities-title").textContent=c.sidebar[4];
+    document.getElementById("global-title").textContent=c.sidebar[5];
+    document.getElementById("contact-title").textContent=c.sidebar[6];
+    // Content
+    document.getElementById("overview-text").textContent=c.overview;
+    const deptList=document.getElementById("departments-list"); deptList.innerHTML=""; c.departments.forEach(li=>deptList.innerHTML+=`<li>${li}</li>`);
+    const progUG=document.getElementById("programs-ug-list"); progUG.innerHTML=""; c.programsUG.forEach(li=>progUG.innerHTML+=`<li>${li}</li>`);
+    const progPG=document.getElementById("programs-pg-list"); progPG.innerHTML=""; c.programsPG.forEach(li=>progPG.innerHTML+=`<li>${li}</li>`);
+    document.getElementById("research-text").textContent=c.research;
+    const facList=document.getElementById("facilities-list"); facList.innerHTML=""; c.facilities.forEach(li=>facList.innerHTML+=`<li>${li}</li>`);
+    document.getElementById("global-text").textContent=c.global;
+    document.getElementById("contact-email").textContent=c.contactEmail;
+    const contactWeb=document.getElementById("contact-web").querySelector("a");
+    contactWeb.textContent=c.contactWeb.replace(/(Website:|Сайт:)/,"").trim();
+    contactWeb.href=contactWeb.textContent.includes("http")?contactWeb.textContent:"#";
+    document.getElementById("apply-btn").textContent=c.applyBtn;
+    document.getElementById("apply-btn").style.background=lang==="ru"?"#28a745":"#ff6600";
+    document.getElementById("footer-text").textContent=c.footer;
+    document.getElementById("btn-en").classList.toggle("active",lang==="en");
+    document.getElementById("btn-ru").classList.toggle("active",lang==="ru");
+}
+
+// Event Listeners
+document.getElementById("btn-en").addEventListener("click",()=>setLanguage("en"));
+document.getElementById("btn-ru").addEventListener("click",()=>setLanguage("ru"));
+</script>
+
+</body>
+</html>

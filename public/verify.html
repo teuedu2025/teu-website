@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Certificate Verification - Trans Eurasia University</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #f4f4f4, #d9e4f5);
+  margin: 0;
+  padding: 0;
+}
+.container {
+  max-width: 600px;
+  margin: 60px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.15);
+}
+.logo-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #050782; /* Dark blue background for logo visibility */
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+.logo {
+  max-width: 100px;
+  display: block;
+}
+h1 {
+  text-align: center;
+  color: #004080;
+  margin-bottom: 20px;
+}
+label {
+  display: block;
+  margin: 15px 0 5px;
+  font-weight: bold;
+}
+input, button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+button {
+  background: #004080;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+button:hover {
+  background: #0066cc;
+}
+.result {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  display: none;
+}
+.result.valid {
+  background: #e0ffe0;
+  border: 1px solid #00b050;
+  color: #006600;
+}
+.result.invalid {
+  background: #ffe0e0;
+  border: 1px solid #ff0000;
+  color: #cc0000;
+}
+.result p {
+  margin: 8px 0;
+  font-size: 16px;
+}
+.degree-line {
+  font-weight: bold;
+  font-size: 17px;
+}
+.degree-line .icon {
+  margin-left: 8px;
+  font-size: 18px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="logo-wrapper">
+    <img src="logo.png" alt="University Logo" class="logo">
+  </div>
+  <h1>Certificate Verification</h1>
+
+  <label for="cert-code">Enter Certificate Code:</label>
+  <input type="text" id="cert-code" placeholder="Enter or scan certificate code">
+
+  <button id="verify-btn">Verify Certificate</button>
+
+  <div class="result" id="result">
+    <p><strong>Name:</strong> <span id="res-name"></span></p>
+    <p class="degree-line"><strong>Degree:</strong> <span id="res-degree"></span> <span class="icon" id="degree-icon"></span></p>
+    <p><strong>Graduation Year:</strong> <span id="res-year"></span></p>
+    <p><strong>Grade:</strong> <span id="res-grade"></span></p>
+    <p><strong>Status:</strong> <span id="res-status"></span></p>
+  </div>
+</div>
+
+<script>
+const codeInput = document.getElementById("cert-code");
+const verifyBtn = document.getElementById("verify-btn");
+const resultDiv = document.getElementById("result");
+
+function verifyCertificate() {
+  const code = codeInput.value.trim();
+  resultDiv.style.display = "none";
+  if (!code) return alert("Please enter a certificate code!");
+
+  fetch('/verify?code=' + encodeURIComponent(code))
+    .then(res => res.json())
+    .then(data => {
+      const degreeIcon = document.getElementById("degree-icon");
+
+      if (data.valid) {
+        // Format degree with (Hons) if applicable
+        const degreeText =
+          data.hons && data.hons.toLowerCase() === "hons"
+            ? `${data.degree} (Hons)`
+            : data.degree;
+
+        document.getElementById("res-name").textContent = data.name;
+        document.getElementById("res-degree").textContent = degreeText;
+        document.getElementById("res-year").textContent = data.year;
+        document.getElementById("res-grade").textContent = data.grade;
+        document.getElementById("res-status").textContent = "✅ VALID";
+
+        degreeIcon.textContent = "✅";
+        resultDiv.className = "result valid";
+      } else {
+        resultDiv.className = "result invalid";
+        resultDiv.innerHTML = "<p>❌ Certificate code not found or invalid!</p>";
+      }
+      resultDiv.style.display = "block";
+    })
+    .catch(() => {
+      resultDiv.className = "result invalid";
+      resultDiv.innerHTML = "<p>⚠️ Server error! Try again later.</p>";
+      resultDiv.style.display = "block";
+    });
+}
+
+// Trigger verification on click or Enter key
+verifyBtn.addEventListener("click", verifyCertificate);
+codeInput.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") verifyCertificate();
+});
+</script>
+
+</body>
+</html>

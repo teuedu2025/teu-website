@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Faculty of Arts & Humanities - Trans Eurasia University</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Faculty of Arts & Humanities at Trans Eurasia University: Languages, History, Philosophy, and Culture programs with global engagement.">
+<style>
+body { font-family:"Times New Roman", Times, serif; margin:0; padding:0; background:#f4f6f8; color:#222; scroll-behavior:smooth; }
+nav.navbar { display:flex; justify-content:space-between; align-items:center; background:#002b5c; padding:10px 20px; position:fixed; width:100%; top:0; z-index:10; flex-wrap:wrap; }
+.navbar .logo img { height:80px; }
+.navbar .menu { display:flex; flex-wrap:wrap; }
+.navbar .menu a { color:white; margin:5px 10px; text-decoration:none; font-weight:bold; position:relative; }
+.navbar .menu a::after { content:""; position:absolute; bottom:-3px; left:0; width:0; height:2px; background:#ff6600; transition:width 0.3s; }
+.navbar .menu a:hover::after { width:100%; }
+.navbar .right-buttons { display:flex; align-items:center; margin-top:5px; }
+.navbar .lang-switch { color:white; margin-right:10px; cursor:pointer; font-weight:bold; }
+.navbar .lang-switch.active { color:#ff6600; }
+.navbar .apply-btn { padding:6px 12px; border-radius:5px; font-weight:bold; text-decoration:none; background:#ff6600; color:white; }
+.navbar .apply-btn:hover { box-shadow:0 0 10px #ff6600; }
+.hero { background:url('images/001.png') no-repeat center center; background-size:cover; height:350px; margin-top:100px; display:flex; align-items:center; justify-content:center; position:relative; text-align:center; color:white; flex-direction:column; }
+.hero::before { content:""; position:absolute; top:0; left:0; right:0; bottom:0; background:rgba(0,43,92,0.5); z-index:0; }
+.hero-text { position:relative; z-index:1; }
+.hero-text h1 { font-size:56px; font-weight:900; margin:0; color:white; text-shadow:3px 3px 8px rgba(0,0,0,0.8); }
+.hero-text p { font-size:22px; margin-top:10px; text-shadow:2px 2px 6px rgba(0,0,0,0.7); }
+.page-container { display:flex; max-width:1200px; margin:20px auto 100px; padding:20px; }
+aside.sidebar { flex:0 0 250px; margin-right:20px; position:sticky; top:120px; }
+.sidebar ul { list-style:none; padding:0; }
+.sidebar li { margin-bottom:15px; }
+.sidebar-link { color:#002b5c; text-decoration:none; transition:color 0.3s; display:block; }
+.sidebar-link.active { color:#ff6600; font-weight:bold; border-left:3px solid #ff6600; padding-left:8px; }
+main.content { flex:1; }
+.section { background:white; padding:25px; margin-bottom:25px; border-left:5px solid #ff6600; box-shadow:0 0 10px rgba(255,102,0,0.2); }
+.section h2 { color:#002b5c; margin-bottom:15px; }
+.section p, .section ul { font-size:16px; line-height:1.5; }
+.section ul { padding-left:20px; }
+.section ul li { margin-bottom:8px; }
+.section ul li a { color:#002b5c; text-decoration:none; font-weight:bold; }
+.section ul li a:hover { color:#ff6600; }
+@media (max-width:992px) { .page-container { flex-direction:column; } aside.sidebar { position:relative; top:0; margin-bottom:20px; } }
+@media (max-width:768px) { .hero-text h1 { font-size:40px; } .hero-text p { font-size:18px; } }
+@media (max-width:600px) { nav.navbar { justify-content:center; } .navbar .menu, .navbar .right-buttons { flex-direction:column; align-items:center; margin-top:5px; } .hero-text h1 { font-size:32px; } .hero-text p { font-size:16px; } aside.sidebar { display:none; } }
+footer.footer { background:#002b5c; color:white; padding:30px 20px; margin-top:40px; text-align:center; }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar" aria-label="Main navigation">
+  <div class="logo"><a href="index.html"><img src="images/logo.png" alt="University Logo"></a></div>
+  <div class="menu">
+    <a href="index.html" id="nav-home">Home</a>
+    <a href="index.html#vision" id="nav-vision">Vision</a>
+    <a href="index.html#mission" id="nav-mission">Mission</a>
+    <a href="index.html#global" id="nav-global">Global Outlook</a>
+    <a href="index.html#programs" id="nav-programs">Programs</a>
+    <a href="index.html#career" id="nav-career">Career Pathways</a>
+    <a href="student-portal.html" id="nav-portal">Student Portal</a>  </div>
+  <div class="right-buttons">
+    <a href="#" id="btn-en" class="lang-switch active" aria-label="Switch to English">EN</a> |
+    <a href="#" id="btn-ru" class="lang-switch" aria-label="Switch to Russian">RU</a>
+    <a href="https://eduinrus.ru/en" target="_blank" id="apply-btn" class="apply-btn">Apply Now</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-text">
+    <h1 id="hero-title">Faculty of Arts & Humanities</h1>
+    <p id="hero-subtitle">Exploring Languages, History, Philosophy & Culture</p>
+  </div>
+</header>
+
+<!-- Page Container -->
+<div class="page-container">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <ul>
+      <li><a href="#overview" id="side-overview" class="sidebar-link">Overview</a></li>
+      <li><a href="#departments" id="side-departments" class="sidebar-link">Departments</a></li>
+      <li><a href="#programs" id="side-programs" class="sidebar-link">Degree Programs</a></li>
+      <li><a href="#research" id="side-research" class="sidebar-link">Research</a></li>
+      <li><a href="#facilities" id="side-facilities" class="sidebar-link">Facilities</a></li>
+      <li><a href="#global" id="side-global" class="sidebar-link">Global Engagement</a></li>
+      <li><a href="#contact" id="side-contact" class="sidebar-link">Contact</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="content">
+    <section id="overview" class="section">
+      <h2 id="overview-title">Overview</h2>
+      <p id="overview-text">The Faculty of Arts & Humanities at Trans Eurasia University is dedicated to fostering critical thinking, creativity, and cultural awareness. Our programs equip students with the skills necessary to navigate and contribute to a rapidly changing global society.</p>
+    </section>
+
+    <section id="departments" class="section">
+      <h2 id="departments-title">Academic Departments</h2>
+      <ul id="departments-list">
+        <li>Department of Languages</li>
+        <li>Department of History</li>
+        <li>Department of Philosophy</li>
+        <li>Department of Cultural Studies</li>
+      </ul>
+    </section>
+
+    <section id="programs" class="section">
+      <h2 id="programs-title">Degree Programs</h2>
+      <h3 id="ug-title">Undergraduate Programs</h3>
+      <ul id="ug-programs">
+        <li>Bachelor of Arts in English Language & Literature</li>
+        <li>Bachelor of Arts in Russian Language & Literature</li>
+        <li>Bachelor of Arts in History</li>
+        <li>Bachelor of Arts in Philosophy</li>
+        <li>Bachelor of Arts in Cultural Studies</li>
+      </ul>
+      <h3 id="pg-title">Postgraduate Programs</h3>
+      <ul id="pg-programs">
+        <li>Master of Arts in English Language & Literature</li>
+        <li>Master of Arts in Russian Language & Literature</li>
+        <li>Master of Arts in History</li>
+        <li>Master of Arts in Philosophy</li>
+        <li>Master of Arts in Cultural Studies</li>
+      </ul>
+    </section>
+
+    <section id="research" class="section">
+      <h2 id="research-title">Research Opportunities</h2>
+      <p id="research-text">Our faculty encourages research that bridges cultural and linguistic divides, promoting cross-cultural understanding and global citizenship.</p>
+    </section>
+
+    <section id="facilities" class="section">
+      <h2 id="facilities-title">Facilities</h2>
+      <ul id="facilities-list">
+        <li>Language Laboratories</li>
+        <li>Cultural Study Centers</li>
+        <li>Research Hubs</li>
+      </ul>
+    </section>
+
+    <section id="global" class="section">
+      <h2 id="global-title">Global Engagement</h2>
+      <p id="global-text">We maintain partnerships with universities and institutions worldwide, providing students with exchange programs, collaborative research, and global perspectives.</p>
+    </section>
+
+    <section id="contact" class="section">
+      <h2 id="contact-title">Contact</h2>
+      <p id="contact-email">Email: arts@teu.edu.com</p>
+      <p id="contact-website">Website: <a href="https://www.teu.edu.com/arts-humanities" target="_blank">www.teu.edu.com/arts-humanities</a></p>
+    </section>
+  </main>
+</div>
+
+<!-- Footer -->
+<footer class="footer" id="footer-text">
+  © 2025 Trans Eurasia University. All Rights Reserved.
+</footer>
+
+<script>
+// --- Scrollspy with IntersectionObserver ---
+const links = document.querySelectorAll(".sidebar-link");
+const sections = document.querySelectorAll("main section");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      links.forEach(link => link.classList.toggle("active", link.getAttribute("href") === "#" + entry.target.id));
+    }
+  });
+}, { rootMargin: "-50% 0px -50% 0px" });
+
+sections.forEach(section => observer.observe(section));
+
+// --- Language Data ---
+const enContent={ nav:["Home","Vision","Mission","Global Outlook","Programs","Career Pathways","Student Portal"], sidebar:["Overview","Departments","Degree Programs","Research","Facilities","Global Engagement","Contact"], heroTitle:"Faculty of Arts & Humanities", heroSubtitle:"Exploring Languages, History, Philosophy & Culture", overviewTitle:"Overview", overviewText:"The Faculty of Arts & Humanities at Trans Eurasia University is dedicated to fostering critical thinking, creativity, and cultural awareness. Our programs equip students with the skills necessary to navigate and contribute to a rapidly changing global society.", departmentsTitle:"Academic Departments", departmentsList:["Department of Languages","Department of History","Department of Philosophy","Department of Cultural Studies"], programsTitle:"Degree Programs", ugTitle:"Undergraduate Programs", ugPrograms:["Bachelor of Arts in English Language & Literature","Bachelor of Arts in Russian Language & Literature","Bachelor of Arts in History","Bachelor of Arts in Philosophy","Bachelor of Arts in Cultural Studies"], pgTitle:"Postgraduate Programs", pgPrograms:["Master of Arts in English Language & Literature","Master of Arts in Russian Language & Literature","Master of Arts in History","Master of Arts in Philosophy","Master of Arts in Cultural Studies"], researchTitle:"Research Opportunities", researchText:"Our faculty encourages research that bridges cultural and linguistic divides, promoting cross-cultural understanding and global citizenship.", facilitiesTitle:"Facilities", facilitiesList:["Language Laboratories","Cultural Study Centers","Research Hubs"], globalTitle:"Global Engagement", globalText:"We maintain partnerships with universities and institutions worldwide, providing students with exchange programs, collaborative research, and global perspectives.", contactTitle:"Contact", contactEmail:"Email: arts@teu.edu.com", contactWebsite:"Website: www.teu.edu.com/arts-humanities", applyBtn:"Apply Now", footer:"© 2025 Trans Eurasia University. All Rights Reserved." };
+
+const ruContent={ nav:["Главная","Видение","Миссия","Глобальный взгляд","Программы","Карьера","Студенческий портал"], sidebar:["Обзор","Кафедры","Программы","Исследования","Инфраструктура","Международное сотрудничество","Контакты"], heroTitle:"Факультет искусств и гуманитарных наук", heroSubtitle:"Изучение языков, истории, философии и культуры", overviewTitle:"Обзор", overviewText:"Факультет искусств и гуманитарных наук Транс Евразийского Университета способствует развитию критического мышления, креативности и культурной осведомлённости. Наши программы предоставляют студентам навыки для успешного участия в быстро меняющемся глобальном обществе.", departmentsTitle:"Кафедры", departmentsList:["Кафедра языков","Кафедра истории","Кафедра философии","Кафедра культурологии"], programsTitle:"Программы", ugTitle:"Бакалавриат", ugPrograms:["Бакалавр искусств по английскому языку и литературе","Бакалавр искусств по русскому языку и литературе","Бакалавр искусств по истории","Бакалавр искусств по философии","Бакалавр искусств по культурологии"], pgTitle:"Магистратура", pgPrograms:["Магистр искусств по английскому языку и литературе","Магистр искусств по русскому языку и литературе","Магистр искусств по истории","Магистр искусств по философии","Магистр искусств по культурологии"], researchTitle:"Исследования", researchText:"Наш факультет поощряет исследования, которые объединяют культурные и языковые различия, способствуя межкультурному пониманию и глобальному гражданству.", facilitiesTitle:"Инфраструктура", facilitiesList:["Языковые лаборатории","Центры культурных исследований","Исследовательские центры"], globalTitle:"Международное сотрудничество", globalText:"Мы поддерживаем партнерство с университетами и учреждениями по всему миру, предоставляя студентам возможности обмена, совместные исследования и глобальные перспективы.", contactTitle:"Контакты", contactEmail:"Email: arts@teu.edu.com", contactWebsite:"Сайт: www.teu.edu.com/arts-humanities", applyBtn:"Подать заявку", footer:"© 2025 Транс Евразийский Университет. Все права защищены." };
+
+// --- Language Switcher ---
+function setLanguage(lang){
+  const c=lang==="ru"?ruContent:enContent;
+
+  // Navbar
+  document.getElementById("nav-home").textContent=c.nav[0];
+  document.getElementById("nav-vision").textContent=c.nav[1];
+  document.getElementById("nav-mission").textContent=c.nav[2];
+  document.getElementById("nav-global").textContent=c.nav[3];
+  document.getElementById("nav-programs").textContent=c.nav[4];
+  document.getElementById("nav-career").textContent=c.nav[5];
+  document.getElementById("nav-portal").textContent=c.nav[6];
+
+  // Sidebar
+  document.getElementById("side-overview").textContent=c.sidebar[0];
+  document.getElementById("side-departments").textContent=c.sidebar[1];
+  document.getElementById("side-programs").textContent=c.sidebar[2];
+  document.getElementById("side-research").textContent=c.sidebar[3];
+  document.getElementById("side-facilities").textContent=c.sidebar[4];
+  document.getElementById("side-global").textContent=c.sidebar[5];
+  document.getElementById("side-contact").textContent=c.sidebar[6];
+
+  // Hero
+  document.getElementById("hero-title").textContent=c.heroTitle;
+  document.getElementById("hero-subtitle").textContent=c.heroSubtitle;
+
+  // Sections
+  document.getElementById("overview-title").textContent=c.overviewTitle;
+  document.getElementById("overview-text").textContent=c.overviewText;
+  document.getElementById("departments-title").textContent=c.departmentsTitle;
+  fillList("departments-list",c.departmentsList);
+  document.getElementById("programs-title").textContent=c.programsTitle;
+  document.getElementById("ug-title").textContent=c.ugTitle;
+  fillList("ug-programs",c.ugPrograms);
+  document.getElementById("pg-title").textContent=c.pgTitle;
+  fillList("pg-programs",c.pgPrograms);
+  document.getElementById("research-title").textContent=c.researchTitle;
+  document.getElementById("research-text").textContent=c.researchText;
+  document.getElementById("facilities-title").textContent=c.facilitiesTitle;
+  fillList("facilities-list",c.facilitiesList);
+  document.getElementById("global-title").textContent=c.globalTitle;
+  document.getElementById("global-text").textContent=c.globalText;
+  document.getElementById("contact-title").textContent=c.contactTitle;
+  document.getElementById("contact-email").textContent=c.contactEmail;
+  document.getElementById("contact-website").textContent=c.contactWebsite;
+
+  // Apply Button + Footer
+  const applyBtn=document.getElementById("apply-btn");
+  applyBtn.textContent=c.applyBtn;
+  applyBtn.href=lang==="ru"?"https://eduinrus.ru/ru":"https://eduinrus.ru/en";
+  applyBtn.style.background=lang==="ru"?"#28a745":"#ff6600";
+  document.getElementById("footer-text").textContent=c.footer;
+
+  // Active toggle
+  document.getElementById("btn-en").classList.toggle("active", lang==="en");
+  document.getElementById("btn-ru").classList.toggle("active", lang==="ru");
+
+  localStorage.setItem("lang",lang);
+}
+
+function fillList(id,items){
+  const ul=document.getElementById(id);
+  ul.replaceChildren(...items.map(text=>{
+    const li=document.createElement("li");
+    li.textContent=text;
+    return li;
+  }));
+}
+
+// Event listeners
+document.getElementById("btn-en").addEventListener("click",e=>{e.preventDefault();setLanguage("en");});
+document.getElementById("btn-ru").addEventListener("click",e=>{e.preventDefault();setLanguage("ru");});
+
+// Init with saved language
+document.addEventListener("DOMContentLoaded",()=>{
+  const saved=localStorage.getItem("lang")||"en";
+  setLanguage(saved);
+});
+</script>
+</body>
+</html>

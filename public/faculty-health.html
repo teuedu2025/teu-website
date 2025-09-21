@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Faculty of Health Sciences - Trans Eurasia University</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Faculty of Health Sciences at Trans Eurasia University: Medicine, Nursing, Pharmacy, and Allied Health programs with global opportunities.">
+<style>
+body { font-family:"Times New Roman", Times, serif; margin:0; padding:0; background:#d5f7c8; color:#222; scroll-behavior:smooth; }
+nav.navbar { display:flex; justify-content:space-between; align-items:center; background:#04075c; padding:10px 20px; position:fixed; width:100%; top:0; z-index:10; flex-wrap:wrap; }
+.navbar .logo img { height:80px; }
+.navbar .menu { display:flex; flex-wrap:wrap; }
+.navbar .menu a { color:white; margin:5px 10px; text-decoration:none; font-weight:bold; position:relative; }
+.navbar .menu a::after { content:""; position:absolute; bottom:-3px; left:0; width:0; height:2px; background:#00b050; transition:width 0.3s; }
+.navbar .menu a:hover::after { width:100%; }
+.navbar .right-buttons { display:flex; align-items:center; margin-top:5px; }
+.navbar .lang-switch { color:white; margin-right:10px; cursor:pointer; font-weight:bold; }
+.navbar .lang-switch.active { color:#ff6600; }
+.navbar .apply-btn { padding:6px 12px; border-radius:5px; font-weight:bold; text-decoration:none; background:#00b050; color:white; }
+.navbar .apply-btn:hover { box-shadow:0 0 10px #00b050; }
+.hero { background:url('images/img_health001.jpg') no-repeat center center; background-size:cover; height:350px; margin-top:100px; display:flex; align-items:center; justify-content:center; position:relative; text-align:center; color:white; flex-direction:column; }
+.hero::before { content:""; position:absolute; top:0; left:0; right:0; bottom:0; background:rgba(0,43,92,0.5); z-index:0; }
+.hero-text { position:relative; z-index:1; }
+.hero-text h1 { font-size:56px; font-weight:900; margin:0; color:white; text-shadow:3px 3px 8px rgba(0,0,0,0.8); }
+.hero-text p { font-size:22px; margin-top:10px; text-shadow:2px 2px 6px rgba(0,0,0,0.7); }
+.page-container { display:flex; max-width:1200px; margin:20px auto 100px; padding:20px; }
+aside.sidebar {
+  position: fixed;
+  top: 100px;
+  left: 20px;
+  width: 250px;
+  background: white;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+}
+.sidebar ul { list-style:none; padding:0; }
+.sidebar li { margin-bottom:15px; }
+.sidebar-link { color:#002b5c; text-decoration:none; transition:color 0.3s; display:block; }
+.sidebar-link.active { color:#ff6600; font-weight:bold; border-left:3px solid #00b050; padding-left:8px; }
+main.content {
+  margin-left: 300px;
+  margin-top: 20px;
+}
+.section { background:white; padding:25px; margin-bottom:25px; border-left:5px solid #00b050; box-shadow:0 0 10px rgba(255,102,0,0.2); }
+.section h2 { color:#002b5c; margin-bottom:15px; }
+.section p, .section ul { font-size:16px; line-height:1.5; }
+.section ul { padding-left:20px; }
+.section ul li { margin-bottom:8px; }
+@media (max-width: 992px) {
+  aside.sidebar { display: none; }
+  main.content { margin-left: 0; }
+}
+@media (max-width:992px) { .page-container { flex-direction:column; } aside.sidebar { position:relative; top:0; margin-bottom:20px; } }
+@media (max-width:768px) { .hero-text h1 { font-size:40px; } .hero-text p { font-size:18px; } }
+@media (max-width:600px) { nav.navbar { justify-content:center; } .navbar .menu, .navbar .right-buttons { flex-direction:column; align-items:center; margin-top:5px; } .hero-text h1 { font-size:32px; } .hero-text p { font-size:16px; } aside.sidebar { display:none; } }
+footer.footer { background:#002b5c; color:white; padding:30px 20px; margin-top:40px; text-align:center; }
+.section img { max-width:100%; height:auto; }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="logo"><a href="index.html"><img src="images/logo.png" alt="University Logo"></a></div>
+
+  <div class="menu">
+    <a href="index.html" id="nav-home">Home</a>
+    <a href="index.html#vision" id="nav-vision">Vision</a>
+    <a href="index.html#mission" id="nav-mission">Mission</a>
+    <a href="index.html#global" id="nav-global">Global Outlook</a>
+    <a href="index.html#programs" id="nav-programs">Programs</a>
+    <a href="index.html#career" id="nav-career">Career Pathways</a>
+    <a href="student-portal.html" id="nav-portal">Student Portal</a>
+  </div>
+  <div class="right-buttons">
+    <a href="#" id="btn-en" class="lang-switch active">EN</a> |
+    <a href="#" id="btn-ru" class="lang-switch">RU</a>
+    <a href="https://eduinrus.ru/en" target="_blank" id="apply-btn" class="apply-btn">Apply Now</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-text">
+    <h1 id="hero-title">Faculty of Health Sciences</h1>
+    <p id="hero-subtitle">Advancing Medicine, Research & Care</p>
+  </div>
+</header>
+
+<div class="page-container">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <ul>
+      <li><a href="#overview" id="side-overview" class="sidebar-link">Overview</a></li>
+      <li><a href="#departments" id="side-departments" class="sidebar-link">Departments</a></li>
+      <li><a href="#programs" id="side-programs" class="sidebar-link">Programs</a></li>
+      <li><a href="#research" id="side-research" class="sidebar-link">Research</a></li>
+      <li><a href="#facilities" id="side-facilities" class="sidebar-link">Facilities</a></li>
+      <li><a href="#global" id="side-global" class="sidebar-link">Global Outlook</a></li>
+      <li><a href="#contact" id="side-contact" class="sidebar-link">Contact</a></li>
+    </ul>
+  </aside>
+
+  <!-- Content -->
+  <main class="content">
+    <section id="overview" class="section">
+      <h2 id="overview-title">Overview</h2>
+      <p id="overview-text">The Faculty of Health Sciences at Trans Eurasia University prepares students for careers in healthcare, medicine, and research. Our programs are designed to meet international standards and train professionals ready to improve lives worldwide.</p>
+    </section>
+
+    <section id="departments" class="section">
+      <h2 id="departments-title">Departments</h2>
+      <ul id="departments-list">
+        <li>Department of Medicine</li>
+        <li>Department of Nursing</li>
+        <li>Department of Pharmacy</li>
+        <li>Department of Public Health</li>
+        <li>Department of Biomedical Sciences</li>
+      </ul>
+    </section>
+
+    <section id="programs" class="section">
+      <h2 id="programs-title">Programs</h2>
+      <h3 id="ug-title">Undergraduate Programs</h3>
+      <ul id="ug-programs">
+        <li>MBBS – Bachelor of Medicine & Surgery</li>
+        <li>BSc in Nursing</li>
+        <li>BPharm – Bachelor of Pharmacy</li>
+        <li>BSc in Public Health</li>
+      </ul>
+      <h3 id="pg-title">Postgraduate Programs</h3>
+      <ul id="pg-programs">
+        <li>MD – Doctor of Medicine</li>
+        <li>MS – Master of Surgery</li>
+        <li>MSc in Nursing</li>
+        <li>MPharm – Master of Pharmacy</li>
+      </ul>
+    </section>
+
+    <section id="research" class="section">
+      <h2 id="research-title">Research</h2>
+      <p id="research-text">Our faculty leads cutting-edge research in medicine, pharmacology, epidemiology, and clinical sciences. Students are encouraged to participate in projects that impact healthcare policy and innovation.</p>
+    </section>
+
+    <section id="facilities" class="section">
+      <h2 id="facilities-title">Facilities</h2>
+      <ul id="facilities-list">
+        <li>Teaching Hospitals</li>
+        <li>Simulation Laboratories</li>
+        <li>Research Centers</li>
+        <li>Modern Lecture Theatres</li>
+      </ul>
+    </section>
+
+    <section id="global" class="section">
+      <h2 id="global-title">Global Outlook</h2>
+      <p id="global-text">We partner with medical universities, hospitals, and research institutions worldwide, enabling international exchanges, joint research, and clinical training opportunities.</p>
+    </section>
+
+    <section id="contact" class="section">
+      <h2 id="contact-title">Contact</h2>
+      <p id="contact-email">Email: health@teu.edu.com</p>
+      <p id="contact-website">Website: <a href="https://www.teu.edu.com/health-sciences" target="_blank">www.teu.edu.com/health-sciences</a></p>
+    </section>
+  </main>
+</div>
+
+<footer class="footer" id="footer-text">
+  © 2025 Trans Eurasia University. All Rights Reserved.
+</footer>
+
+<script>
+// --- Scrollspy ---
+const links = document.querySelectorAll(".sidebar-link");
+const sections = document.querySelectorAll("main section");
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      links.forEach(l=>l.classList.toggle("active",l.getAttribute("href")==="#"+entry.target.id));
+    }
+  });
+}, {rootMargin:"-50% 0px -50% 0px"});
+sections.forEach(s=>observer.observe(s));
+
+// --- Language Switch ---
+const en = {
+  heroTitle:"Faculty of Health Sciences",
+  heroSubtitle:"Advancing Medicine, Research & Care",
+  overviewTitle:"Overview",
+  overviewText:"The Faculty of Health Sciences at Trans Eurasia University prepares students for careers in healthcare, medicine, and research. Our programs are designed to meet international standards and train professionals ready to improve lives worldwide.",
+  departmentsTitle:"Departments",
+  departmentsList:["Department of Medicine","Department of Nursing","Department of Pharmacy","Department of Public Health","Department of Biomedical Sciences"],
+  programsTitle:"Programs",
+  ugTitle:"Undergraduate Programs",
+  ugPrograms:["MBBS – Bachelor of Medicine & Surgery","BSc in Nursing","BPharm – Bachelor of Pharmacy","BSc in Public Health"],
+  pgTitle:"Postgraduate Programs",
+  pgPrograms:["MD – Doctor of Medicine","MS – Master of Surgery","MSc in Nursing","MPharm – Master of Pharmacy"],
+  researchTitle:"Research",
+  researchText:"Our faculty leads cutting-edge research in medicine, pharmacology, epidemiology, and clinical sciences. Students are encouraged to participate in projects that impact healthcare policy and innovation.",
+  facilitiesTitle:"Facilities",
+  facilitiesList:["Teaching Hospitals","Simulation Laboratories","Research Centers","Modern Lecture Theatres"],
+  globalTitle:"Global Outlook",
+  globalText:"We partner with medical universities, hospitals, and research institutions worldwide, enabling international exchanges, joint research, and clinical training opportunities.",
+  contactTitle:"Contact",
+  contactEmail:"Email: health@teu.edu.com",
+  contactWebsite:"Website: www.teu.edu.com/health-sciences",
+  applyBtn:"Apply Now",
+  footer:"© 2025 Trans Eurasia University. All Rights Reserved."
+};
+const ru = {
+  heroTitle:"Факультет медицинских наук",
+  heroSubtitle:"Развитие медицины, исследований и ухода",
+  overviewTitle:"Обзор",
+  overviewText:"Факультет медицинских наук Транс Евразийского Университета готовит студентов к карьере в здравоохранении, медицине и исследованиях. Наши программы соответствуют международным стандартам и формируют специалистов, готовых улучшать жизнь во всем мире.",
+  departmentsTitle:"Кафедры",
+  departmentsList:["Кафедра медицины","Кафедра сестринского дела","Кафедра фармации","Кафедра общественного здравоохранения","Кафедра биомедицинских наук"],
+  programsTitle:"Программы",
+  ugTitle:"Бакалавриат",
+  ugPrograms:["МББС – Бакалавр медицины и хирургии","Бакалавр сестринского дела","Бакалавр фармации","Бакалавр общественного здравоохранения"],
+  pgTitle:"Магистратура",
+  pgPrograms:["Доктор медицины (MD)","Магистр хирургии (MS)","Магистр сестринского дела","Магистр фармации"],
+  researchTitle:"Исследования",
+  researchText:"Наш факультет проводит передовые исследования в области медицины, фармакологии, эпидемиологии и клинических наук. Студенты участвуют в проектах, влияющих на политику здравоохранения и инновации.",
+  facilitiesTitle:"Инфраструктура",
+  facilitiesList:["Учебные больницы","Симуляционные лаборатории","Научно-исследовательские центры","Современные лекционные залы"],
+  globalTitle:"Международное сотрудничество",
+  globalText:"Мы сотрудничаем с медицинскими университетами, больницами и исследовательскими центрами по всему миру, предоставляя возможности обмена, совместных исследований и клинической подготовки.",
+  contactTitle:"Контакты",
+  contactEmail:"Email: health@teu.edu.com",
+  contactWebsite:"Сайт: www.teu.edu.com/health-sciences",
+  applyBtn:"Подать заявку",
+  footer:"© 2025 Транс Евразийский Университет. Все права защищены."
+};
+
+function setLang(l){
+  const c = l==="ru"?ru:en;
+  document.getElementById("hero-title").textContent = c.heroTitle;
+  document.getElementById("hero-subtitle").textContent = c.heroSubtitle;
+  document.getElementById("overview-title").textContent = c.overviewTitle;
+  document.getElementById("overview-text").textContent = c.overviewText;
+  document.getElementById("departments-title").textContent = c.departmentsTitle;
+  fill("departments-list", c.departmentsList);
+  document.getElementById("programs-title").textContent = c.programsTitle;
+  document.getElementById("ug-title").textContent = c.ugTitle;
+  fill("ug-programs", c.ugPrograms);
+  document.getElementById("pg-title").textContent = c.pgTitle;
+  fill("pg-programs", c.pgPrograms);
+  document.getElementById("research-title").textContent = c.researchTitle;
+  document.getElementById("research-text").textContent = c.researchText;
+  document.getElementById("facilities-title").textContent = c.facilitiesTitle;
+  fill("facilities-list", c.facilitiesList);
+  document.getElementById("global-title").textContent = c.globalTitle;
+  document.getElementById("global-text").textContent = c.globalText;
+  document.getElementById("contact-title").textContent = c.contactTitle;
+  document.getElementById("contact-email").textContent = c.contactEmail;
+  document.getElementById("contact-website").textContent = c.contactWebsite;
+  const ab = document.getElementById("apply-btn");
+  ab.textContent = c.applyBtn;
+  ab.href = l==="ru"?"https://eduinrus.ru/ru":"https://eduinrus.ru/en";
+  document.getElementById("footer-text").textContent = c.footer;
+  document.getElementById("btn-en").classList.toggle("active", l==="en");
+  document.getElementById("btn-ru").classList.toggle("active", l==="ru");
+  localStorage.setItem("lang", l);
+}
+
+function fill(id,arr){
+  const ul = document.getElementById(id);
+  ul.replaceChildren(...arr.map(t=>{const li=document.createElement("li"); li.textContent=t; return li;}));
+}
+
+document.getElementById("btn-en").addEventListener("click", e=>{e.preventDefault(); setLang("en");});
+document.getElementById("btn-ru").addEventListener("click", e=>{e.preventDefault(); setLang("ru");});
+document.addEventListener("DOMContentLoaded", ()=>{setLang(localStorage.getItem("lang")||"en");});
+
+// --- Random Images Without Duplicates ---
+document.addEventListener("DOMContentLoaded", () => {
+  const allImages = [
+    "images/helth001.jpg",
+    "images/helth002.png",
+    "images/helth003.jpg",
+    "images/helth004.jpeg",
+	"images/helth005.png",
+	"images/helth006.jpg",
+	"images/helth007.jpg",
+	"images/helth008.jpg",
+  ];
+
+  function insertRandomImages(sectionId, min = 1, max = 3) {
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+
+    // Shuffle images
+    const images = allImages.slice(); 
+    for (let i = images.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [images[i], images[j]] = [images[j], images[i]];
+    }
+
+    const numImages = Math.min(Math.floor(Math.random() * (max - min + 1)) + min, images.length);
+
+    const rowDiv = document.createElement("div");
+    rowDiv.style.display = "flex";
+    rowDiv.style.flexWrap = "wrap";
+    rowDiv.style.gap = "10px";
+    rowDiv.style.margin = "10px 0";
+
+    for (let i = 0; i < numImages; i++) {
+      const img = document.createElement("img");
+      img.src = images[i];
+      img.alt = "Random Image";
+      img.style.width = `calc(${100 / numImages}% - 10px)`;
+      img.style.borderRadius = "8px";
+      rowDiv.appendChild(img);
+    }
+
+    section.appendChild(rowDiv);
+  }
+
+  ["overview","departments","programs","research","facilities","global"].forEach(id => insertRandomImages(id));
+});
+</script>
+</body>
+</html>

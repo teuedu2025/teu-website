@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Panel - Certificate System</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {font-family: Arial, sans-serif; background:#f4f4f4; margin:0; padding:0;}
+.container {max-width:800px; margin:50px auto; background:white; padding:30px; border-radius:10px; box-shadow:0 0 15px rgba(0,0,0,0.2);}
+h1 {text-align:center; color:#004080;}
+label {display:block; margin:15px 0 5px; font-weight:bold;}
+input, select, button {width:100%; padding:10px; border-radius:5px; border:1px solid #ccc; font-size:16px;}
+select {height:200px; overflow-y:auto;}
+button {background:#004080; color:white; border:none; cursor:pointer; margin-top:20px;}
+button:hover {background:#0066cc;}
+.result {margin-top:20px; padding:15px; border-radius:8px; display:none;}
+.result.success {background:#e0ffe0; border:1px solid #00b050; color:#006600;}
+.result.error {background:#ffe0e0; border:1px solid #ff0000; color:#cc0000;}
+.hidden {display:none;}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h1>Admin Panel - Certificate System</h1>
+
+<!-- Password Section -->
+<div id="login-section">
+  <label for="admin-pass">Enter Admin Password:</label>
+  <input type="password" id="admin-pass" placeholder="Password">
+  <button id="login-btn">Login</button>
+  <div class="result" id="login-result"></div>
+</div>
+
+<!-- Admin Form Section -->
+<div id="admin-form" class="hidden">
+  <label for="cert-code">Certificate Code:</label>
+  <input type="text" id="cert-code" placeholder="Unique certificate code">
+
+  <label for="owner-name">Owner Name:</label>
+  <input type="text" id="owner-name" placeholder="Full Name">
+
+  <label for="grad-year">Graduation Year:</label>
+  <input type="number" id="grad-year" placeholder="e.g., 2022">
+
+  <label for="stream">Filter by Stream:</label>
+  <select id="stream" onchange="filterDegrees()">
+    <option value="all">All Streams</option>
+    <option value="agriculture">Agriculture</option>
+    <option value="science">Science</option>
+    <option value="engineering">Engineering</option>
+    <option value="arts">Arts</option>
+    <option value="business">Business</option>
+    <option value="medicine">Medicine & Health</option>
+    <option value="law">Law</option>
+    <option value="cs">Computer Science & IT</option>
+    <option value="social">Social Sciences</option>
+  </select>
+
+  <label for="degree">Select Degree:</label>
+  <select id="degree" size="10">
+    <!-- Agriculture -->
+    <option data-stream="agriculture">BSc Agriculture</option>
+    <option data-stream="agriculture">MSc Crop Science</option>
+    <option data-stream="agriculture">PhD Agriculture</option>
+    <option data-stream="agriculture">BSc Horticulture</option>
+    <option data-stream="agriculture">MSc Soil Science</option>
+    <option data-stream="agriculture">PhD Animal Science</option>
+    <!-- Science -->
+    <option data-stream="science">BSc Environmental Science</option>
+    <option data-stream="science">MSc Chemistry</option>
+    <option data-stream="science">PhD Physics</option>
+    <option data-stream="science">BSc Biology</option>
+    <option data-stream="science">MSc Biochemistry</option>
+    <option data-stream="science">PhD Mathematics</option>
+    <!-- Engineering -->
+    <option data-stream="engineering">BEng Civil Engineering</option>
+    <option data-stream="engineering">MEng Mechanical Engineering</option>
+    <option data-stream="engineering">PhD Electrical Engineering</option>
+    <option data-stream="engineering">BEng Computer Engineering</option>
+    <option data-stream="engineering">MEng Software Engineering</option>
+    <!-- Arts -->
+    <option data-stream="arts">BA English</option>
+    <option data-stream="arts">MA History</option>
+    <option data-stream="arts">PhD Philosophy</option>
+    <option data-stream="arts">BA Music</option>
+    <option data-stream="arts">MA Fine Arts</option>
+    <!-- Business -->
+    <option data-stream="business">BBA Management</option>
+    <option data-stream="business">MBA Finance</option>
+    <option data-stream="business">PhD Economics</option>
+    <option data-stream="business">BBA Marketing</option>
+    <option data-stream="business">MBA HR</option>
+    <!-- Medicine & Health -->
+    <option data-stream="medicine">MBBS</option>
+    <option data-stream="medicine">BSc Nursing</option>
+    <option data-stream="medicine">MD</option>
+    <option data-stream="medicine">MSc Public Health</option>
+    <option data-stream="medicine">PhD Medical Science</option>
+    <!-- Law -->
+    <option data-stream="law">LLB</option>
+    <option data-stream="law">LLM</option>
+    <option data-stream="law">PhD Law</option>
+    <!-- Computer Science & IT -->
+    <option data-stream="cs">BSc Computer Science</option>
+    <option data-stream="cs">MSc Artificial Intelligence</option>
+    <option data-stream="cs">PhD Computer Science</option>
+    <option data-stream="cs">BSc Information Technology</option>
+    <option data-stream="cs">MSc Cybersecurity</option>
+    <!-- Social Sciences -->
+    <option data-stream="social">BA Sociology</option>
+    <option data-stream="social">MA Psychology</option>
+    <option data-stream="social">PhD Political Science</option>
+    <option data-stream="social">BA Anthropology</option>
+    <option data-stream="social">MA Economics</option>
+  </select>
+
+  <label for="hons">Hons / Non-Hons:</label>
+  <select id="hons">
+    <option value="Hons">Hons</option>
+    <option value="Non-Hons">Non-Hons</option>
+  </select>
+
+  <label for="grade">Select Grade:</label>
+  <select id="grade">
+    <option value="First Class">First Class</option>
+    <option value="2nd Upper">2nd Upper</option>
+    <option value="2nd Lower">2nd Lower</option>
+    <option value="General">General</option>
+  </select>
+
+  <button id="add-btn">Add Certificate</button>
+  <div class="result" id="add-result"></div>
+</div>
+</div>
+
+<script>
+const password = "Kalutn@123";
+const loginSection = document.getElementById("login-section");
+const adminForm = document.getElementById("admin-form");
+const loginResult = document.getElementById("login-result");
+
+// --- Admin login ---
+document.getElementById("login-btn").addEventListener("click", ()=>{
+  const pass = document.getElementById("admin-pass").value;
+  if(pass===password){
+    loginSection.style.display="none";
+    adminForm.classList.remove("hidden");
+  } else {
+    loginResult.textContent="Incorrect password!";
+    loginResult.className="result error";
+    loginResult.style.display="block";
+  }
+});
+
+// --- Filter Degrees ---
+function filterDegrees(){
+  const stream = document.getElementById('stream').value;
+  const options = document.getElementById('degree').options;
+  for(let i=0;i<options.length;i++){
+    const opt = options[i];
+    opt.style.display = (stream==='all' || opt.dataset.stream===stream) ? 'block' : 'none';
+  }
+}
+
+// --- Add certificate ---
+document.getElementById("add-btn").addEventListener("click", ()=>{
+  const code = document.getElementById("cert-code").value.trim();
+  const name = document.getElementById("owner-name").value.trim();
+  const year = document.getElementById("grad-year").value.trim();
+  const degree = document.getElementById("degree").value;
+  const hons = document.getElementById("hons").value;
+  const grade = document.getElementById("grade").value;
+  const resultDiv = document.getElementById("add-result");
+
+  if(!code || !name || !year || !degree || !hons || !grade){
+    resultDiv.textContent="All fields are required!";
+    resultDiv.className="result error";
+    resultDiv.style.display="block";
+    return;
+  }
+
+  fetch('/add-certificate',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({code,name,year,degree,hons,grade})
+  })
+  .then(res=>res.json())
+  .then(data=>{
+    if(data.success){
+      resultDiv.textContent="Certificate added successfully!";
+      resultDiv.className="result success";
+      resultDiv.style.display="block";
+      document.getElementById("cert-code").value="";
+      document.getElementById("owner-name").value="";
+      document.getElementById("grad-year").value="";
+    } else {
+      resultDiv.textContent=data.error || "Error adding certificate";
+      resultDiv.className="result error";
+      resultDiv.style.display="block";
+    }
+  })
+  .catch(err=>{
+    resultDiv.textContent="Server error!";
+    resultDiv.className="result error";
+    resultDiv.style.display="block";
+  });
+});
+</script>
+
+</body>
+</html>

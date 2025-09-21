@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Trans Eurasia University</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body { font-family:"Times New Roman", Times, serif; margin:0; padding:0; background:#f4f6f8; color:#222; scroll-behavior:smooth; }
+.navbar { display:flex; justify-content:space-between; align-items:center; background:#002b5c; padding:10px 20px; position:fixed; width:100%; top:0; z-index:10; flex-wrap:wrap; }
+.navbar .logo img { height:80px; }
+.navbar .menu { display:flex; flex-wrap:wrap; }
+.navbar .menu a, .navbar .right-buttons a { color:white; margin:5px 10px; text-decoration:none; font-weight:bold; }
+.navbar .menu a:hover, .navbar .right-buttons a:hover { text-decoration:underline; }
+.navbar .apply-btn { padding:6px 12px; border-radius:5px; font-weight:bold; text-decoration:none; }
+.navbar .apply-btn:hover { box-shadow:0 0 10px; }
+.lang-switch.active { color:#ff6600; font-weight:bold; cursor:pointer; }
+.hero { background:url('images/hero1.jpg') no-repeat center center; background-size:cover; height:350px; margin-top:100px; display:flex; align-items:center; justify-content:center; position:relative; text-align:center; color:white; flex-direction:column; }
+.hero::before { content:""; position:absolute; top:0; left:0; right:0; bottom:0; background:rgba(0,43,92,0.5); z-index:0; }
+.hero-text { position:relative; z-index:1; }
+.hero-text h1 { font-size:42px; font-weight:900; margin:0; text-shadow:3px 3px 8px rgba(0,0,0,0.8); }
+.hero-text p { font-size:20px; margin-top:10px; text-shadow:2px 2px 6px rgba(0,0,0,0.7); }
+.hero-dots { position:absolute; bottom:15px; left:50%; transform:translateX(-50%); display:flex; gap:8px; z-index:2; }
+.hero-dots span { width:12px; height:12px; border-radius:50%; background:white; opacity:0.5; cursor:pointer; }
+.hero-dots .active { opacity:1; background:#ff6600; }
+.page-container { display:flex; max-width:1200px; margin:20px auto 100px; padding:20px; }
+.sidebar { flex:0 0 250px; margin-right:20px; position:sticky; top:120px; }
+.sidebar ul { list-style:none; padding:0; }
+.sidebar li { margin-bottom:15px; }
+.sidebar-link { color:#002b5c; text-decoration:none; transition:color 0.3s; display:block; }
+.sidebar-link.active { color:#ff6600; font-weight:bold; border-left:3px solid #ff6600; padding-left:8px; }
+.content { flex:1; }
+.section { background:white; padding:25px; margin-bottom:25px; border-left:5px solid #ff6600; box-shadow:0 0 10px rgba(255,102,0,0.2); }
+.section h2 { color:#002b5c; margin-bottom:15px; }
+.section p, .section ul { font-size:16px; line-height:1.5; }
+.section ul { padding-left:20px; }
+.section ul li { margin-bottom:8px; }
+.section ul li a { color:#002b5c; text-decoration:none; font-weight:bold; }
+.section ul li a:hover { color:#ff6600; }
+@media (max-width:992px) { .page-container { flex-direction:column; } .sidebar { position:relative; top:0; margin-bottom:20px; } }
+@media (max-width:600px) { .navbar { justify-content:center; } .navbar .menu, .navbar .right-buttons { flex-direction:column; align-items:center; margin-top:5px; } .hero-text h1 { font-size:32px; } .hero-text p { font-size:16px; } .sidebar { display:none; } }
+.footer { background:#002b5c; color:white; padding:30px 20px; margin-top:40px; text-align:center; }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+  <div class="logo"><a href="#"><img src="images/logo.png" alt="University Logo"></a></div>
+  <div class="menu">
+    <a href="#vision" id="link-vision">Vision</a>
+    <a href="#mission" id="link-mission">Mission</a>
+    <a href="#global" id="link-global">Global Outlook</a>
+    <a href="#programs" id="link-programs">Programs</a>
+    <a href="#career" id="link-career">Career Pathways</a>
+    <a href="student-portal.html" id="nav-portal">Student Portal</a>
+    <a href="#contact" id="link-contact">Contact</a>
+  </div>
+  <div class="right-buttons">
+    <a href="#" id="btn-en" class="lang-switch active">EN</a> |
+    <a href="#" id="btn-ru" class="lang-switch">RU</a>
+    <a href="https://eduinrus.ru/en" target="_blank" id="apply-btn" class="apply-btn" style="background:#ff6600; color:white;">Apply Now</a>
+  </div>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-text">
+    <h1 id="hero-title">Shaping Futures, Inspiring Minds</h1>
+  </div>
+  <div class="hero-dots"></div>
+</section>
+
+<!-- Page Container -->
+<div class="page-container">
+  <div class="sidebar">
+    <ul>
+      <li><a href="#vision" id="side-vision" class="sidebar-link">Vision</a></li>
+      <li><a href="#mission" id="side-mission" class="sidebar-link">Mission</a></li>
+      <li><a href="#global" id="side-global" class="sidebar-link">Global Outlook</a></li>
+      <li><a href="#programs" id="side-programs" class="sidebar-link">Programs</a></li>
+      <li><a href="#career" id="side-career" class="sidebar-link">Career Pathways</a></li>
+      <li><a href="#portal" id="side-portal" class="sidebar-link">Student Portal</a></li>
+      <li><a href="#contact" id="side-contact" class="sidebar-link">Contact</a></li>
+    </ul>
+  </div>
+
+  <div class="content">
+    <section id="vision" class="section">
+      <h2 id="vision-title">Vision</h2>
+      <p id="vision-text">To develop globally competent, ethical, and innovative leaders who can transform organizations and society.</p>
+    </section>
+
+    <section id="mission" class="section">
+      <h2 id="mission-title">Mission</h2>
+      <ul id="mission-list">
+        <li>Deliver high-quality, industry-relevant education</li>
+        <li>Promote research, innovation, and entrepreneurship</li>
+        <li>Nurture leadership, ethics, and global perspectives</li>
+        <li>Build strong industry and international collaborations</li>
+      </ul>
+    </section>
+
+    <section id="global" class="section">
+      <h2 id="global-title">Global Outlook</h2>
+      <ul id="global-list">
+        <li>Exchange programs with partner universities</li>
+        <li>International guest lectures & seminars</li>
+        <li>Global case studies and projects</li>
+        <li>Internship placements with multinational companies</li>
+      </ul>
+    </section>
+
+    <section id="programs" class="section">
+      <h2 id="programs-title">Faculties & Departments</h2>
+      <ul id="programs-list">
+  <li><a href="faculty-arts-humanities.html">Arts & Humanities</a></li>
+  <li><a href="faculty-education.html">Education</a></li>
+  <li><a href="faculty-management.html">Management</a></li>
+  <li><a href="faculty-engineering.html">Engineering & Technology</a></li>
+  <li><a href="faculty-health.html">Health Sciences</a></li>
+  <li><a href="faculty-agriculture.html">Agriculture & Environmental Studies</a></li>
+</ul>
+
+    </section>
+
+    <section id="career" class="section">
+      <h2 id="career-title">Career Pathways</h2>
+      <ul id="career-list">
+        <li>Business Leaders</li>
+        <li>Entrepreneurs</li>
+        <li>Financial Analysts</li>
+        <li>Marketing Specialists</li>
+        <li>HR Professionals</li>
+        <li>International Trade Experts</li>
+      </ul>
+    </section>
+
+    <section id="portal" class="section">
+      <h2 id="portal-title">Student Portal</h2>
+      <p id="portal-text">Access your courses, grades, and university resources here.</p>
+    </section>
+
+    <section id="contact" class="section">
+      <h2 id="contact-title">Contact</h2>
+      <p id="contact-email">Email: info@teu.edu.com</p>
+      <p id="contact-website">Website: www.teu.edu.com</p>
+    </section>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer" id="footer-text">
+  © 2025 Trans Eurasia University. All Rights Reserved.
+</footer>
+
+<script>
+// Scrollspy
+const sections=document.querySelectorAll("section");
+const links=document.querySelectorAll(".sidebar-link");
+window.addEventListener("scroll",()=>{
+  let current="";
+  sections.forEach(section=>{
+    const sectionTop=section.offsetTop-120;
+    const sectionHeight=section.clientHeight;
+    if(pageYOffset>=sectionTop && pageYOffset<sectionTop+sectionHeight){
+      current=section.getAttribute("id");
+    }
+  });
+  links.forEach(link=>link.classList.toggle("active",link.getAttribute("href")==="#"+current));
+});
+
+// Hero Rotation
+const hero=document.querySelector('.hero');
+const dotsContainer=document.querySelector('.hero-dots');
+const images=['images/hero1.jpg','images/hero2.jpg','images/hero3.jpg','images/hero4.jpg','images/hero5.jpg'];
+let current=0;
+images.forEach((_,i)=>{
+  const dot=document.createElement('span');
+  if(i===0) dot.classList.add('active');
+  dot.addEventListener('click',()=>{current=i;updateHero();});
+  dotsContainer.appendChild(dot);
+});
+function updateHero(){
+  hero.style.backgroundImage=`url('${images[current]}')`;
+  const dots=dotsContainer.querySelectorAll('span');
+  dots.forEach(dot=>dot.classList.remove('active'));
+  dots[current].classList.add('active');
+}
+setInterval(()=>{current=(current+1)%images.length;updateHero();},5000);
+
+// Language Switch
+const enContent={
+heroTitle:"Shaping Futures, Inspiring Minds",
+nav:["Vision","Mission","Global Outlook","Programs","Career Pathways","Student Portal","Contact"],
+visionText:"To develop globally competent, ethical, and innovative leaders who can transform organizations and society.",
+missionList:["Deliver high-quality, industry-relevant education","Promote research, innovation, and entrepreneurship","Nurture leadership, ethics, and global perspectives","Build strong industry and international collaborations"],
+globalList:["Exchange programs with partner universities","International guest lectures & seminars","Global case studies and projects","Internship placements with multinational companies"],
+programsList:["Arts & Humanities","Education","Management","Engineering & Technology","Health Sciences","Agriculture & Environmental Studies"],
+careerList:["Business Leaders","Entrepreneurs","Financial Analysts","Marketing Specialists","HR Professionals","International Trade Experts"],
+portalText:"Access your courses, grades, and university resources here.",
+applyBtn:"Apply Now",
+footer:"© 2025 Trans Eurasia University. All Rights Reserved."
+};
+
+const ruContent={
+heroTitle:"Формируем будущее, вдохновляем умы",
+nav:["Видение","Миссия","Глобальный взгляд","Программы","Карьера","Студенческий портал","Контакты"],
+visionText:"Развивать глобально компетентных, этичных и инновационных лидеров, способных трансформировать организации и общество.",
+missionList:["Предоставлять качественное, актуальное образование","Содействовать исследованиям, инновациям и предпринимательству","Развивать лидерство, этику и глобальное мышление","Строить прочные отраслевые и международные связи"],
+globalList:["Программы обмена с партнёрскими университетами","Международные гостевые лекции и семинары","Глобальные кейсы и проекты","Стажировки в международных компаниях"],
+programsList:["Искусство и гуманитарные науки","Образование","Менеджмент","Инженерия и технологии","Здравоохранение","Сельское хозяйство и экологические исследования"],
+careerList:["Бизнес-лидеры","Предприниматели","Финансовые аналитики","Специалисты по маркетингу","HR-профессионалы","Эксперты по международной торговле"],
+portalText:"Доступ к курсам, оценкам и ресурсам университета.",
+applyBtn:"Подать заявку",
+footer:"© 2025 Транс Евразийский Университет. Все права защищены."
+};
+
+function setLanguage(lang){
+  const c=lang==="ru"?ruContent:enContent;
+  document.getElementById("hero-title").textContent=c.heroTitle;
+
+  // Navbar
+  document.getElementById("link-vision").textContent=c.nav[0];
+  document.getElementById("link-mission").textContent=c.nav[1];
+  document.getElementById("link-global").textContent=c.nav[2];
+  document.getElementById("link-programs").textContent=c.nav[3];
+  document.getElementById("link-career").textContent=c.nav[4];
+  document.getElementById("link-portal").textContent=c.nav[5];
+  document.getElementById("link-contact").textContent=c.nav[6];
+
+  // Sidebar
+  document.getElementById("side-vision").textContent=c.nav[0];
+  document.getElementById("side-mission").textContent=c.nav[1];
+  document.getElementById("side-global").textContent=c.nav[2];
+  document.getElementById("side-programs").textContent=c.nav[3];
+  document.getElementById("side-career").textContent=c.nav[4];
+  document.getElementById("side-portal").textContent=c.nav[5];
+  document.getElementById("side-contact").textContent=c.nav[6];
+
+  document.getElementById("vision-text").textContent=c.visionText;
+
+  const mission=document.getElementById("mission-list"); mission.innerHTML=""; c.missionList.forEach(li=>mission.innerHTML+=`<li>${li}</li>`);
+
+  const globalList=document.getElementById("global-list"); globalList.innerHTML=""; c.globalList.forEach(li=>globalList.innerHTML+=`<li>${li}</li>`);
+
+  const programs=document.getElementById("programs-list"); programs.innerHTML="";
+  const linksList=["faculty-arts-humanities.html","faculty-education.html","faculty-management.html","faculty-engineering.html","faculty-health.html","faculty-agriculture.html"];
+  c.programsList.forEach((li,i)=>programs.innerHTML+=`<li><a href="${linksList[i]}">${li}</a></li>`);
+
+  const career=document.getElementById("career-list"); career.innerHTML=""; c.careerList.forEach(li=>career.innerHTML+=`<li>${li}</li>`);
+
+  document.getElementById("portal-text").textContent=c.portalText;
+
+  const applyBtn=document.getElementById("apply-btn");
+  applyBtn.textContent=c.applyBtn;
+  applyBtn.href=lang==="ru"?"https://eduinrus.ru/ru":"https://eduinrus.ru/en";
+  applyBtn.style.background=lang==="ru"?"#28a745":"#ff6600";
+
+  document.getElementById("footer-text").textContent=c.footer;
+
+  document.getElementById("btn-en").classList.toggle("active", lang==="en");
+  document.getElementById("btn-ru").classList.toggle("active", lang==="ru");
+
+  localStorage.setItem("lang",lang);
+}
+
+document.getElementById("btn-en").addEventListener("click",e=>{e.preventDefault();setLanguage("en");});
+document.getElementById("btn-ru").addEventListener("click",e=>{e.preventDefault();setLanguage("ru");});
+
+document.addEventListener("DOMContentLoaded",()=>{
+  const saved=localStorage.getItem("lang")||"en";
+  setLanguage(saved);
+});
+</script>
+</body>
+</html>
