@@ -26,12 +26,26 @@ app.post("/add-certificate", (req, res) => {
 
   const filePath = path.join(path.resolve(), "certificates.json");
   let certificates = [];
-  if (fs.existsSync(filePath)) {
-    certificates = JSON.parse(fs.readFileSync(filePath));
+
+  try {
+    if (fs.existsSync(filePath)) {
+      const fileData = fs.readFileSync(filePath, "utf-8");
+      certificates = fileData ? JSON.parse(fileData) : [];
+    }
+  } catch (err) {
+    console.error("Error reading certificates.json:", err);
+    certificates = [];
   }
 
   certificates.push({ code, name, year, degree, hons, grade });
-  fs.writeFileSync(filePath, JSON.stringify(certificates, null, 2));
+
+  try {
+    fs.writeFileSync(filePath, JSON.stringify(certificates, null, 2));
+  } catch (err) {
+    console.error("Error writing certificates.json:", err);
+    return res.json({ success: false, error: "Failed to save certificate" });
+  }
+
   res.json({ success: true });
 });
 
@@ -43,13 +57,22 @@ app.get("/verify", (req, res) => {
   const filePath = path.join(path.resolve(), "certificates.json");
   if (!fs.existsSync(filePath)) return res.json({ valid: false });
 
-  const certificates = JSON.parse(fs.readFileSync(filePath));
+  let certificates = [];
+  try {
+    const fileData = fs.readFileSync(filePath, "utf-8");
+    certificates = fileData ? JSON.parse(fileData) : [];
+  } catch (err) {
+    console.error("Error reading certificates.json:", err);
+    return res.json({ valid: false });
+  }
+
   const cert = certificates.find(c => c.code === code);
   if (!cert) return res.json({ valid: false });
 
   res.json({ valid: true, ...cert });
 });
 
+// Start server
 app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
