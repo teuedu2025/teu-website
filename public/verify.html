@@ -13,7 +13,7 @@ body {
   color: #333;
 }
 .container {
-  max-width: 650px;
+  max-width: 700px;
   margin: 60px auto;
   background: #fff;
   padding: 40px;
@@ -36,7 +36,7 @@ body {
 h1 {
   color: #050782;
   margin-bottom: 25px;
-  font-size: 26px;
+  font-size: 28px;
 }
 label {
   display: block;
@@ -74,47 +74,55 @@ button:hover {
 }
 .result {
   margin-top: 30px;
-  padding: 25px;
-  border-radius: 12px;
+  border-radius: 16px;
   display: none;
   text-align: left;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  overflow: hidden;
+  animation: fadeIn 0.5s ease-in-out;
 }
-.result.valid {
-  background: #f0fff4;
-  border-left: 6px solid #2ecc71;
+.result-header {
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
 }
-.result.invalid {
-  background: #fff5f5;
-  border-left: 6px solid #e74c3c;
+.result.valid .result-header {
+  background: #2ecc71;
 }
-.result h2 {
-  margin: 0 0 15px;
-  font-size: 20px;
-  color: #050782;
+.result.invalid .result-header {
+  background: #e74c3c;
 }
-.result p {
-  margin: 10px 0;
+.result-body {
+  padding: 20px;
+}
+.result-body p {
+  margin: 12px 0;
   font-size: 16px;
 }
 .degree-line {
   font-weight: bold;
   font-size: 17px;
 }
-.degree-line .icon {
-  margin-left: 6px;
-  font-size: 18px;
-}
 .qr-code {
   text-align: center;
   margin-top: 20px;
 }
 .qr-code img {
-  max-width: 150px;
+  max-width: 160px;
   border: 2px solid #ddd;
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 6px;
   background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.3s;
+}
+.qr-code img:hover {
+  transform: scale(1.08);
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 </style>
 </head>
@@ -148,7 +156,6 @@ function verifyCertificate() {
     .then(res => res.json())
     .then(data => {
       if (data.valid) {
-        // Format degree with (Hons) if applicable
         const degreeText =
           data.hons && data.hons.toLowerCase() === "hons"
             ? `${data.degree} (Hons)`
@@ -156,22 +163,26 @@ function verifyCertificate() {
 
         resultDiv.className = "result valid";
         resultDiv.innerHTML = `
-          <h2>✅ Certificate Verified</h2>
-          <p><strong>Holder:</strong> ${data.name}</p>
-          <p class="degree-line"><strong>Degree:</strong> ${degreeText} <span class="icon">🎓</span></p>
-          <p><strong>Graduation Year:</strong> ${data.year}</p>
-          <p><strong>Grade:</strong> ${data.grade}</p>
-          <p><strong>Status:</strong> <span style="color:green;font-weight:bold;">VALID</span></p>
-          <div class="qr-code">
-            <p><strong>Scan QR Code:</strong></p>
-            <img src="${data.qr}" alt="QR Code">
+          <div class="result-header">✅ Certificate Verified</div>
+          <div class="result-body">
+            <p><strong>👤 Holder:</strong> ${data.name}</p>
+            <p class="degree-line"><strong>🎓 Degree:</strong> ${degreeText}</p>
+            <p><strong>📅 Graduation Year:</strong> ${data.year}</p>
+            <p><strong>⭐ Grade:</strong> ${data.grade}</p>
+            <p><strong>Status:</strong> <span style="color:green;font-weight:bold;">VALID</span></p>
+            <div class="qr-code">
+              <p><strong>📌 Scan QR Code:</strong></p>
+              <img src="${data.qr}" alt="QR Code">
+            </div>
           </div>
         `;
       } else {
         resultDiv.className = "result invalid";
         resultDiv.innerHTML = `
-          <h2>❌ Invalid Certificate</h2>
-          <p>The certificate code <b>${code}</b> was not found.</p>
+          <div class="result-header">❌ Invalid Certificate</div>
+          <div class="result-body">
+            <p>The certificate code <b>${code}</b> was not found.</p>
+          </div>
         `;
       }
       resultDiv.style.display = "block";
@@ -179,14 +190,15 @@ function verifyCertificate() {
     .catch(() => {
       resultDiv.className = "result invalid";
       resultDiv.innerHTML = `
-        <h2>⚠️ Server Error</h2>
-        <p>Could not connect to the server. Please try again later.</p>
+        <div class="result-header">⚠️ Server Error</div>
+        <div class="result-body">
+          <p>Could not connect to the server. Please try again later.</p>
+        </div>
       `;
       resultDiv.style.display = "block";
     });
 }
 
-// Trigger verification on click or Enter key
 verifyBtn.addEventListener("click", verifyCertificate);
 codeInput.addEventListener("keypress", (e) => {
   if (e.key === "Enter") verifyCertificate();
