@@ -16,7 +16,12 @@ button:hover {background:#0066cc;}
 .result {margin-top:20px; padding:15px; border-radius:8px; display:none;}
 .result.success {background:#e0ffe0; border:1px solid #00b050; color:#006600;}
 .result.error {background:#ffe0e0; border:1px solid #ff0000; color:#cc0000;}
+.result.info {background:#e0f0ff; border:1px solid #3399ff; color:#004080;}
 .hidden {display:none;}
+.result img {margin-top:10px; border:1px solid #ccc; padding:5px; background:#fff;}
+.qr-box {text-align:center; margin-top:15px;}
+.copy-btn {background:#28a745; margin-top:10px;}
+.copy-btn:hover {background:#218838;}
 </style>
 </head>
 <body>
@@ -41,10 +46,10 @@ button:hover {background:#0066cc;}
   <input type="text" id="owner-name" placeholder="Full Name">
 
   <label for="grad-year">Graduation Year:</label>
-  <input type="number" id="grad-year" placeholder="e.g., 2022">
+  <input type="number" id="grad-year" placeholder="e.g., 2025">
 
   <label for="stream">Filter by Stream:</label>
-  <select id="stream" onchange="filterDegrees()">
+  <select id="stream" onChange="filterDegrees()">
     <option value="all">All Streams</option>
     <option value="agriculture">Agriculture</option>
     <option value="science">Science</option>
@@ -146,8 +151,13 @@ document.getElementById("login-btn").addEventListener("click", ()=>{
   if(pass===password){
     loginSection.style.display="none";
     adminForm.classList.remove("hidden");
+    loginResult.textContent="✅ Login successful!";
+    loginResult.className="result success";
+    loginResult.style.display="block";
+    // auto-fill graduation year
+    document.getElementById("grad-year").value = new Date().getFullYear();
   } else {
-    loginResult.textContent="Incorrect password!";
+    loginResult.textContent="❌ Incorrect password!";
     loginResult.className="result error";
     loginResult.style.display="block";
   }
@@ -188,12 +198,23 @@ document.getElementById("add-btn").addEventListener("click", ()=>{
   .then(res=>res.json())
   .then(data=>{
     if(data.success){
-      resultDiv.textContent="Certificate added successfully!";
+      const verifyUrl = `https://www.teu-edu.com/verify?code=${code}`;
+      resultDiv.innerHTML = `
+        ✅ Certificate added successfully!<br>
+        <b>Certificate Code:</b> ${code}<br>
+        <b>Verification URL:</b> 
+        <a href="${verifyUrl}" target="_blank">${verifyUrl}</a><br>
+        <div class="qr-box">
+          <img src="${data.qr}" alt="QR Code" width="150"><br>
+          <button class="copy-btn" onclick="copyLink('${verifyUrl}')">Copy Link</button>
+        </div>
+      `;
       resultDiv.className="result success";
       resultDiv.style.display="block";
+
       document.getElementById("cert-code").value="";
       document.getElementById("owner-name").value="";
-      document.getElementById("grad-year").value="";
+      document.getElementById("grad-year").value=new Date().getFullYear();
     } else {
       resultDiv.textContent=data.error || "Error adding certificate";
       resultDiv.className="result error";
@@ -201,11 +222,18 @@ document.getElementById("add-btn").addEventListener("click", ()=>{
     }
   })
   .catch(err=>{
-    resultDiv.textContent="Server error!";
+    resultDiv.textContent="⚠️ Server error!";
     resultDiv.className="result error";
     resultDiv.style.display="block";
   });
 });
+
+// --- Copy link to clipboard ---
+function copyLink(link){
+  navigator.clipboard.writeText(link).then(()=>{
+    alert("Verification link copied!");
+  });
+}
 </script>
 
 </body>
