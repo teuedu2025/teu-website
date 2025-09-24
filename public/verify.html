@@ -6,80 +6,95 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 body {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to right, #f4f4f4, #d9e4f5);
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  background: linear-gradient(135deg, #e0eafc, #cfdef3);
   margin: 0;
   padding: 0;
+  color: #333;
 }
 .container {
-  max-width: 600px;
+  max-width: 650px;
   margin: 60px auto;
-  background: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.15);
+  background: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  text-align: center;
 }
 .logo-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #050782; /* Dark blue background for logo visibility */
-  border-radius: 8px;
-  padding: 10px;
-  margin-bottom: 15px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  background: #050782;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 20px;
 }
 .logo {
-  max-width: 100px;
-  display: block;
+  max-width: 120px;
 }
 h1 {
-  text-align: center;
-  color: #004080;
-  margin-bottom: 20px;
+  color: #050782;
+  margin-bottom: 25px;
+  font-size: 26px;
 }
 label {
   display: block;
-  margin: 15px 0 5px;
-  font-weight: bold;
+  margin: 15px 0 8px;
+  font-weight: 600;
+  text-align: left;
 }
 input, button {
   width: 100%;
-  padding: 12px;
-  border-radius: 6px;
+  padding: 14px;
+  border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 16px;
 }
+input {
+  transition: 0.3s;
+}
+input:focus {
+  border-color: #050782;
+  outline: none;
+  box-shadow: 0 0 6px rgba(5,7,130,0.4);
+}
 button {
-  background: #004080;
+  background: #050782;
   color: white;
   border: none;
   cursor: pointer;
   margin-top: 20px;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: bold;
+  transition: 0.3s;
 }
 button:hover {
   background: #0066cc;
 }
 .result {
-  margin-top: 20px;
-  padding: 20px;
-  border-radius: 8px;
+  margin-top: 30px;
+  padding: 25px;
+  border-radius: 12px;
   display: none;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 .result.valid {
-  background: #e0ffe0;
-  border: 1px solid #00b050;
-  color: #006600;
+  background: #f0fff4;
+  border-left: 6px solid #2ecc71;
 }
 .result.invalid {
-  background: #ffe0e0;
-  border: 1px solid #ff0000;
-  color: #cc0000;
+  background: #fff5f5;
+  border-left: 6px solid #e74c3c;
+}
+.result h2 {
+  margin: 0 0 15px;
+  font-size: 20px;
+  color: #050782;
 }
 .result p {
-  margin: 8px 0;
+  margin: 10px 0;
   font-size: 16px;
 }
 .degree-line {
@@ -87,8 +102,19 @@ button:hover {
   font-size: 17px;
 }
 .degree-line .icon {
-  margin-left: 8px;
+  margin-left: 6px;
   font-size: 18px;
+}
+.qr-code {
+  text-align: center;
+  margin-top: 20px;
+}
+.qr-code img {
+  max-width: 150px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  padding: 6px;
+  background: #fff;
 }
 </style>
 </head>
@@ -105,13 +131,7 @@ button:hover {
 
   <button id="verify-btn">Verify Certificate</button>
 
-  <div class="result" id="result">
-    <p><strong>Name:</strong> <span id="res-name"></span></p>
-    <p class="degree-line"><strong>Degree:</strong> <span id="res-degree"></span> <span class="icon" id="degree-icon"></span></p>
-    <p><strong>Graduation Year:</strong> <span id="res-year"></span></p>
-    <p><strong>Grade:</strong> <span id="res-grade"></span></p>
-    <p><strong>Status:</strong> <span id="res-status"></span></p>
-  </div>
+  <div class="result" id="result"></div>
 </div>
 
 <script>
@@ -127,8 +147,6 @@ function verifyCertificate() {
   fetch('/verify?code=' + encodeURIComponent(code))
     .then(res => res.json())
     .then(data => {
-      const degreeIcon = document.getElementById("degree-icon");
-
       if (data.valid) {
         // Format degree with (Hons) if applicable
         const degreeText =
@@ -136,23 +154,34 @@ function verifyCertificate() {
             ? `${data.degree} (Hons)`
             : data.degree;
 
-        document.getElementById("res-name").textContent = data.name;
-        document.getElementById("res-degree").textContent = degreeText;
-        document.getElementById("res-year").textContent = data.year;
-        document.getElementById("res-grade").textContent = data.grade;
-        document.getElementById("res-status").textContent = "✅ VALID";
-
-        degreeIcon.textContent = "✅";
         resultDiv.className = "result valid";
+        resultDiv.innerHTML = `
+          <h2>✅ Certificate Verified</h2>
+          <p><strong>Holder:</strong> ${data.name}</p>
+          <p class="degree-line"><strong>Degree:</strong> ${degreeText} <span class="icon">🎓</span></p>
+          <p><strong>Graduation Year:</strong> ${data.year}</p>
+          <p><strong>Grade:</strong> ${data.grade}</p>
+          <p><strong>Status:</strong> <span style="color:green;font-weight:bold;">VALID</span></p>
+          <div class="qr-code">
+            <p><strong>Scan QR Code:</strong></p>
+            <img src="${data.qr}" alt="QR Code">
+          </div>
+        `;
       } else {
         resultDiv.className = "result invalid";
-        resultDiv.innerHTML = "<p>❌ Certificate code not found or invalid!</p>";
+        resultDiv.innerHTML = `
+          <h2>❌ Invalid Certificate</h2>
+          <p>The certificate code <b>${code}</b> was not found.</p>
+        `;
       }
       resultDiv.style.display = "block";
     })
     .catch(() => {
       resultDiv.className = "result invalid";
-      resultDiv.innerHTML = "<p>⚠️ Server error! Try again later.</p>";
+      resultDiv.innerHTML = `
+        <h2>⚠️ Server Error</h2>
+        <p>Could not connect to the server. Please try again later.</p>
+      `;
       resultDiv.style.display = "block";
     });
 }
