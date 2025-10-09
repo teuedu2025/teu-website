@@ -1,98 +1,94 @@
 ﻿import express from "express";
 import fs from "fs";
-import bodyParser from "body-parser";
 import path from "path";
+import bodyParser from "body-parser";
 import QRCode from "qrcode";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// --- Paths ---
+// Middleware
+app.use(bodyParser.json());
 const rootDir = path.resolve();
 const publicDir = path.join(rootDir, "public");
 const qrDir = path.join(publicDir, "qrcodes");
 const certFile = path.join(rootDir, "certificates.json");
 
-// --- Ensure folders exist ---
+// Ensure folders exist
 if (!fs.existsSync(publicDir)) fs.mkdirSync(publicDir);
 if (!fs.existsSync(qrDir)) fs.mkdirSync(qrDir, { recursive: true });
 
-// --- Middleware ---
-app.use(bodyParser.json());
+// Serve static files
 app.use(express.static(publicDir));
 
-// --- Homepage ---
+// --- Preload default certificate ---
+const defaultCertificate = {
+  code: "teu-2022-001-aaa",
+  name: "KALU ARACHCHIGE THISARA NAYANAJITH",
+  year: "2022",
+  degree: "BSc Nursing",
+  hons: "Hons",
+  grade: "First Class",
+  qr: `/qrcodes/teu-2022-001-aaa.png`
+};
+
+// Save certificate and generate QR if not already exists
+let certificates = [];
+if (fs.existsSync(certFile)) {
+  certificates = JSON.parse(fs.readFileSync(certFile, "utf-8") || "[]");
+}
+const exists = certificates.find(c => c.code === defaultCertificate.code);
+if (!exists) {
+  certificates.push(defaultCertificate);
+  fs.writeFileSync(certFile, JSON.stringify(certificates, null, 2));
+
+  // Generate QR code PNG
+  const qrFilePath = path.join(qrDir, `${defaultCertificate.code}.png`);
+  const verifyUrl = `https://www.teu-edu.com/verify?code=${defaultCertificate.code}`;
+  QRCode.toFile(qrFilePath, verifyUrl)
+    .then(() => console.log("✅ Default certificate QR generated"))
+    .catch(err => console.error("❌ QR generation failed:", err));
+}
+
+// --- Routes ---
 app.get("/", (req, res) => {
   res.sendFile(path.join(publicDir, "index.html"));
 });
 
-// --- Add certificate API ---
+// Add certificate API
 app.post("/add-certificate", async (req, res) => {
   const { code, name, year, degree, hons, grade } = req.body;
   if (!code || !name || !year || !degree || !hons || !grade) {
     return res.json({ success: false, error: "All fields are required" });
   }
 
+  const verifyUrl = `https://www.teu-edu.com/verify?code=${code}`;
+  const qrFilePath = path.join(qrDir, `${code}.png`);
+
   try {
-    // QR code file path
-    const verifyUrl = `https://www.teu-edu.com/verify?code=${code}`;
-    const qrFilePath = path.join(qrDir, `${code}.png`);
-
-    // Generate QR
+    if (!fs.existsSync(qrDir)) fs.mkdirSync(qrDir, { recursive: true });
     await QRCode.toFile(qrFilePath, verifyUrl);
-
-    // Load certificates
-    let certificates = [];
-    if (fs.existsSync(certFile)) {
-      certificates = JSON.parse(fs.readFileSync(certFile, "utf-8") || "[]");
-    }
-
-    // Add new certificate
-    const qrUrl = `/qrcodes/${code}.png`;
-    certificates.push({ code, name, year, degree, hons, grade, qr: qrUrl });
-
-    fs.writeFileSync(certFile, JSON.stringify(certificates, null, 2));
-
-    return res.json({ success: true, qr: qrUrl });
   } catch (err) {
-    console.error("Add certificate error:", err);
-    return res.json({ success: false, error: "QR Code or save failed" });
+    return res.json({ success: false, error: "QR Code generation failed" });
   }
+
+  certificates.push({ code, name, year, degree, hons, grade, qr: `/qrcodes/${code}.png` });
+  fs.writeFileSync(certFile, JSON.stringify(certificates, null, 2));
+  return res.json({ success: true, qr: `/qrcodes/${code}.png` });
 });
 
-// --- Verify certificate API ---
+// Verify certificate API
 app.get("/verify", (req, res) => {
   const code = req.query.code;
   if (!code) return res.json({ valid: false });
 
-  if (!fs.existsSync(certFile)) return res.json({ valid: false });
+  const cert = certificates.find(c => c.code === code);
+  if (!cert) return res.json({ valid: false });
 
-  try {
-    const certificates = JSON.parse(fs.readFileSync(certFile, "utf-8") || "[]");
-    const cert = certificates.find(c => c.code === code);
-    if (!cert) return res.json({ valid: false });
-    return res.json({ valid: true, ...cert });
-  } catch (err) {
-    console.error("Verify error:", err);
-    return res.json({ valid: false });
-  }
+  return res.json({ valid: true, ...cert });
 });
 
-// --- Test QR ---
-app.get("/test-qr", async (req, res) => {
-  const sampleCode = "TEST123";
-  const verifyUrl = `https://www.teu-edu.com/verify?code=${sampleCode}`;
-  const qrFilePath = path.join(qrDir, `${sampleCode}.png`);
-
-  try {
-    await QRCode.toFile(qrFilePath, verifyUrl);
-    res.send(`<h1>QR Code Generated</h1><img src="/qrcodes/${sampleCode}.png">`);
-  } catch (err) {
-    res.send("QR Code generation failed.");
-  }
-});
-
-// --- Start server ---
+// Start server
 app.listen(PORT, () => {
-  console.log(`✅ Server running on http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });

@@ -14,9 +14,9 @@ body {
 }
 .container {
   max-width: 700px;
-  margin: 60px auto;
+  margin: 40px auto;
   background: #fff;
-  padding: 40px;
+  padding: 30px 25px;
   border-radius: 16px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.15);
   text-align: center;
@@ -50,9 +50,7 @@ input, button {
   border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 16px;
-}
-input {
-  transition: 0.3s;
+  box-sizing: border-box;
 }
 input:focus {
   border-color: #050782;
@@ -82,10 +80,11 @@ button:hover {
   animation: fadeIn 0.5s ease-in-out;
 }
 .result-header {
-  padding: 15px;
-  font-size: 18px;
+  padding: 20px;
+  font-size: 20px;
   font-weight: bold;
   color: white;
+  text-align: center;
 }
 .result.valid .result-header {
   background: #2ecc71;
@@ -98,31 +97,26 @@ button:hover {
 }
 .result-body p {
   margin: 12px 0;
-  font-size: 16px;
+  font-size: 17px;
 }
 .degree-line {
   font-weight: bold;
-  font-size: 17px;
-}
-.qr-code {
-  text-align: center;
-  margin-top: 20px;
-}
-.qr-code img {
-  max-width: 160px;
-  border: 2px solid #ddd;
-  border-radius: 10px;
-  padding: 6px;
-  background: #fff;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  transition: transform 0.3s;
-}
-.qr-code img:hover {
-  transform: scale(1.08);
+  font-size: 18px;
 }
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .container {
+    margin: 20px;
+    padding: 25px 15px;
+  }
+  h1 { font-size: 24px; }
+  .result-body p { font-size: 16px; }
+  .result-header { font-size: 18px; padding: 15px; }
 }
 </style>
 </head>
@@ -147,62 +141,66 @@ const codeInput = document.getElementById("cert-code");
 const verifyBtn = document.getElementById("verify-btn");
 const resultDiv = document.getElementById("result");
 
+// Static certificate database
+const certificates = [
+  {
+    code: "12-02-2017-8163",
+    name: "KALU ARACHCHIGE THISARA NAYANAJITH",
+    year: "2022",
+    degree: "BSc Nursing",
+    hons: "Hons",
+    grade: "First Class"
+  }
+];
+
+function showCertificate(cert) {
+  const degreeText = cert.hons.toLowerCase() === "hons" ? `${cert.degree} (Hons)` : cert.degree;
+
+  resultDiv.className = "result valid";
+  resultDiv.innerHTML = `
+    <div class="result-header">✅ VALID CERTIFICATE</div>
+    <div class="result-body">
+      <p><strong>👤 Holder:</strong> ${cert.name}</p>
+      <p class="degree-line"><strong>🎓 Degree:</strong> ${degreeText}</p>
+      <p><strong>📅 Graduation Year:</strong> ${cert.year}</p>
+      <p><strong>⭐ Grade:</strong> ${cert.grade}</p>
+    </div>
+  `;
+  resultDiv.style.display = "block";
+}
+
 function verifyCertificate() {
   const code = codeInput.value.trim();
   resultDiv.style.display = "none";
   if (!code) return alert("Please enter a certificate code!");
 
-  fetch('/verify?code=' + encodeURIComponent(code))
-    .then(res => res.json())
-    .then(data => {
-      if (data.valid) {
-        const degreeText =
-          data.hons && data.hons.toLowerCase() === "hons"
-            ? `${data.degree} (Hons)`
-            : data.degree;
-
-        resultDiv.className = "result valid";
-        resultDiv.innerHTML = `
-          <div class="result-header">✅ Certificate Verified</div>
-          <div class="result-body">
-            <p><strong>👤 Holder:</strong> ${data.name}</p>
-            <p class="degree-line"><strong>🎓 Degree:</strong> ${degreeText}</p>
-            <p><strong>📅 Graduation Year:</strong> ${data.year}</p>
-            <p><strong>⭐ Grade:</strong> ${data.grade}</p>
-            <p><strong>Status:</strong> <span style="color:green;font-weight:bold;">VALID</span></p>
-            <div class="qr-code">
-              <p><strong>📌 Scan QR Code:</strong></p>
-              <img src="${data.qr}" alt="QR Code">
-            </div>
-          </div>
-        `;
-      } else {
-        resultDiv.className = "result invalid";
-        resultDiv.innerHTML = `
-          <div class="result-header">❌ Invalid Certificate</div>
-          <div class="result-body">
-            <p>The certificate code <b>${code}</b> was not found.</p>
-          </div>
-        `;
-      }
-      resultDiv.style.display = "block";
-    })
-    .catch(() => {
-      resultDiv.className = "result invalid";
-      resultDiv.innerHTML = `
-        <div class="result-header">⚠️ Server Error</div>
-        <div class="result-body">
-          <p>Could not connect to the server. Please try again later.</p>
-        </div>
-      `;
-      resultDiv.style.display = "block";
-    });
+  const cert = certificates.find(c => c.code === code);
+  if (cert) {
+    showCertificate(cert);
+  } else {
+    resultDiv.className = "result invalid";
+    resultDiv.innerHTML = `
+      <div class="result-header">❌ INVALID CERTIFICATE</div>
+      <div class="result-body">
+        <p>The certificate code <b>${code}</b> was not found.</p>
+      </div>
+    `;
+    resultDiv.style.display = "block";
+  }
 }
 
+// Event listeners
 verifyBtn.addEventListener("click", verifyCertificate);
-codeInput.addEventListener("keypress", (e) => {
+codeInput.addEventListener("keypress", e => {
   if (e.key === "Enter") verifyCertificate();
 });
+
+// Auto-check if code in URL query
+const params = new URLSearchParams(window.location.search);
+if (params.has("code")) {
+  codeInput.value = params.get("code");
+  verifyCertificate();
+}
 </script>
 
 </body>
