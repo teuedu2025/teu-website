@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty of Agriculture & Food Technology | TEU University Vladivostok</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        agri: {
+                            50: '#F0FDF4',
+                            100: '#DCFCE7',
+                            500: '#22C55E',
+                            600: '#16A34A',
+                            700: '#15803D',
+                            800: '#166534',
+                            900: '#14532D',
+                        },
+                        brand: {
+                            800: '#0B2545',
+                            900: '#081B33',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Font Awesome Icons & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .hero-bg { transition: opacity 1s ease-in-out; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-agri-500 selection:text-white">
+
+    <!-- 1. TOP HEADER & NAVIGATION -->
+    <header class="bg-brand-900 text-white sticky top-0 z-50 shadow-lg border-b border-agri-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex justify-between items-center">
+            
+            <!-- LOGO & BRAND -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-emerald-500 via-green-400 to-lime-300 p-0.5 shadow-lg shadow-green-900/30 group-hover:scale-105 transition-transform flex items-center justify-center">
+                    <div class="w-full h-full bg-brand-900 rounded-[10px] flex items-center justify-center p-1 text-emerald-400">
+                        <i class="fa-solid fa-wheat-awn text-2xl"></i>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-extrabold text-base sm:text-lg text-white block leading-tight tracking-wide group-hover:text-emerald-300 transition-colors">TEU AGRI-FOOD</span>
+                        <span id="nav-faculty-badge" class="bg-agri-600 text-[9px] font-bold text-white px-1.5 py-0.5 rounded uppercase">Faculty</span>
+                    </div>
+                    <span id="nav-location" class="text-[10px] text-emerald-300/80 font-medium tracking-widest uppercase block">Vladivostok, Russia</span>
+                </div>
+            </a>
+
+            <!-- NAVIGATION ACTIONS -->
+            <div class="flex items-center gap-3">
+                
+                <!-- LANGUAGE SWITCHER -->
+                <div class="relative inline-block text-left">
+                    <div class="flex items-center bg-brand-800 border border-agri-700/60 rounded-lg px-2.5 py-1.5 text-xs text-white shadow-inner">
+                        <i class="fa-solid fa-globe text-emerald-400 mr-2"></i>
+                        <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-transparent text-white focus:outline-none cursor-pointer font-medium text-xs">
+                            <option value="en" class="bg-brand-900 text-white" selected>🇬🇧 English</option>
+                            <option value="ru" class="bg-brand-900 text-white">🇷🇺 Русский</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- BACK BUTTON -->
+                <a href="index.html" class="inline-flex items-center gap-2 bg-agri-700 hover:bg-agri-600 text-white font-semibold px-3.5 py-1.5 rounded-lg text-xs transition-all shadow-sm">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span id="nav-back-btn" class="hidden sm:inline">Main Page</span>
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- 2. HERO BANNER WITH SLIDESHOW -->
+    <section class="relative bg-brand-900 text-white py-16 sm:py-24 overflow-hidden border-b border-agri-800 min-h-[420px] flex items-center">
+        
+        <div id="hero-bg-container" class="absolute inset-0 z-0">
+            <div class="hero-bg absolute inset-0 bg-cover bg-center opacity-30" style="background-image: url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=1600&auto=format&fit=crop');"></div>
+            <div class="hero-bg absolute inset-0 bg-cover bg-center opacity-0" style="background-image: url('https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?q=80&w=1600&auto=format&fit=crop');"></div>
+            <div class="hero-bg absolute inset-0 bg-cover bg-center opacity-0" style="background-image: url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1600&auto=format&fit=crop');"></div>
+            <div class="hero-bg absolute inset-0 bg-cover bg-center opacity-0" style="background-image: url('https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=1600&auto=format&fit=crop');"></div>
+        </div>
+
+        <div class="absolute inset-0 bg-gradient-to-r from-brand-900 via-brand-900/90 to-brand-900/60 z-5"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="max-w-3xl">
+                <span class="inline-flex items-center gap-2 bg-agri-500/20 text-emerald-300 text-xs font-bold px-3.5 py-1.5 rounded-full border border-agri-500/30 uppercase tracking-wider mb-4 backdrop-blur-md">
+                    <i class="fa-solid fa-seedling text-emerald-400"></i>
+                    <span id="txt-badge">Faculty of Agriculture & Food Technology</span>
+                </span>
+                
+                <h1 id="txt-title" class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
+                    Faculty of <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-lime-400">Agriculture & Food Technology</span>
+                </h1>
+                
+                <p id="txt-desc" class="text-slate-300 text-sm sm:text-base leading-relaxed mb-8">
+                    Pioneering precision farming, automated greenhouse engineering, food processing technology, quality control (HACCP), and bio-agronomy in Vladivostok, Russia.
+                </p>
+
+                <!-- STATS & BADGES -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 border-t border-slate-700/60 pt-6">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2.5 rounded-lg bg-agri-800/80 text-emerald-300 backdrop-blur-sm">
+                            <i class="fa-regular fa-clock text-lg"></i>
+                        </div>
+                        <div>
+                            <span id="lbl-duration" class="text-[11px] text-slate-400 uppercase font-semibold block">Duration</span>
+                            <span id="val-duration" class="text-xs sm:text-sm font-bold text-white">4 Yrs (Full) / 1-2 Yrs (Top-up)</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                        <div class="p-2.5 rounded-lg bg-agri-800/80 text-emerald-300 backdrop-blur-sm">
+                            <i class="fa-solid fa-language text-lg"></i>
+                        </div>
+                        <div>
+                            <span id="lbl-medium" class="text-[11px] text-slate-400 uppercase font-semibold block">Medium</span>
+                            <span id="val-medium" class="text-xs sm:text-sm font-bold text-white">English / Russian</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-3 col-span-2 sm:col-span-1">
+                        <div class="p-2.5 rounded-lg bg-agri-800/80 text-emerald-300 backdrop-blur-sm">
+                            <i class="fa-solid fa-graduation-cap text-lg"></i>
+                        </div>
+                        <div>
+                            <span id="lbl-degree" class="text-[11px] text-slate-400 uppercase font-semibold block">Degree</span>
+                            <span id="val-degree" class="text-xs sm:text-sm font-bold text-white">BSc & Top-Up Degree</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. MAIN CONTENT SECTION -->
+    <section class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- LEFT 2 COLUMNS -->
+            <div class="lg:col-span-2 space-y-8">
+                
+                <!-- PROGRAMS OFFERED -->
+                <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200/80 shadow-sm">
+                    <h2 id="txt-program-head" class="text-2xl font-bold text-brand-900 mb-2">Degree Programs Offered</h2>
+                    <p id="txt-program-sub" class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6">Comprehensive education covering modern crop production, agrotechnology, food processing, and specialized top-up degree pathways.</p>
+
+                    <div class="space-y-4">
+                        <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 hover:border-agri-500/50 transition-colors flex flex-col sm:flex-row items-start gap-4">
+                            <div class="p-3 bg-agri-700 text-white rounded-xl shadow-sm">
+                                <i class="fa-solid fa-vial-circle-check text-xl"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex flex-wrap items-center justify-between gap-2">
+                                    <h3 id="prog-1-title" class="font-bold text-brand-900 text-base">BSc in Food Processing Technology & Quality Control</h3>
+                                    <span id="prog-1-dur" class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded">4 Years</span>
+                                </div>
+                                <p id="prog-1-desc" class="text-slate-600 text-xs mt-2 leading-relaxed">Focuses on modern food manufacturing, industrial food preservation, quality assurance standards (HACCP / ISO), food chemistry, and safety engineering.</p>
+                            </div>
+                        </div>
+
+                        <div class="p-5 rounded-xl bg-amber-50/60 border border-amber-200 hover:border-amber-400 transition-colors flex flex-col sm:flex-row items-start gap-4">
+                            <div class="p-3 bg-amber-600 text-white rounded-xl shadow-sm">
+                                <i class="fa-solid fa-graduation-cap text-xl"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex flex-wrap items-center justify-between gap-2">
+                                    <div class="flex items-center gap-2">
+                                        <h3 id="prog-topup-title" class="font-bold text-brand-900 text-base">BSc (Hons) Top-Up Degree Program</h3>
+                                        <span class="bg-amber-500 text-white text-[9px] font-black px-1.5 py-0.5 rounded uppercase">Fast-Track</span>
+                                    </div>
+                                    <span id="prog-topup-dur" class="bg-amber-100 text-amber-900 text-[10px] font-bold px-2 py-0.5 rounded">1 to 2 Years</span>
+                                </div>
+                                <p id="prog-topup-desc" class="text-slate-600 text-xs mt-2 leading-relaxed">Designed for students holding a Higher National Diploma (HND), NVQ Level 5/6, or Advanced Diploma in Agriculture / Food Science to complete their Bachelor's Degree in 1-2 years.</p>
+                            </div>
+                        </div>
+
+                        <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 hover:border-agri-500/50 transition-colors flex flex-col sm:flex-row items-start gap-4">
+                            <div class="p-3 bg-agri-700 text-white rounded-xl shadow-sm">
+                                <i class="fa-solid fa-wheat-awn text-xl"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex flex-wrap items-center justify-between gap-2">
+                                    <h3 id="prog-2-title" class="font-bold text-brand-900 text-base">BSc in Agronomy & Smart Agriculture</h3>
+                                    <span id="prog-2-dur" class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded">4 Years</span>
+                                </div>
+                                <p id="prog-2-desc" class="text-slate-600 text-xs mt-2 leading-relaxed">Covers precision crop science, greenhouse technologies, hydroponics, soil microbiology, drone agricultural monitoring, and organic farming technologies.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PHOTO GALLERY -->
+                <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200/80 shadow-sm">
+                    <h2 id="txt-facility-head" class="text-2xl font-bold text-brand-900 mb-2">Research Labs, Greenhouses & Field Facilities</h2>
+                    <p id="txt-facility-sub" class="text-xs text-slate-500 mb-6">Equipped with state-of-the-art analytical equipment, automated greenhouses, and field experimental stations.</p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                        <div class="relative group overflow-hidden rounded-xl h-44 border border-slate-100 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=800&auto=format&fit=crop" alt="Smart Precision Agriculture" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-3">
+                                <span id="img-cap-4" class="text-[11px] font-bold text-white">Smart Farming & Precision Agriculture</span>
+                            </div>
+                        </div>
+
+                        <div class="relative group overflow-hidden rounded-xl h-44 border border-slate-100 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?q=80&w=800&auto=format&fit=crop" alt="Automated Greenhouse Complex" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-3">
+                                <span id="img-cap-5" class="text-[11px] font-bold text-white">Automated High-Tech Greenhouse</span>
+                            </div>
+                        </div>
+
+                        <div class="relative group overflow-hidden rounded-xl h-44 border border-slate-100 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=800&auto=format&fit=crop" alt="Food Quality Control Lab" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-3">
+                                <span id="img-cap-1" class="text-[11px] font-bold text-white">Food Chemistry & Quality Lab</span>
+                            </div>
+                        </div>
+
+                        <div class="relative group overflow-hidden rounded-xl h-44 border border-slate-100 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=800&auto=format&fit=crop" alt="Food Processing Pilot Plant" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-3">
+                                <span id="img-cap-2" class="text-[11px] font-bold text-white">Industrial Food Processing Line</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-semibold text-slate-700">
+                        <div class="flex items-center p-3 bg-agri-50/60 rounded-lg border border-agri-100">
+                            <i class="fa-solid fa-circle-check text-agri-600 mr-2.5"></i> <span id="feat-1">Automated Hydroponics & Greenhouses</span>
+                        </div>
+                        <div class="flex items-center p-3 bg-agri-50/60 rounded-lg border border-agri-100">
+                            <i class="fa-solid fa-circle-check text-agri-600 mr-2.5"></i> <span id="feat-2">Industrial Food Processing Pilot Plant</span>
+                        </div>
+                        <div class="flex items-center p-3 bg-agri-50/60 rounded-lg border border-agri-100">
+                            <i class="fa-solid fa-circle-check text-agri-600 mr-2.5"></i> <span id="feat-3">Soil Microbiology & Fertilizer Testing</span>
+                        </div>
+                        <div class="flex items-center p-3 bg-agri-50/60 rounded-lg border border-agri-100">
+                            <i class="fa-solid fa-circle-check text-agri-600 mr-2.5"></i> <span id="feat-4">Practical Internships in Russian Agribusinesses</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- RIGHT COLUMN: APPLICATION FORM -->
+            <div class="lg:col-span-1">
+                <div class="bg-brand-900 text-white p-6 sm:p-7 rounded-2xl border border-agri-700 shadow-xl sticky top-24">
+                    
+                    <div class="border-b border-slate-700/80 pb-4 mb-5">
+                        <span id="txt-form-badge" class="text-emerald-400 text-[11px] font-bold uppercase tracking-wider block mb-1">Direct Admissions</span>
+                        <h3 id="txt-form-title" class="text-xl font-bold text-white">Apply for Faculty</h3>
+                        <p id="txt-form-desc" class="text-xs text-slate-300 mt-1">Fill out the official application to receive full curriculum and fee structure.</p>
+                    </div>
+
+                    <form onsubmit="handleAgriForm(event)" class="space-y-3.5">
+                        <div>
+                            <label id="lbl-name" class="block text-[11px] font-bold uppercase tracking-wider text-emerald-300 mb-1">Full Name *</label>
+                            <input type="text" required placeholder="e.g. Ivan Ivanov" class="w-full bg-brand-800 border border-slate-700 rounded-lg p-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-agri-500">
+                        </div>
+
+                        <div>
+                            <label id="lbl-email" class="block text-[11px] font-bold uppercase tracking-wider text-emerald-300 mb-1">Email Address *</label>
+                            <input type="email" required placeholder="name@example.com" class="w-full bg-brand-800 border border-slate-700 rounded-lg p-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-agri-500">
+                        </div>
+
+                        <div>
+                            <label id="lbl-phone" class="block text-[11px] font-bold uppercase tracking-wider text-emerald-300 mb-1">Phone / WhatsApp *</label>
+                            <input type="tel" required placeholder="+7 (999) 000-00-00" class="w-full bg-brand-800 border border-slate-700 rounded-lg p-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-agri-500">
+                        </div>
+
+                        <div>
+                            <label id="lbl-program" class="block text-[11px] font-bold uppercase tracking-wider text-emerald-300 mb-1">Select Program *</label>
+                            <select id="select-program" required class="w-full bg-brand-800 border border-slate-700 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-agri-500">
+                                <option value="foodtech">BSc in Food Processing Technology & Quality Control</option>
+                                <option value="topup">BSc (Hons) Top-Up Degree Program (1-2 Yrs)</option>
+                                <option value="agronomy">BSc in Agronomy & Smart Agriculture</option>
+                                <option value="prep">Preparatory Course + Agri-Food Science</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" id="txt-btn-submit" class="w-full bg-gradient-to-r from-agri-600 to-emerald-500 hover:from-agri-700 hover:to-emerald-600 text-white font-bold py-3 rounded-xl transition-all shadow-md text-xs sm:text-sm mt-3">
+                            Submit Application <i class="fa-solid fa-paper-plane ml-1.5"></i>
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-900 text-slate-400 py-6 border-t border-slate-800 text-xs text-center">
+        <p id="txt-footer">&copy; 2026 TEU University Vladivostok, Russia. Faculty of Agriculture & Food Technology. All rights reserved.</p>
+    </footer>
+
+    <!-- TRANSLATION DICTIONARY & LOGIC -->
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-bg');
+        setInterval(() => {
+            slides[currentSlide].classList.remove('opacity-30');
+            slides[currentSlide].classList.add('opacity-0');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.remove('opacity-0');
+            slides[currentSlide].classList.add('opacity-30');
+        }, 3000);
+
+        const translations = {
+            en: {
+                navFacultyBadge: "Faculty",
+                navLocation: "Vladivostok, Russia",
+                navBackBtn: "Main Page",
+                badge: "Faculty of Agriculture & Food Technology",
+                title: 'Faculty of <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-lime-400">Agriculture & Food Technology</span>',
+                desc: "Pioneering precision farming, automated greenhouse engineering, food processing technology, quality control (HACCP), and bio-agronomy in Vladivostok, Russia.",
+                lblDuration: "Duration",
+                valDuration: "4 Yrs (Full) / 1-2 Yrs (Top-up)",
+                lblMedium: "Medium",
+                valMedium: "English / Russian",
+                lblDegree: "Degree",
+                valDegree: "BSc & Top-Up Degree",
+                progHead: "Degree Programs Offered",
+                progSub: "Comprehensive education covering modern crop production, agrotechnology, food processing, and specialized top-up degree pathways.",
+                prog1Title: "BSc in Food Processing Technology & Quality Control",
+                prog1Dur: "4 Years",
+                prog1Desc: "Focuses on modern food manufacturing, industrial food preservation, quality assurance standards (HACCP / ISO), food chemistry, and safety engineering.",
+                progTopupTitle: "BSc (Hons) Top-Up Degree Program",
+                progTopupDur: "1 to 2 Years",
+                progTopupDesc: "Designed for students holding a Higher National Diploma (HND), NVQ Level 5/6, or Advanced Diploma in Agriculture / Food Science to complete their Bachelor's Degree in 1-2 years.",
+                prog2Title: "BSc in Agronomy & Smart Agriculture",
+                prog2Dur: "4 Years",
+                prog2Desc: "Covers precision crop science, greenhouse technologies, hydroponics, soil microbiology, drone agricultural monitoring, and organic farming technologies.",
+                facilityHead: "Research Labs, Greenhouses & Field Facilities",
+                facilitySub: "Equipped with state-of-the-art analytical equipment, automated greenhouses, and field experimental stations.",
+                imgCap1: "Food Chemistry & Quality Lab",
+                imgCap2: "Industrial Food Processing Line",
+                imgCap4: "Smart Farming & Precision Agriculture",
+                imgCap5: "Automated High-Tech Greenhouse",
+                feat1: "Automated Hydroponics & Greenhouses",
+                feat2: "Industrial Food Processing Pilot Plant",
+                feat3: "Soil Microbiology & Fertilizer Testing",
+                feat4: "Practical Internships in Russian Agribusinesses",
+                formBadge: "Direct Admissions",
+                formTitle: "Apply for Faculty",
+                formDesc: "Fill out the official application to receive full curriculum and fee structure.",
+                lblName: "Full Name *",
+                lblEmail: "Email Address *",
+                lblPhone: "Phone / WhatsApp *",
+                lblProgram: "Select Program *",
+                opt1: "BSc in Food Processing Technology & Quality Control",
+                opt2: "BSc (Hons) Top-Up Degree Program (1-2 Yrs)",
+                opt3: "BSc in Agronomy & Smart Agriculture",
+                opt4: "Preparatory Course + Agri-Food Science",
+                btnSubmit: 'Submit Application <i class="fa-solid fa-paper-plane ml-1.5"></i>',
+                footer: "&copy; 2026 TEU University Vladivostok, Russia. Faculty of Agriculture & Food Technology. All rights reserved."
+            },
+            ru: {
+                navFacultyBadge: "Факультет",
+                navLocation: "Владивосток, Россия",
+                navBackBtn: "Главная страница",
+                badge: "Факультет агрономии и пищевых технологий",
+                title: 'Факультет <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-lime-400">Сельского Хозяйства и Пищевых Технологий</span>',
+                desc: "Передовые технологии точного земледелия, автоматизированные теплицы, переработка продуктов питания и контроль качества во Владивостоке.",
+                lblDuration: "Срок обучения",
+                valDuration: "4 Года (Полный) / 1-2 Года (Top-up)",
+                lblMedium: "Язык",
+                valMedium: "Английский / Русский",
+                lblDegree: "Диплом",
+                valDegree: "Бакалавр и Top-Up",
+                progHead: "Предлагаемые программы обучения",
+                progSub: "Комплексное обучение в области растениеводства, агроинженерии, переработки продуктов питания и программы Top-Up.",
+                prog1Title: "Технология переработки пищевых продуктов и контроль качества",
+                prog1Dur: "4 Года",
+                prog1Desc: "Современное пищевое производство, консервирование, стандарты качества (ХАССП / ISO), пищевая химия и инженерия безопасности.",
+                progTopupTitle: "Программа Top-Up (Бакалавриат)",
+                progTopupDur: "1 - 2 Года",
+                progTopupDesc: "Предназначена для студентов с дипломами HND, NVQ 5/6 или Advanced Diploma для получения степени бакалавра за 1-2 года.",
+                prog2Title: "Агрономия и умное сельское хозяйство",
+                prog2Dur: "4 Года",
+                prog2Desc: "Точное растениеводство, тепличные технологии, гидропоника, микробиология почв, агродроны и органическое земледелие.",
+                facilityHead: "Лаборатории, теплицы и опытные поля",
+                facilitySub: "Оснащены современным аналитическим оборудованием, автоматизированными теплицами и опытными станциями.",
+                imgCap1: "Лаборатория пищевой химии",
+                imgCap2: "Цех переработки продуктов",
+                imgCap4: "Умное сельское хозяйство",
+                imgCap5: "Высокотехнологичный тепличный комплекс",
+                feat1: "Автоматизированные теплицы и гидропоника",
+                feat2: "Экспериментальный цех пищевых технологий",
+                feat3: "Анализ почв и тестирование удобрений",
+                feat4: "Практика в агрохолдингах России",
+                formBadge: "Прямой прием",
+                formTitle: "Подать заявку на факультет",
+                formDesc: "Заполните официальную заявку, чтобы получить учебный план и стоимость обучения.",
+                lblName: "Полное имя *",
+                lblEmail: "Электронная почта *",
+                lblPhone: "Телефон / WhatsApp *",
+                lblProgram: "Выберите программу *",
+                opt1: "Технология переработки пищевых продуктов и контроль качества (4 Года)",
+                opt2: "Top-Up Degree (Бакалавриат 1-2 Года)",
+                opt3: "Агрономия и умное сельское хозяйство (4 Года)",
+                opt4: "Подготовительное отделение + Пищевые технологии",
+                btnSubmit: 'Отправить заявку <i class="fa-solid fa-paper-plane ml-1.5"></i>',
+                footer: "&copy; 2026 ТЕУ Университет Владивосток, Россия. Факультет сельского хозяйства и пищевых технологий. Все права защищены."
+            }
+        };
+
+        function changeLanguage(lang) {
+            const d = translations[lang];
+            if (!d) return;
+
+            document.getElementById('nav-faculty-badge').innerText = d.navFacultyBadge;
+            document.getElementById('nav-location').innerText = d.navLocation;
+            document.getElementById('nav-back-btn').innerText = d.navBackBtn;
+
+            document.getElementById('txt-badge').innerText = d.badge;
+            document.getElementById('txt-title').innerHTML = d.title;
+            document.getElementById('txt-desc').innerText = d.desc;
+            document.getElementById('lbl-duration').innerText = d.lblDuration;
+            document.getElementById('val-duration').innerText = d.valDuration;
+            document.getElementById('lbl-medium').innerText = d.lblMedium;
+            document.getElementById('val-medium').innerText = d.valMedium;
+            document.getElementById('lbl-degree').innerText = d.lblDegree;
+            document.getElementById('val-degree').innerText = d.valDegree;
+
+            document.getElementById('txt-program-head').innerText = d.progHead;
+            document.getElementById('txt-program-sub').innerText = d.progSub;
+            document.getElementById('prog-1-title').innerText = d.prog1Title;
+            document.getElementById('prog-1-dur').innerText = d.prog1Dur;
+            document.getElementById('prog-1-desc').innerText = d.prog1Desc;
+            
+            document.getElementById('prog-topup-title').innerText = d.progTopupTitle;
+            document.getElementById('prog-topup-dur').innerText = d.progTopupDur;
+            document.getElementById('prog-topup-desc').innerText = d.progTopupDesc;
+
+            document.getElementById('prog-2-title').innerText = d.prog2Title;
+            document.getElementById('prog-2-dur').innerText = d.prog2Dur;
+            document.getElementById('prog-2-desc').innerText = d.prog2Desc;
+
+            document.getElementById('txt-facility-head').innerText = d.facilityHead;
+            document.getElementById('txt-facility-sub').innerText = d.facilitySub;
+            document.getElementById('img-cap-1').innerText = d.imgCap1;
+            document.getElementById('img-cap-2').innerText = d.imgCap2;
+            document.getElementById('img-cap-4').innerText = d.imgCap4;
+            document.getElementById('img-cap-5').innerText = d.imgCap5;
+
+            document.getElementById('feat-1').innerText = d.feat1;
+            document.getElementById('feat-2').innerText = d.feat2;
+            document.getElementById('feat-3').innerText = d.feat3;
+            document.getElementById('feat-4').innerText = d.feat4;
+
+            document.getElementById('txt-form-badge').innerText = d.formBadge;
+            document.getElementById('txt-form-title').innerText = d.formTitle;
+            document.getElementById('txt-form-desc').innerText = d.formDesc;
+            document.getElementById('lbl-name').innerText = d.lblName;
+            document.getElementById('lbl-email').innerText = d.lblEmail;
+            document.getElementById('lbl-phone').innerText = d.lblPhone;
+            document.getElementById('lbl-program').innerText = d.lblProgram;
+
+            const selectProg = document.getElementById('select-program');
+            selectProg.options[0].text = d.opt1;
+            selectProg.options[1].text = d.opt2;
+            selectProg.options[2].text = d.opt3;
+            selectProg.options[3].text = d.opt4;
+
+            document.getElementById('txt-btn-submit').innerHTML = d.btnSubmit;
+            document.getElementById('txt-footer').innerHTML = d.footer;
+        }
+
+        function handleAgriForm(event) {
+            event.preventDefault();
+            const currentLang = document.getElementById('langSelect').value;
+            if(currentLang === 'ru') {
+                alert("Спасибо! Ваша заявка на факультет успешно отправлена.");
+            } else {
+                alert("Thank you! Your application for the Faculty of Agriculture & Food Technology has been submitted successfully.");
+            }
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>

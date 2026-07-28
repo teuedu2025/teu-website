@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEU University | Vladivostok, Russia</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            700: '#153A70',
+                            800: '#0F2C59',
+                            900: '#0A1D37',
+                        },
+                        gold: {
+                            400: '#E5C158',
+                            500: '#D4AF37',
+                            600: '#C5A028',
+                        },
+                        accentRed: '#C8102E'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome Icons & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CUSTOM STYLES & CROSS-FADE SLIDER -->
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-serif-heading { font-family: 'Merriweather', serif; }
+
+        @keyframes fadeSlider {
+            0% { opacity: 0.40; }
+            20% { opacity: 0.40; }
+            25% { opacity: 0; }
+            95% { opacity: 0; }
+            100% { opacity: 0.40; }
+        }
+
+        .slide-1, .slide-2, .slide-3, .slide-4 {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            animation: fadeSlider 16s infinite ease-in-out;
+        }
+
+        .slide-1 {
+            background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1600&auto=format&fit=crop');
+            animation-delay: 0s;
+        }
+        .slide-2 {
+            background-image: url('https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?q=80&w=1600&auto=format&fit=crop');
+            animation-delay: 4s;
+        }
+        .slide-3 {
+            background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1600&auto=format&fit=crop');
+            animation-delay: 8s;
+        }
+        .slide-4 {
+            background-image: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1600&auto=format&fit=crop');
+            animation-delay: 12s;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased selection:bg-gold-500 selection:text-navy-900">
+
+    <!-- 1. TOP ANNOUNCEMENT BAR WITH BILINGUAL LANGUAGE SWITCHER (EN / RU) -->
+    <div class="bg-navy-900 text-gray-300 text-xs sm:text-sm py-2 px-4 border-b border-navy-800">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-2">
+            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4">
+                <span><i class="fa-solid fa-location-dot text-gold-500 mr-1.5"></i><span data-key="address">42 Gogolya st., Vladivostok 690014, Russia</span></span>
+                <span><i class="fa-solid fa-phone text-gold-500 mr-1.5"></i>8 (423) 240-41-28</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="#register" class="hover:text-gold-500 transition-colors"><i class="fa-solid fa-globe mr-1"></i> <span data-key="intAdmissions">International Admissions</span></a>
+                <span class="text-gray-600">|</span>
+                
+                <!-- LANGUAGE SWITCHER BUTTONS (EN, RU) -->
+                <div class="flex items-center gap-1 bg-navy-800 px-2 py-1 rounded border border-gold-500/40">
+                    <button onclick="changeLanguage('en')" id="btn-en" class="px-2.5 py-0.5 text-xs font-bold rounded bg-gold-500 text-navy-900 transition-all">EN</button>
+                    <button onclick="changeLanguage('ru')" id="btn-ru" class="px-2.5 py-0.5 text-xs font-bold rounded text-gray-300 hover:text-white transition-all">RU</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. MAIN HEADER / NAVIGATION -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                
+                <!-- BRAND LOGO -->
+                <a href="#" class="flex items-center gap-3 group py-2">
+                    <img src="logo.png" alt="TEU University Logo" class="h-16 sm:h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105" onerror="this.src='https://via.placeholder.com/80x80?text=TEU'">
+                    <div class="flex flex-col">
+                        <span class="font-serif-heading font-bold text-xl sm:text-2xl text-navy-900 leading-tight">TEU UNIVERSITY</span>
+                        <span class="text-[11px] text-gray-500 uppercase tracking-widest font-semibold" data-key="logoSub">Vladivostok, Russia</span>
+                    </div>
+                </a>
+
+                <!-- DESKTOP NAVIGATION MENU -->
+                <nav class="hidden md:flex items-center space-x-6 lg:space-x-8 text-sm font-semibold text-navy-900">
+                    <a href="#" class="hover:text-gold-600 transition-colors" data-key="navHome">Home</a>
+                    <a href="#about" class="hover:text-gold-600 transition-colors" data-key="navAbout">About TEU</a>
+                    <a href="#courses" class="hover:text-gold-600 transition-colors" data-key="navPrograms">Faculties</a>
+                    <a href="#testimonials" class="hover:text-gold-600 transition-colors" data-key="navTestimonials">Reviews</a>
+                    <a href="#lecturers" class="hover:text-gold-600 transition-colors" data-key="navLecturers">Lecturers</a>
+                    <a href="#contact" class="hover:text-gold-600 transition-colors" data-key="navContact">Contact</a>
+                </nav>
+
+                <!-- HEADER ACTION BUTTON -->
+                <div class="hidden lg:flex items-center">
+                    <a href="#register" class="bg-navy-900 hover:bg-gold-500 text-gold-500 hover:text-navy-900 font-bold text-sm px-6 py-2.5 rounded-xl shadow-md transition-all duration-300 border border-gold-500" data-key="btnApply">
+                        Apply Online
+                    </a>
+                </div>
+
+                <!-- MOBILE MENU BUTTON -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="text-navy-900 hover:text-gold-600 focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- MOBILE MENU DROPDOWN -->
+        <div id="mobile-menu" class="hidden md:hidden bg-navy-900 text-white px-4 pt-2 pb-6 space-y-3 border-t border-navy-800">
+            <a href="#" onclick="toggleMobileMenu()" class="block py-2 border-b border-navy-800 hover:text-gold-500" data-key="navHome">Home</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="block py-2 border-b border-navy-800 hover:text-gold-500" data-key="navAbout">About TEU</a>
+            <a href="#courses" onclick="toggleMobileMenu()" class="block py-2 border-b border-navy-800 hover:text-gold-500" data-key="navPrograms">Faculties</a>
+            <a href="#testimonials" onclick="toggleMobileMenu()" class="block py-2 border-b border-navy-800 hover:text-gold-500" data-key="navTestimonials">Reviews</a>
+            <a href="#lecturers" onclick="toggleMobileMenu()" class="block py-2 border-b border-navy-800 hover:text-gold-500" data-key="navLecturers">Lecturers</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 border-b border-navy-800 hover:text-gold-500" data-key="navContact">Contact</a>
+            <a href="#register" onclick="toggleMobileMenu()" class="block text-center bg-gold-500 text-navy-900 font-bold py-2.5 rounded-lg mt-4" data-key="btnApply">Apply Online</a>
+        </div>
+    </header>
+
+    <!-- 3. HERO SECTION WITH VIBRANT STUDENT SLIDER -->
+    <section class="relative bg-navy-900 text-white overflow-hidden min-h-[640px] flex items-center">
+        <div class="slide-1 z-0"></div>
+        <div class="slide-2 z-0"></div>
+        <div class="slide-3 z-0"></div>
+        <div class="slide-4 z-0"></div>
+        
+        <div class="absolute inset-0 bg-gradient-to-r from-navy-900 via-navy-900/90 to-navy-900/50 z-10"></div>
+
+        <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+            <div class="max-w-2xl">
+                
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gold-500/20 border border-gold-500/40 text-gold-500 text-xs font-semibold tracking-wide uppercase mb-6 backdrop-blur-sm">
+                    <i class="fa-solid fa-graduation-cap"></i> <span data-key="heroTag">International Admissions</span>
+                </div>
+
+                <h1 class="font-serif-heading text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-white mb-6">
+                    <span data-key="heroTitle1">Study at</span> <br>
+                    <span class="text-gold-500">TEU University</span>
+                </h1>
+
+                <p class="text-lg text-gray-200 leading-relaxed mb-8" data-key="heroDesc">
+                    Discover world-class higher education in Vladivostok, Russia. Join vibrant international students, gain hands-on practical training, and build a successful global career.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#courses" class="inline-flex justify-center items-center px-7 py-3.5 border border-transparent text-base font-semibold rounded-xl text-navy-900 bg-gold-500 hover:bg-gold-600 shadow-xl transition-all duration-300">
+                        <span data-key="btnExplore">Explore Programs</span> <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+                    </a>
+                    <a href="#register" class="inline-flex justify-center items-center px-7 py-3.5 border-2 border-white/80 text-base font-semibold rounded-xl text-white hover:bg-white hover:text-navy-900 transition-all duration-300 backdrop-blur-sm" data-key="btnApp">
+                        Student Application
+                    </a>
+                </div>
+
+                <div class="mt-12 pt-8 border-t border-white/20 grid grid-cols-3 gap-4 text-center sm:text-left">
+                    <div>
+                        <p class="font-serif-heading text-xl sm:text-2xl font-bold text-gold-500" data-key="stat1Num">Vladivostok</p>
+                        <p class="text-xs text-gray-300" data-key="stat1Text">Russia Campus</p>
+                    </div>
+                    <div>
+                        <p class="font-serif-heading text-xl sm:text-2xl font-bold text-gold-500">100%</p>
+                        <p class="text-xs text-gray-300" data-key="stat2Text">Recognized Degrees</p>
+                    </div>
+                    <div>
+                        <p class="font-serif-heading text-xl sm:text-2xl font-bold text-gold-500" data-key="stat3Num">Global</p>
+                        <p class="text-xs text-gray-300" data-key="stat3Text">Student Community</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. ABOUT & CAMPUS OVERVIEW -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-gold-600 font-bold uppercase tracking-wider text-xs sm:text-sm" data-key="aboutSub">Discover Campus Life</span>
+                <h2 class="font-serif-heading text-3xl sm:text-4xl font-bold text-navy-900 mt-2 mb-4" data-key="aboutTitle">Welcome to TEU University</h2>
+                <div class="w-20 h-1 bg-gold-500 mx-auto rounded-full mb-6"></div>
+                <p class="text-gray-600 leading-relaxed text-base sm:text-lg" data-key="aboutDesc">
+                    Situated in the vibrant coastal city of Vladivostok, TEU University combines modern academic excellence, state-of-the-art campus infrastructure, and a welcoming international environment.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- CARD 1: CAMPUS -->
+                <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group">
+                    <div class="relative overflow-hidden h-60">
+                        <img src="https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=800&auto=format&fit=crop" alt="Campus Building" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-navy-900/20 group-hover:bg-navy-900/10 transition-colors"></div>
+                        <span class="absolute top-4 left-4 bg-navy-900 text-gold-500 text-xs font-bold px-3 py-1 rounded-full shadow border border-gold-500/30" data-key="badgeCampus">Campus Grounds</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-serif-heading text-xl font-bold text-navy-900 mb-3" data-key="card1Title">Modern Vladivostok Campus</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4" data-key="card1Desc">
+                                Located on Gogolya Street, our campus offers advanced lecture halls, high-tech research labs, and expansive green zones right in the heart of the city.
+                            </p>
+                        </div>
+                        <ul class="text-xs text-navy-900 font-semibold space-y-2 border-t border-gray-200 pt-4">
+                            <li class="flex items-center"><i class="fa-solid fa-circle-check text-gold-600 mr-2"></i> <span data-key="feat1_1">Central Location in Vladivostok</span></li>
+                            <li class="flex items-center"><i class="fa-solid fa-circle-check text-gold-600 mr-2"></i> <span data-key="feat1_2">24/7 Security & High-Speed Wi-Fi</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- CARD 2: DORMITORIES -->
+                <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group">
+                    <div class="relative overflow-hidden h-60">
+                        <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?q=80&w=800&auto=format&fit=crop" alt="Student Dormitory" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-navy-900/20 group-hover:bg-navy-900/10 transition-colors"></div>
+                        <span class="absolute top-4 left-4 bg-navy-900 text-gold-500 text-xs font-bold px-3 py-1 rounded-full shadow border border-gold-500/30" data-key="badgeDorm">Accommodation</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-serif-heading text-xl font-bold text-navy-900 mb-3" data-key="card2Title">Comfortable Dormitories</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4" data-key="card2Desc">
+                                On-campus dormitories provided specifically for international students. Fully furnished rooms, shared kitchens, laundry facilities, and study lounges.
+                            </p>
+                        </div>
+                        <ul class="text-xs text-navy-900 font-semibold space-y-2 border-t border-gray-200 pt-4">
+                            <li class="flex items-center"><i class="fa-solid fa-circle-check text-gold-600 mr-2"></i> <span data-key="feat2_1">Guaranteed Places for New Students</span></li>
+                            <li class="flex items-center"><i class="fa-solid fa-circle-check text-gold-600 mr-2"></i> <span data-key="feat2_2">Affordable Monthly Living Costs</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- CARD 3: FACILITIES -->
+                <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group">
+                    <div class="relative overflow-hidden h-60">
+                        <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=800&auto=format&fit=crop" alt="Campus Library and Facilities" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-navy-900/20 group-hover:bg-navy-900/10 transition-colors"></div>
+                        <span class="absolute top-4 left-4 bg-navy-900 text-gold-500 text-xs font-bold px-3 py-1 rounded-full shadow border border-gold-500/30" data-key="badgeFac">Student Life</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-serif-heading text-xl font-bold text-navy-900 mb-3" data-key="card3Title">World-Class Facilities</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4" data-key="card3Desc">
+                                Comprehensive sports complexes, digital libraries, healthcare centers, and student dining halls ensuring an active and healthy university life.
+                            </p>
+                        </div>
+                        <ul class="text-xs text-navy-900 font-semibold space-y-2 border-t border-gray-200 pt-4">
+                            <li class="flex items-center"><i class="fa-solid fa-circle-check text-gold-600 mr-2"></i> <span data-key="feat3_1">Gyms, Swimming Pools & Sports Clubs</span></li>
+                            <li class="flex items-center"><i class="fa-solid fa-circle-check text-gold-600 mr-2"></i> <span data-key="feat3_2">Digital Resource Center & Library</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 5. ACADEMIC FACULTIES & PROGRAMS SECTION -->
+    <section id="courses" class="py-20 bg-slate-50 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-gold-600 font-bold uppercase tracking-wider text-xs sm:text-sm" data-key="progSub">Academic Excellence</span>
+                <h2 class="font-serif-heading text-3xl sm:text-4xl font-bold text-navy-900 mt-2 mb-4" data-key="progTitle">Explore Our World-Class Faculties</h2>
+                <div class="w-20 h-1 bg-gold-500 mx-auto rounded-full mb-6"></div>
+                <p class="text-gray-600 leading-relaxed text-base" data-key="progDesc">
+                    TEU University offers globally recognized undergraduate, graduate, and preparatory programs taught by experienced professors in modern research facilities.
+                </p>
+            </div>
+
+            <!-- FACULTIES GRID -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- FACULTY 1: MEDICINE & NURSING -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group">
+                    <div class="relative overflow-hidden h-52">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800&auto=format&fit=crop" alt="Faculty of Medicine" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-navy-900/30"></div>
+                        <span class="absolute top-4 left-4 bg-navy-900/90 text-gold-500 text-xs font-bold px-3 py-1 rounded-full border border-gold-500/30">
+                            <i class="fa-solid fa-user-nurse mr-1"></i> <span data-key="badgeHealth">Health Sciences</span>
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-serif-heading text-xl font-bold text-navy-900 mb-2 group-hover:text-gold-600 transition-colors" data-key="fac1Title">Faculty of Medicine & Nursing</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4" data-key="fac1Desc">
+                                Comprehensive clinical training in General Medicine, Nursing Care, and Public Health with hands-on hospital internships.
+                            </p>
+                            <div class="space-y-2 mb-6 border-t border-b border-gray-100 py-3">
+                                <div class="flex items-center justify-between text-xs text-gray-600">
+                                    <span><i class="fa-regular fa-clock text-gold-500 w-5"></i><strong data-key="lblDuration">Duration:</strong></span>
+                                    <span class="font-semibold" data-key="fac1Dur">4 - 6 Years</span>
+                                </div>
+                                <div class="flex items-center justify-between text-xs text-gray-600">
+                                    <span><i class="fa-solid fa-language text-gold-500 w-5"></i><strong data-key="lblMedium">Medium:</strong></span>
+                                    <span class="font-semibold" data-key="fac1Med">English / Russian</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <a href="faculty-medicine.html" class="block text-center bg-navy-900 hover:bg-gold-500 text-white hover:text-navy-900 font-semibold text-sm py-2.5 rounded-lg transition-all duration-300" data-key="btnApplyFac1">
+                                Apply for Medicine
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FACULTY 2: COMPUTER SCIENCE & AI -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group">
+                    <div class="relative overflow-hidden h-52">
+                        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=800&auto=format&fit=crop" alt="Faculty of IT" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-navy-900/30"></div>
+                        <span class="absolute top-4 left-4 bg-navy-900/90 text-gold-500 text-xs font-bold px-3 py-1 rounded-full border border-gold-500/30">
+                            <i class="fa-solid fa-code mr-1"></i> <span data-key="badgeTech">Technology</span>
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-serif-heading text-xl font-bold text-navy-900 mb-2 group-hover:text-gold-600 transition-colors" data-key="fac2Title">Faculty of IT & Computer Engineering</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4" data-key="fac2Desc">
+                                Modern software engineering, artificial intelligence, Android mobile development, and cybersecurity systems.
+                            </p>
+                            <div class="space-y-2 mb-6 border-t border-b border-gray-100 py-3">
+                                <div class="flex items-center justify-between text-xs text-gray-600">
+                                    <span><i class="fa-regular fa-clock text-gold-500 w-5"></i><strong data-key="lblDuration">Duration:</strong></span>
+                                    <span class="font-semibold" data-key="fac2Dur">4 Years</span>
+                                </div>
+                                <div class="flex items-center justify-between text-xs text-gray-600">
+                                    <span><i class="fa-solid fa-language text-gold-500 w-5"></i><strong data-key="lblMedium">Medium:</strong></span>
+                                    <span class="font-semibold" data-key="fac2Med">English / Russian</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <a href="faculty-it.html" class="block text-center bg-navy-900 hover:bg-gold-500 text-white hover:text-navy-900 font-semibold text-sm py-2.5 rounded-lg transition-all duration-300" data-key="btnApplyFac2">
+                                Apply for IT
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FACULTY 3: BUSINESS & MANAGEMENT -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group">
+                    <div class="relative overflow-hidden h-52">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop" alt="Faculty of Business" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-navy-900/30"></div>
+                        <span class="absolute top-4 left-4 bg-navy-900/90 text-gold-500 text-xs font-bold px-3 py-1 rounded-full border border-gold-500/30">
+                            <i class="fa-solid fa-chart-line mr-1"></i> <span data-key="badgeBiz">Management</span>
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-serif-heading text-xl font-bold text-navy-900 mb-2 group-hover:text-gold-600 transition-colors" data-key="fac3Title">Faculty of Business & Economics</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4" data-key="fac3Desc">
+                                International trade, finance management, marketing strategy, and global corporate leadership studies.
+                            </p>
+                            <div class="space-y-2 mb-6 border-t border-b border-gray-100 py-3">
+                                <div class="flex items-center justify-between text-xs text-gray-600">
+                                    <span><i class="fa-regular fa-clock text-gold-500 w-5"></i><strong data-key="lblDuration">Duration:</strong></span>
+                                    <span class="font-semibold" data-key="fac3Dur">4 Years</span>
+                                </div>
+                                <div class="flex items-center justify-between text-xs text-gray-600">
+                                    <span><i class="fa-solid fa-language text-gold-500 w-5"></i><strong data-key="lblMedium">Medium:</strong></span>
+                                    <span class="font-semibold" data-key="fac3Med">English / Russian</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <a href="faculty-business.html" class="block text-center bg-navy-900 hover:bg-gold-500 text-white hover:text-navy-900 font-semibold text-sm py-2.5 rounded-lg transition-all duration-300" data-key="btnApplyFac3">
+                                Apply for Business
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FACULTY 4: ENGINEERING & ROBOTICS -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group">
+                    <div class="relative overflow-hidden h-52">
+                        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=800&auto=format&fit=crop" alt="Faculty of Engineering" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-navy-900/30"></div>
+                        <span class="absolute top-4 left-4 bg-navy-900/90 text-gold-500 text-xs font-bold px-3 py-1 rounded-full border border-gold-500/30">
+                            <i class="fa-solid fa-gears mr-1"></i> <span data-key="badgeEng">Engineering</span>
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-serif-heading text-xl font-bold text-navy-900 mb-2 group-hover:text-gold-600 transition-colors" data-key="fac4Title">Faculty of Engineering & Technology</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4" data-key="fac4Desc">
+                                Mechanical engineering, civil construction, automated industrial robotics, and renewable energy systems.
+                            </p>
+                            <div class="space-y-2 mb-6 border-t border-b border-gray-100 py-3">
+                                <div class="flex items-center justify-between text-xs text-gray-600">
+                                    <span><i class="fa-regular fa-clock text-gold-500 w-5"></i><strong data-key="lblDuration">Duration:</strong></span>
+                                    <span class="font-semibold" data-key="fac4Dur">4 - 5 Years</span>
+                                </div>
+                                <div class="flex items-center justify-between text-xs text-gray-600">
+                                    <span><i class="fa-solid fa-language text-gold-500 w-5"></i><strong data-key="lblMedium">Medium:</strong></span>
+                                    <span class="font-semibold" data-key="fac4Med">Russian / English</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <a href="faculty-engineering.html" class="block text-center bg-navy-900 hover:bg-gold-500 text-white hover:text-navy-900 font-semibold text-sm py-2.5 rounded-lg transition-all duration-300" data-key="btnApplyFac4">
+                                Apply for Engineering
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FACULTY 5: MARITIME & OCEAN SCIENCES -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group">
+                    <div class="relative overflow-hidden h-52">
+                        <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=800&auto=format&fit=crop" alt="Faculty of Maritime Studies" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-navy-900/30"></div>
+                        <span class="absolute top-4 left-4 bg-navy-900/90 text-gold-500 text-xs font-bold px-3 py-1 rounded-full border border-gold-500/30">
+                            <i class="fa-solid fa-ship mr-1"></i> <span data-key="badgeMaritime">Maritime</span>
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-serif-heading text-xl font-bold text-navy-900 mb-2 group-hover:text-gold-600 transition-colors" data-key="fac5Title">Faculty of Maritime Studies</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4" data-key="fac5Desc">
+                                Port logistics, marine navigation, ocean engineering, and maritime trade management in Vladivostok port.
+                            </p>
+                            <div class="space-y-2 mb-6 border-t border-b border-gray-100 py-3">
+                                <div class="flex items-center justify-between text-xs text-gray-600">
+                                    <span><i class="fa-regular fa-clock text-gold-500 w-5"></i><strong data-key="lblDuration">Duration:</strong></span>
+                                    <span class="font-semibold" data-key="fac5Dur">4 - 5 Years</span>
+                                </div>
+                                <div class="flex items-center justify-between text-xs text-gray-600">
+                                    <span><i class="fa-solid fa-language text-gold-500 w-5"></i><strong data-key="lblMedium">Medium:</strong></span>
+                                    <span class="font-semibold" data-key="fac5Med">Russian / English</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <a href="faculty-maritime.html" class="block text-center bg-navy-900 hover:bg-gold-500 text-white hover:text-navy-900 font-semibold text-sm py-2.5 rounded-lg transition-all duration-300" data-key="btnApplyFac5">
+                                Apply for Maritime
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FACULTY 6: AGRICULTURE & FOOD TECHNOLOGY -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group">
+                    <div class="relative overflow-hidden h-52">
+                        <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=800&auto=format&fit=crop" alt="Faculty of Agriculture" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-navy-900/30"></div>
+                        <span class="absolute top-4 left-4 bg-navy-900/90 text-gold-500 text-xs font-bold px-3 py-1 rounded-full border border-gold-500/30">
+                            <i class="fa-solid fa-wheat-awn mr-1"></i> <span data-key="badgeAgri">Agriculture</span>
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-serif-heading text-xl font-bold text-navy-900 mb-2 group-hover:text-gold-600 transition-colors" data-key="facAgriTitle">Faculty of Agriculture & Food Tech</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4" data-key="facAgriDesc">
+                                Modern crop science, sustainable smart farming, biotechnology, food quality control, and agricultural economy.
+                            </p>
+                            <div class="space-y-2 mb-6 border-t border-b border-gray-100 py-3">
+                                <div class="flex items-center justify-between text-xs text-gray-600">
+                                    <span><i class="fa-regular fa-clock text-gold-500 w-5"></i><strong data-key="lblDuration">Duration:</strong></span>
+                                    <span class="font-semibold" data-key="facAgriDur">4 Years</span>
+                                </div>
+                                <div class="flex items-center justify-between text-xs text-gray-600">
+                                    <span><i class="fa-solid fa-language text-gold-500 w-5"></i><strong data-key="lblMedium">Medium:</strong></span>
+                                    <span class="font-semibold" data-key="facAgriMed">Russian / English</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <a href="faculty-agriculture.html" class="block text-center bg-navy-900 hover:bg-gold-500 text-white hover:text-navy-900 font-semibold text-sm py-2.5 rounded-lg transition-all duration-300" data-key="btnApplyFacAgri">
+                                Apply for Agriculture
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 6. STUDENT TESTIMONIALS / REVIEWS SECTION -->
+    <section id="testimonials" class="py-20 bg-white border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-gold-600 font-bold uppercase tracking-wider text-xs sm:text-sm" data-key="testiSub">Global Student Voices</span>
+                <h2 class="font-serif-heading text-3xl sm:text-4xl font-bold text-navy-900 mt-2 mb-4" data-key="testiTitle">What Our International Students Say</h2>
+                <div class="w-20 h-1 bg-gold-500 mx-auto rounded-full mb-6"></div>
+                <p class="text-gray-600 leading-relaxed text-base" data-key="testiDesc">
+                    Hear directly from students around the world about their academic journeys, living experiences, and campus life at TEU University in Vladivostok.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Testimonial 1 - Sri Lanka -->
+                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between relative group">
+                    <i class="fa-solid fa-quote-right absolute top-6 right-6 text-gold-500/20 text-4xl group-hover:text-gold-500/40 transition-colors"></i>
+                    <div>
+                        <!-- Rating Stars -->
+                        <div class="flex text-gold-500 text-xs mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-6" data-key="testi1Text">
+                            "Studying medicine at TEU has been a dream come true. The clinical practicals in Vladivostok hospitals gave me incredible confidence, and the university staff made adapting to Russia seamless!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-gray-200">
+                        <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=200&auto=format&fit=crop" alt="Kasun Perera" class="w-12 h-12 rounded-full object-cover border-2 border-gold-500">
+                        <div>
+                            <h4 class="font-bold text-navy-900 text-sm">Kasun Perera</h4>
+                            <p class="text-xs text-gold-600 font-semibold" data-key="testi1Role">Medical Student • Sri Lanka 🇱🇰</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 - India -->
+                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between relative group">
+                    <i class="fa-solid fa-quote-right absolute top-6 right-6 text-gold-500/20 text-4xl group-hover:text-gold-500/40 transition-colors"></i>
+                    <div>
+                        <!-- Rating Stars -->
+                        <div class="flex text-gold-500 text-xs mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-6" data-key="testi2Text">
+                            "The IT & Computer Science faculty offers cutting-edge labs in AI and Android development. Living in the student dormitories is safe, affordable, and feels like a global family."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-gray-200">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=200&auto=format&fit=crop" alt="Aarav Sharma" class="w-12 h-12 rounded-full object-cover border-2 border-gold-500">
+                        <div>
+                            <h4 class="font-bold text-navy-900 text-sm">Aarav Sharma</h4>
+                            <p class="text-xs text-gold-600 font-semibold" data-key="testi2Role">Software Eng. Student • India 🇮🇳</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 - Nigeria -->
+                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between relative group">
+                    <i class="fa-solid fa-quote-right absolute top-6 right-6 text-gold-500/20 text-4xl group-hover:text-gold-500/40 transition-colors"></i>
+                    <div>
+                        <!-- Rating Stars -->
+                        <div class="flex text-gold-500 text-xs mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-6" data-key="testi3Text">
+                            "I started with the 1-year Preparatory Russian Course. The language professors were extremely patient. Now I am studying International Business in Russian with complete ease!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-gray-200">
+                        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=200&auto=format&fit=crop" alt="Amara Okafor" class="w-12 h-12 rounded-full object-cover border-2 border-gold-500">
+                        <div>
+                            <h4 class="font-bold text-navy-900 text-sm">Amara Okafor</h4>
+                            <p class="text-xs text-gold-600 font-semibold" data-key="testi3Role">Business Student • Nigeria 🇳🇬</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 4 - Vietnam -->
+                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between relative group">
+                    <i class="fa-solid fa-quote-right absolute top-6 right-6 text-gold-500/20 text-4xl group-hover:text-gold-500/40 transition-colors"></i>
+                    <div>
+                        <!-- Rating Stars -->
+                        <div class="flex text-gold-500 text-xs mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-6" data-key="testi4Text">
+                            "Vladivostok is a beautiful maritime city. Studying Maritime Engineering at TEU gives us real port training. I highly recommend TEU for foreign students seeking quality education."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-gray-200">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=200&auto=format&fit=crop" alt="Minh Nguyen" class="w-12 h-12 rounded-full object-cover border-2 border-gold-500">
+                        <div>
+                            <h4 class="font-bold text-navy-900 text-sm">Minh Nguyen</h4>
+                            <p class="text-xs text-gold-600 font-semibold" data-key="testi4Role">Maritime Eng. Student • Vietnam 🇻🇳</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. LECTURERS / ACADEMIC FACULTY SECTION -->
+    <section id="lecturers" class="py-20 bg-slate-50 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-gold-600 font-bold uppercase tracking-wider text-xs sm:text-sm" data-key="lectSub">Academic Leadership</span>
+                <h2 class="font-serif-heading text-3xl sm:text-4xl font-bold text-navy-900 mt-2 mb-4" data-key="lectTitle">Meet Our Distinguished Professors</h2>
+                <div class="w-20 h-1 bg-gold-500 mx-auto rounded-full mb-6"></div>
+                <p class="text-gray-600 leading-relaxed text-base" data-key="lectDesc">
+                    Our esteemed faculty members bring decades of research, international teaching experience, and practical innovation to TEU classrooms.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Lecturer 1: Prof. Dr. Elena Ivanova -->
+                <div class="bg-white rounded-2xl p-6 text-center border border-gray-200 shadow-sm hover:shadow-md transition-all group">
+                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=400&auto=format&fit=crop" alt="Prof. Elena Ivanova" class="w-28 h-28 mx-auto rounded-full object-cover border-4 border-gold-500 shadow-md group-hover:scale-105 transition-transform">
+                    <h3 class="font-serif-heading text-lg font-bold text-navy-900 mt-4" data-key="lec1Name">Prof. Dr. Elena Ivanova</h3>
+                    <p class="text-xs text-gold-600 font-bold uppercase tracking-wider mt-1" data-key="lec1Role">Dean of Medicine</p>
+                    <p class="text-xs text-gray-500 mt-2 leading-relaxed" data-key="lec1Bio">PhD in Clinical Surgery & Health Management with 20+ years of teaching experience.</p>
+                </div>
+
+                <!-- Lecturer 2: Dr. Sergei Smirnov -->
+                <div class="bg-white rounded-2xl p-6 text-center border border-gray-200 shadow-sm hover:shadow-md transition-all group">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop" alt="Dr. Sergei Smirnov" class="w-28 h-28 mx-auto rounded-full object-cover border-4 border-gold-500 shadow-md group-hover:scale-105 transition-transform">
+                    <h3 class="font-serif-heading text-lg font-bold text-navy-900 mt-4" data-key="lec2Name">Dr. Sergei Smirnov</h3>
+                    <p class="text-xs text-gold-600 font-bold uppercase tracking-wider mt-1" data-key="lec2Role">Head of IT & AI Dept.</p>
+                    <p class="text-xs text-gray-500 mt-2 leading-relaxed" data-key="lec2Bio">Leading Researcher in Artificial Intelligence and Software Architecture Systems.</p>
+                </div>
+
+                <!-- Lecturer 3: Dr. Anna Petrov -->
+                <div class="bg-white rounded-2xl p-6 text-center border border-gray-200 shadow-sm hover:shadow-md transition-all group">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format&fit=crop" alt="Dr. Anna Petrov" class="w-28 h-28 mx-auto rounded-full object-cover border-4 border-gold-500 shadow-md group-hover:scale-105 transition-transform">
+                    <h3 class="font-serif-heading text-lg font-bold text-navy-900 mt-4" data-key="lec3Name">Dr. Anna Petrov</h3>
+                    <p class="text-xs text-gold-600 font-bold uppercase tracking-wider mt-1" data-key="lec3Role">Russian Language Director</p>
+                    <p class="text-xs text-gray-500 mt-2 leading-relaxed" data-key="lec3Bio">Specialist in teaching Russian as a foreign language for international university students.</p>
+                </div>
+
+                <!-- Lecturer 4: Prof. Mikhail Volkov -->
+                <div class="bg-white rounded-2xl p-6 text-center border border-gray-200 shadow-sm hover:shadow-md transition-all group">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400&auto=format&fit=crop" alt="Prof. Mikhail Volkov" class="w-28 h-28 mx-auto rounded-full object-cover border-4 border-gold-500 shadow-md group-hover:scale-105 transition-transform">
+                    <h3 class="font-serif-heading text-lg font-bold text-navy-900 mt-4" data-key="lec4Name">Prof. Mikhail Volkov</h3>
+                    <p class="text-xs text-gold-600 font-bold uppercase tracking-wider mt-1" data-key="lec4Role">Maritime Engineering</p>
+                    <p class="text-xs text-gray-500 mt-2 leading-relaxed" data-key="lec4Bio">Expert in modern marine navigation technologies and Pacific ocean logistics.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. STUDENT REGISTRATION FORM SECTION -->
+    <section id="register" class="py-20 bg-navy-900 text-white relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="bg-navy-800/90 rounded-3xl p-8 sm:p-12 border border-gold-500/30 shadow-2xl backdrop-blur-md">
+                
+                <div class="text-center mb-10">
+                    <span class="text-gold-500 font-bold uppercase tracking-wider text-xs sm:text-sm" data-key="regSub">Apply Now</span>
+                    <h2 class="font-serif-heading text-3xl sm:text-4xl font-bold text-white mt-1" data-key="regTitle">Online Student Application Form</h2>
+                    <p class="text-gray-300 text-sm mt-2" data-key="regDesc">Fill in your information below to begin your admission process at TEU University.</p>
+                </div>
+
+                <form id="applicationForm" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gold-500 mb-2" data-key="formLabelName">Full Name *</label>
+                            <input type="text" required placeholder="e.g. John Doe" class="w-full bg-navy-900 border border-navy-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-gold-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gold-500 mb-2" data-key="formLabelEmail">Email Address *</label>
+                            <input type="email" required placeholder="john@example.com" class="w-full bg-navy-900 border border-navy-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-gold-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gold-500 mb-2" data-key="formLabelPhone">Phone / WhatsApp *</label>
+                            <input type="tel" required placeholder="+1 234 567 890" class="w-full bg-navy-900 border border-navy-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-gold-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gold-500 mb-2" data-key="formLabelCountry">Country of Residence *</label>
+                            <input type="text" required placeholder="e.g. Sri Lanka" class="w-full bg-navy-900 border border-navy-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-gold-500">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gold-500 mb-2" data-key="formLabelFaculty">Select Faculty / Program *</label>
+                            <select required class="w-full bg-navy-900 border border-navy-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-gold-500">
+                                <option value="" disabled selected data-key="optSelectFaculty">Choose Faculty</option>
+                                <option value="medicine" data-key="fac1Title">Faculty of Medicine & Nursing</option>
+                                <option value="it" data-key="fac2Title">Faculty of IT & Computer Engineering</option>
+                                <option value="business" data-key="fac3Title">Faculty of Business & Economics</option>
+                                <option value="engineering" data-key="fac4Title">Faculty of Engineering & Technology</option>
+                                <option value="maritime" data-key="fac5Title">Faculty of Maritime Studies</option>
+                                <option value="agriculture" data-key="facAgriTitle">Faculty of Agriculture & Food Tech</option>
+                                <option value="preparatory" data-key="fac6Title">Preparatory Russian Language Course</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gold-500 mb-2" data-key="formLabelIntake">Intake Year *</label>
+                            <select required class="w-full bg-navy-900 border border-navy-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-gold-500">
+                                <option value="2026">2026 Academic Year</option>
+                                <option value="2027">2027 Academic Year</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-gold-500 mb-2" data-key="formLabelUpload">Upload Passport Scan / Educational Certificates (Optional)</label>
+                        <input type="file" class="w-full bg-navy-900 border border-navy-700 rounded-xl px-4 py-2.5 text-xs text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gold-500 file:text-navy-900 hover:file:bg-gold-600">
+                    </div>
+
+                    <div class="text-center pt-4">
+                        <button type="submit" class="w-full sm:w-auto bg-gold-500 hover:bg-gold-600 text-navy-900 font-bold px-10 py-4 rounded-xl shadow-lg transition-all duration-300">
+                            <span data-key="btnSubmitForm">Submit Application</span> <i class="fa-solid fa-paper-plane ml-2"></i>
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. LOCATION & CONTACT INFO -->
+    <section id="contact" class="bg-gray-100 py-12 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-2xl shadow-md p-8 border border-gray-200 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div>
+                    <h3 class="font-serif-heading text-xl font-bold text-navy-900 mb-2" data-key="contactTitle">Main Campus Location</h3>
+                    <p class="text-gray-600 text-sm"><i class="fa-solid fa-map-pin text-gold-600 mr-2"></i><strong data-key="lblAddress">Address:</strong> <span data-key="address">TEU University, 42 Gogolya st., Vladivostok 690014, Russia</span></p>
+                    <p class="text-gray-600 text-sm mt-1"><i class="fa-solid fa-phone text-gold-600 mr-2"></i><strong data-key="lblPhone">Phone:</strong> 8 (423) 240-41-28</p>
+                </div>
+                <div>
+                    <a href="#register" class="inline-block bg-navy-900 text-gold-500 font-bold px-6 py-3 rounded-xl hover:bg-gold-500 hover:text-navy-900 transition-all border border-gold-500 shadow" data-key="btnInquire">
+                        Inquire Admissions
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-navy-900 text-gray-400 py-8 border-t border-navy-800 text-xs text-center">
+        <p>&copy; 2026 TEU University Vladivostok, Russia. All rights reserved.</p>
+    </footer>
+
+    <!-- JAVASCRIPT FOR BILINGUAL SWITCHING (EN / RU) -->
+    <script>
+        const translations = {
+            en: {
+                address: "42 Gogolya st., Vladivostok 690014, Russia",
+                intAdmissions: "International Admissions",
+                logoSub: "Vladivostok, Russia",
+                navHome: "Home",
+                navAbout: "About TEU",
+                navPrograms: "Faculties",
+                navTestimonials: "Reviews",
+                navLecturers: "Lecturers",
+                navContact: "Contact",
+                btnApply: "Apply Online",
+                heroTag: "International Admissions",
+                heroTitle1: "Study at",
+                heroDesc: "Discover world-class higher education in Vladivostok, Russia. Join vibrant international students, gain hands-on practical training, and build a successful global career.",
+                btnExplore: "Explore Programs",
+                btnApp: "Student Application",
+                stat1Num: "Vladivostok",
+                stat1Text: "Russia Campus",
+                stat2Text: "Recognized Degrees",
+                stat3Num: "Global",
+                stat3Text: "Student Community",
+
+                progSub: "Academic Excellence",
+                progTitle: "Explore Our World-Class Faculties",
+                progDesc: "TEU University offers globally recognized undergraduate, graduate, and preparatory programs taught by experienced professors in modern research facilities.",
+                
+                badgeHealth: "Health Sciences",
+                fac1Title: "Faculty of Medicine & Nursing",
+                fac1Desc: "Comprehensive clinical training in General Medicine, Nursing Care, and Public Health with hands-on hospital internships.",
+                fac1Dur: "4 - 6 Years",
+                fac1Med: "English / Russian",
+                btnApplyFac1: "Apply for Medicine",
+
+                badgeTech: "Technology",
+                fac2Title: "Faculty of IT & Computer Engineering",
+                fac2Desc: "Modern software engineering, artificial intelligence, Android mobile development, and cybersecurity systems.",
+                fac2Dur: "4 Years",
+                fac2Med: "English / Russian",
+                btnApplyFac2: "Apply for IT",
+
+                badgeBiz: "Management",
+                fac3Title: "Faculty of Business & Economics",
+                fac3Desc: "International trade, finance management, marketing strategy, and global corporate leadership studies.",
+                fac3Dur: "4 Years",
+                fac3Med: "English / Russian",
+                btnApplyFac3: "Apply for Business",
+
+                badgeEng: "Engineering",
+                fac4Title: "Faculty of Engineering & Technology",
+                fac4Desc: "Mechanical engineering, civil construction, automated industrial robotics, and renewable energy systems.",
+                fac4Dur: "4 - 5 Years",
+                fac4Med: "Russian / English",
+                btnApplyFac4: "Apply for Engineering",
+
+                badgeMaritime: "Maritime",
+                fac5Title: "Faculty of Maritime Studies",
+                fac5Desc: "Port logistics, marine navigation, ocean engineering, and maritime trade management in Vladivostok port.",
+                fac5Dur: "4 - 5 Years",
+                fac5Med: "Russian / English",
+                btnApplyFac5: "Apply for Maritime",
+
+                badgeAgri: "Agriculture",
+                facAgriTitle: "Faculty of Agriculture & Food Tech",
+                facAgriDesc: "Modern crop science, sustainable smart farming, biotechnology, food quality control, and agricultural economy.",
+                facAgriDur: "4 Years",
+                facAgriMed: "Russian / English",
+                btnApplyFacAgri: "Apply for Agriculture",
+
+                fac6Title: "Preparatory Russian Language Course",
+
+                testiSub: "Global Student Voices",
+                testiTitle: "What Our International Students Say",
+                testiDesc: "Hear directly from students around the world about their academic journeys, living experiences, and campus life at TEU University in Vladivostok.",
+                testi1Text: "\"Studying medicine at TEU has been a dream come true. The clinical practicals in Vladivostok hospitals gave me incredible confidence, and the university staff made adapting to Russia seamless!\"",
+                testi1Role: "Medical Student • Sri Lanka 🇱🇰",
+                testi2Text: "\"The IT & Computer Science faculty offers cutting-edge labs in AI and Android development. Living in the student dormitories is safe, affordable, and feels like a global family.\"",
+                testi2Role: "Software Eng. Student • India 🇮🇳",
+                testi3Text: "\"I started with the 1-year Preparatory Russian Course. The language professors were extremely patient. Now I am studying International Business in Russian with complete ease!\"",
+                testi3Role: "Business Student • Nigeria 🇳🇬",
+                testi4Text: "\"Vladivostok is a beautiful maritime city. Studying Maritime Engineering at TEU gives us real port training. I highly recommend TEU for foreign students seeking quality education.\"",
+                testi4Role: "Maritime Eng. Student • Vietnam 🇻🇳",
+
+                lblDuration: "Duration:",
+                lblMedium: "Medium:",
+
+                lectSub: "Academic Leadership",
+                lectTitle: "Meet Our Distinguished Professors",
+                lectDesc: "Our esteemed faculty members bring decades of research, international teaching experience, and practical innovation to TEU classrooms.",
+
+                lec1Name: "Prof. Dr. Elena Ivanova",
+                lec1Role: "Dean of Medicine",
+                lec1Bio: "PhD in Clinical Surgery & Health Management with 20+ years of teaching experience.",
+
+                lec2Name: "Dr. Sergei Smirnov",
+                lec2Role: "Head of IT & AI Dept.",
+                lec2Bio: "Leading Researcher in Artificial Intelligence and Software Architecture Systems.",
+
+                lec3Name: "Dr. Anna Petrov",
+                lec3Role: "Russian Language Director",
+                lec3Bio: "Specialist in teaching Russian as a foreign language for international university students.",
+
+                lec4Name: "Prof. Mikhail Volkov",
+                lec4Role: "Maritime Engineering",
+                lec4Bio: "Expert in modern marine navigation technologies and Pacific ocean logistics.",
+
+                regSub: "Apply Now",
+                regTitle: "Online Student Application Form",
+                regDesc: "Fill in your information below to begin your admission process at TEU University.",
+                formLabelName: "Full Name *",
+                formLabelEmail: "Email Address *",
+                formLabelPhone: "Phone / WhatsApp *",
+                formLabelCountry: "Country of Residence *",
+                formLabelFaculty: "Select Faculty / Program *",
+                optSelectFaculty: "Choose Faculty",
+                formLabelIntake: "Intake Year *",
+                formLabelUpload: "Upload Passport Scan / Educational Certificates (Optional)",
+                btnSubmitForm: "Submit Application",
+
+                aboutSub: "Discover Campus Life",
+                aboutTitle: "Welcome to TEU University",
+                aboutDesc: "Situated in the vibrant coastal city of Vladivostok, TEU University combines modern academic excellence, state-of-the-art campus infrastructure, and a welcoming international environment.",
+                badgeCampus: "Campus Grounds",
+                card1Title: "Modern Vladivostok Campus",
+                card1Desc: "Located on Gogolya Street, our campus offers advanced lecture halls, high-tech research labs, and expansive green zones right in the heart of the city.",
+                feat1_1: "Central Location in Vladivostok",
+                feat1_2: "24/7 Security & High-Speed Wi-Fi",
+                badgeDorm: "Accommodation",
+                card2Title: "Comfortable Dormitories",
+                card2Desc: "On-campus dormitories provided specifically for international students. Fully furnished rooms, shared kitchens, laundry facilities, and study lounges.",
+                feat2_1: "Guaranteed Places for New Students",
+                feat2_2: "Affordable Monthly Living Costs",
+                badgeFac: "Student Life",
+                card3Title: "World-Class Facilities",
+                card3Desc: "Comprehensive sports complexes, digital libraries, healthcare centers, and student dining halls ensuring an active and healthy university life.",
+                feat3_1: "Gyms, Swimming Pools & Sports Clubs",
+                feat3_2: "Digital Resource Center & Library",
+                contactTitle: "Main Campus Location",
+                lblAddress: "Address:",
+                lblPhone: "Phone:",
+                btnInquire: "Inquire Admissions"
+            },
+            ru: {
+                address: "ул. Гоголя 42, Владивосток 690014, Россия",
+                intAdmissions: "Международный прием",
+                logoSub: "Владивосток, Россия",
+                navHome: "Главная",
+                navAbout: "Об университете",
+                navPrograms: "Факультеты",
+                navTestimonials: "Отзывы",
+                navLecturers: "Преподаватели",
+                navContact: "Контакты",
+                btnApply: "Подать заявку",
+                heroTag: "Международный прием",
+                heroTitle1: "Обучение в",
+                heroDesc: "Откройте для себя высшее образование мирового уровня во Владивостоке, Россия. Присоединяйтесь к международным студентам и постройте успешную карьеру.",
+                btnExplore: "Обзор программ",
+                btnApp: "Заявка на обучение",
+                stat1Num: "Владивосток",
+                stat1Text: "Кампус в России",
+                stat2Text: "Признанные дипломы",
+                stat3Num: "Мировое",
+                stat3Text: "Сообщество",
+
+                progSub: "Академическое превосходство",
+                progTitle: "Наши факультеты мирового уровня",
+                progDesc: "ТЕУ Университет предлагает международно признанные программы бакалавриата, магистратуры и подготовительные курсы.",
+                
+                badgeHealth: "Медицинские науки",
+                fac1Title: "Факультет медицины и сестринского дела",
+                fac1Desc: "Обучение общей медицине, сестринскому делу и здравоохранению с практикой в ведущих больницах.",
+                fac1Dur: "4 - 6 лет",
+                fac1Med: "Английский / Русский",
+                btnApplyFac1: "Подать на медицину",
+
+                badgeTech: "Технологии",
+                fac2Title: "Факультет ИТ и компьютерной инженерии",
+                fac2Desc: "Разработка ПО, искусственный интеллект, мобильная разработка Android и кибербезопасность.",
+                fac2Dur: "4 года",
+                fac2Med: "Английский / Русский",
+                btnApplyFac2: "Подать на ИТ",
+
+                badgeBiz: "Менеджмент",
+                fac3Title: "Факультет бизнеса и экономики",
+                fac3Desc: "Международная торговля, финансовый менеджмент, маркетинг и корпоративное управление.",
+                fac3Dur: "4 года",
+                fac3Med: "Английский / Русский",
+                btnApplyFac3: "Подать на бизнес",
+
+                badgeEng: "Инженерия",
+                fac4Title: "Факультет инженерии и технологий",
+                fac4Desc: "Машиностроение, гражданское строительство, промышленная робототехника и энергетика.",
+                fac4Dur: "4 - 5 лет",
+                fac4Med: "Русский / Английский",
+                btnApplyFac4: "Подать на инженерию",
+
+                badgeMaritime: "Морское дело",
+                fac5Title: "Морской факультет",
+                fac5Desc: "Портовая логистика, судовождение, океанотехника и морская торговля во Владивостоке.",
+                fac5Dur: "4 - 5 лет",
+                fac5Med: "Русский / Английский",
+                btnApplyFac5: "Подать на морской факультет",
+
+                badgeAgri: "Сельское хозяйство",
+                facAgriTitle: "Факультет агрономии и пищевых технологий",
+                facAgriDesc: "Современное растениеводство, умное сельское хозяйство, биотехнологии и контроль качества продуктов.",
+                facAgriDur: "4 года",
+                facAgriMed: "Русский / Английский",
+                btnApplyFacAgri: "Подать на агрономию",
+
+                fac6Title: "Подготовительный курс русского языка",
+
+                testiSub: "Голоса студентов",
+                testiTitle: "Что говорят наши иностранные студенты",
+                testiDesc: "Узнайте мнение студентов со всего мира об учебе, проживании и жизни в ТЕУ Университете во Владивостоке.",
+                testi1Text: "\"Учеба на медицинском факультете ТЕУ — это исполнение мечты. Практика в больницах Владивостока дала мне огромную уверенность!\"",
+                testi1Role: "Студент-медик • Шри-Ланка 🇱🇰",
+                testi2Text: "\"Факультет ИТ предлагает отличные лаборатории ИИ. Проживание в общежитии безопасное, недорогое и очень дружное.\"",
+                testi2Role: "Студент ИТ • Индия 🇮🇳",
+                testi3Text: "\"Я начинала с подготовительного курса русского языка. Преподаватели были очень терпеливы. Теперь я легко учусь на бизнесе!\"",
+                testi3Role: "Студент бизнеса • Нигерия 🇳🇬",
+                testi4Text: "\"Владивосток — прекрасный морской город. Изучение морской инженерии в ТЕУ дает настоящую практику в порту.\"",
+                testi4Role: "Студент морского дела • Вьетнам 🇻🇳",
+
+                lblDuration: "Срок обучения:",
+                lblMedium: "Язык обучения:",
+
+                lectSub: "Преподавательский состав",
+                lectTitle: "Наши выдающиеся профессора",
+                lectDesc: "Опытные преподаватели с многолетним стажем научной и международной работы.",
+
+                lec1Name: "Проф. Д-р Елена Иванова",
+                lec1Role: "Декан медицинского факультета",
+                lec1Bio: "Доктор медицинских наук, специалист в области клинической хирургии с опытом более 20 лет.",
+
+                lec2Name: "Д-р Сергей Смирнов",
+                lec2Role: "Зав. кафедрой ИТ и ИИ",
+                lec2Bio: "Ведущий исследователь в области искусственного интеллекта и архитектуры программных систем.",
+
+                lec3Name: "Д-р Анна Петрова",
+                lec3Role: "Директор курса русского языка",
+                lec3Bio: "Специалист по преподаванию русского языка как иностранного для студентов со всего мира.",
+
+                lec4Name: "Проф. Михаил Волков",
+                lec4Role: "Морская инженерия",
+                lec4Bio: "Эксперт в области современных технологий навигации и логистики Тихоокеанского региона.",
+
+                regSub: "Подать заявку",
+                regTitle: "Онлайн-форма для абитуриентов",
+                regDesc: "Заполните форму ниже, чтобы начать процесс поступления в Университет ТЕУ.",
+                formLabelName: "ФИО (Полное имя) *",
+                formLabelEmail: "Электронная почта *",
+                formLabelPhone: "Телефон / WhatsApp *",
+                formLabelCountry: "Страна проживания *",
+                formLabelFaculty: "Выберите факультет / программу *",
+                optSelectFaculty: "Выберите факультет",
+                formLabelIntake: "Год поступления *",
+                formLabelUpload: "Загрузить скан паспорта / документы об образовании (необязательно)",
+                btnSubmitForm: "Отправить заявку",
+
+                aboutSub: "Жизнь в кампусе",
+                aboutTitle: "Добро пожаловать в ТЕУ Университет",
+                aboutDesc: "Расположенный в живописном прибрежном городе Владивосток, ТЕУ Университет сочетает в себе академическое превосходство и современную инфраструктуру.",
+                badgeCampus: "Территория",
+                card1Title: "Современный кампус во Владивостоке",
+                card1Desc: "Наш кампус на улице Гоголя предлагает современные лекционные залы, высокотехнологичные лаборатории и зеленые зоны.",
+                feat1_1: "Удобное расположение в центре",
+                feat1_2: "Круглосуточная охрана и Wi-Fi",
+                badgeDorm: "Проживание",
+                card2Title: "Комфортабельные общежития",
+                card2Desc: "Общежития на территории кампуса для иностранных студентов: меблированные комнаты, кухни, прачечные и зоны для учебы.",
+                feat2_1: "Гарантированное место для первокурсников",
+                feat2_2: "Доступная стоимость проживания",
+                badgeFac: "Студенчество",
+                card3Title: "Инфраструктура мирового уровня",
+                card3Desc: "Спортивные комплексы, электронные библиотеки, медицинский центр и столовые создают все условия для насыщенной студенческой жизни.",
+                feat3_1: "Спортзалы, бассейн и секции",
+                feat3_2: "Электронный ресурсный центр",
+                contactTitle: "Главный кампус",
+                lblAddress: "Адрес:",
+                lblPhone: "Телефон:",
+                btnInquire: "Задать вопрос"
+            }
+        };
+
+        function changeLanguage(lang) {
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            const btnEn = document.getElementById('btn-en');
+            const btnRu = document.getElementById('btn-ru');
+
+            // Reset styles
+            [btnEn, btnRu].forEach(btn => {
+                if(btn) btn.className = "px-2.5 py-0.5 text-xs font-bold rounded text-gray-300 hover:text-white transition-all";
+            });
+
+            // Highlight selected
+            if (lang === 'ru') {
+                if (btnRu) btnRu.className = "px-2.5 py-0.5 text-xs font-bold rounded bg-gold-500 text-navy-900 transition-all";
+            } else {
+                if (btnEn) btnEn.className = "px-2.5 py-0.5 text-xs font-bold rounded bg-gold-500 text-navy-900 transition-all";
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu) {
+                menu.classList.toggle('hidden');
+            }
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            alert("Thank you / Спасибо! Your application for TEU University has been submitted successfully.");
+            document.getElementById('applicationForm').reset();
+        }
+    </script>
+</body>
+</html>
