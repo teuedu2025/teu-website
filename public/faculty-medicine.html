@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty of Medicine & Nursing | TEU University Vladivostok</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        medical: {
+                            50: '#F0FDFA',
+                            100: '#CCFBF1',
+                            500: '#14B8A6',
+                            600: '#0D9488',
+                            700: '#0F766E',
+                            800: '#115E59',
+                            900: '#134E4A',
+                        },
+                        brand: {
+                            800: '#0B2545',
+                            900: '#081B33',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Font Awesome Icons & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .hero-bg { transition: opacity 1s ease-in-out; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-medical-500 selection:text-white">
+
+    <!-- 1. TOP HEADER & NAVIGATION -->
+    <header class="bg-brand-900 text-white sticky top-0 z-50 shadow-lg border-b border-medical-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex justify-between items-center">
+            
+            <!-- LOGO & BRAND -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-amber-500 via-amber-400 to-yellow-300 p-0.5 shadow-lg shadow-amber-900/30 group-hover:scale-105 transition-transform flex items-center justify-center">
+                    <div class="w-full h-full bg-brand-900 rounded-[10px] flex items-center justify-center p-1">
+                        <!-- Russian Medical Crest Vector -->
+                        <svg class="w-8 h-8 text-amber-400" viewBox="0 0 100 100" fill="currentColor">
+                            <path d="M45,5 L50,1 L55,5 L52,10 L48,10 Z" fill="#FBBF24"/>
+                            <path d="M50,12 C40,12 35,18 20,22 C12,24 5,35 10,50 C15,62 30,68 35,80 C40,88 45,95 50,98 C55,95 60,88 65,80 C70,68 85,62 90,50 C95,35 88,24 80,22 C65,18 60,12 50,12 Z M25,28 C28,25 32,28 35,32 M75,28 C72,25 68,28 65,32" opacity="0.85"/>
+                            <path d="M36,38 C36,38 50,34 64,38 C64,58 60,72 50,78 C40,72 36,58 36,38 Z" fill="#DC2626" stroke="#FBBF24" stroke-width="2"/>
+                            <path d="M44,58 C44,58 45,62 50,62 C55,62 56,58 56,58 L42,58 M50,62 L50,66 M45,66 L55,66" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
+                            <path d="M50,56 C46,54 46,48 50,46 C54,44 54,42 50,40" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-extrabold text-base sm:text-lg text-white block leading-tight tracking-wide group-hover:text-amber-300 transition-colors">TEU MEDICINE</span>
+                        <span id="nav-faculty-badge" class="bg-medical-600 text-[9px] font-bold text-white px-1.5 py-0.5 rounded uppercase">Faculty</span>
+                    </div>
+                    <span id="nav-location" class="text-[10px] text-teal-300/80 font-medium tracking-widest uppercase block">Vladivostok, Russia</span>
+                </div>
+            </a>
+
+            <!-- NAVIGATION ACTIONS -->
+            <div class="flex items-center gap-3">
+                
+                <!-- LANGUAGE SWITCHER -->
+                <div class="relative inline-block text-left">
+                    <div class="flex items-center bg-brand-800 border border-medical-700/60 rounded-lg px-2.5 py-1.5 text-xs text-white shadow-inner">
+                        <i class="fa-solid fa-globe text-teal-400 mr-2"></i>
+                        <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-transparent text-white focus:outline-none cursor-pointer font-medium text-xs">
+                            <option value="en" class="bg-brand-900 text-white" selected>🇬🇧 English</option>
+                            <option value="ru" class="bg-brand-900 text-white">🇷🇺 Русский</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- BACK BUTTON -->
+                <a href="index.html" class="inline-flex items-center gap-2 bg-medical-700 hover:bg-medical-600 text-white font-semibold px-3.5 py-1.5 rounded-lg text-xs transition-all shadow-sm">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span id="nav-back-btn" class="hidden sm:inline">Main Page</span>
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- 2. HERO BANNER WITH SLIDESHOW -->
+    <section class="relative bg-brand-900 text-white py-16 sm:py-24 overflow-hidden border-b border-medical-800 min-h-[420px] flex items-center">
+        
+        <div id="hero-bg-container" class="absolute inset-0 z-0">
+            <div class="hero-bg absolute inset-0 bg-cover bg-center opacity-25" style="background-image: url('https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=1600&auto=format&fit=crop');"></div>
+            <div class="hero-bg absolute inset-0 bg-cover bg-center opacity-0" style="background-image: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1600&auto=format&fit=crop');"></div>
+            <div class="hero-bg absolute inset-0 bg-cover bg-center opacity-0" style="background-image: url('https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?q=80&w=1600&auto=format&fit=crop');"></div>
+            <div class="hero-bg absolute inset-0 bg-cover bg-center opacity-0" style="background-image: url('https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1600&auto=format&fit=crop');"></div>
+        </div>
+
+        <div class="absolute inset-0 bg-gradient-to-r from-brand-900 via-brand-900/90 to-brand-900/60 z-5"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="max-w-3xl">
+                <span class="inline-flex items-center gap-2 bg-medical-500/20 text-teal-300 text-xs font-bold px-3.5 py-1.5 rounded-full border border-medical-500/30 uppercase tracking-wider mb-4 backdrop-blur-md">
+                    <i class="fa-solid fa-stethoscope text-teal-400"></i>
+                    <span id="txt-badge">Faculty of Health & Clinical Sciences</span>
+                </span>
+                
+                <h1 id="txt-title" class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
+                    Faculty of <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-emerald-400">Medicine & Nursing</span>
+                </h1>
+                
+                <p id="txt-desc" class="text-slate-300 text-sm sm:text-base leading-relaxed mb-8">
+                    Comprehensive clinical education, advanced anatomical simulation labs, and practical surgical internships at leading state hospitals in Vladivostok, Russia.
+                </p>
+
+                <!-- STATS & BADGES -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 border-t border-slate-700/60 pt-6">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2.5 rounded-lg bg-medical-800/80 text-teal-300 backdrop-blur-sm">
+                            <i class="fa-regular fa-clock text-lg"></i>
+                        </div>
+                        <div>
+                            <span id="lbl-duration" class="text-[11px] text-slate-400 uppercase font-semibold block">Duration</span>
+                            <span id="val-duration" class="text-xs sm:text-sm font-bold text-white">4 - 6 Years</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                        <div class="p-2.5 rounded-lg bg-medical-800/80 text-teal-300 backdrop-blur-sm">
+                            <i class="fa-solid fa-language text-lg"></i>
+                        </div>
+                        <div>
+                            <span id="lbl-medium" class="text-[11px] text-slate-400 uppercase font-semibold block">Medium</span>
+                            <span id="val-medium" class="text-xs sm:text-sm font-bold text-white">English / Russian</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-3 col-span-2 sm:col-span-1">
+                        <div class="p-2.5 rounded-lg bg-medical-800/80 text-teal-300 backdrop-blur-sm">
+                            <i class="fa-solid fa-award text-lg"></i>
+                        </div>
+                        <div>
+                            <span id="lbl-degree" class="text-[11px] text-slate-400 uppercase font-semibold block">Degree</span>
+                            <span id="val-degree" class="text-xs sm:text-sm font-bold text-white">MD / BSN Recognized</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. MAIN CONTENT SECTION -->
+    <section class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- LEFT 2 COLUMNS -->
+            <div class="lg:col-span-2 space-y-8">
+                
+                <!-- PROGRAMS OFFERED -->
+                <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200/80 shadow-sm">
+                    <h2 id="txt-program-head" class="text-2xl font-bold text-brand-900 mb-2">Degree Programs Offered</h2>
+                    <p id="txt-program-sub" class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6">Designed to meet international medical council standards with direct clinical hospital exposure.</p>
+
+                    <div class="space-y-4">
+                        <!-- MD Card -->
+                        <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 hover:border-medical-500/50 transition-colors flex flex-col sm:flex-row items-start gap-4">
+                            <div class="p-3 bg-medical-700 text-white rounded-xl shadow-sm">
+                                <i class="fa-solid fa-user-md text-xl"></i>
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <h3 id="prog-md-title" class="font-bold text-brand-900 text-base">Doctor of Medicine (MD)</h3>
+                                    <span id="prog-md-dur" class="bg-teal-100 text-teal-800 text-[10px] font-bold px-2 py-0.5 rounded">6 Years</span>
+                                </div>
+                                <p id="prog-md-desc" class="text-slate-600 text-xs mt-2 leading-relaxed">Includes General Surgery, Internal Medicine, Pediatrics, Clinical Emergency Training, and Hospital Internships.</p>
+                            </div>
+                        </div>
+
+                        <!-- Nursing Card -->
+                        <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 hover:border-medical-500/50 transition-colors flex flex-col sm:flex-row items-start gap-4">
+                            <div class="p-3 bg-medical-700 text-white rounded-xl shadow-sm">
+                                <i class="fa-solid fa-user-nurse text-xl"></i>
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <h3 id="prog-bsn-title" class="font-bold text-brand-900 text-base">BSc in Nursing (BSN)</h3>
+                                    <span id="prog-bsn-dur" class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded">4 Years</span>
+                                </div>
+                                <p id="prog-bsn-desc" class="text-slate-600 text-xs mt-2 leading-relaxed">Focuses on Patient Care, Aseptic Wound Management, Critical Care Nursing, and Clinical Pharmacology.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CLINICAL HIGHLIGHTS -->
+                <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200/80 shadow-sm">
+                    <h2 id="txt-facility-head" class="text-2xl font-bold text-brand-900 mb-4">Advanced Practical Training Facilities</h2>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=800&auto=format&fit=crop" alt="Clinical Lab" class="rounded-xl h-44 w-full object-cover shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=800&auto=format&fit=crop" alt="Medical Team" class="rounded-xl h-44 w-full object-cover shadow-sm">
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-semibold text-slate-700">
+                        <div class="flex items-center p-3 bg-medical-50/60 rounded-lg border border-medical-100">
+                            <i class="fa-solid fa-circle-check text-medical-600 mr-2.5"></i> <span id="feat-1">Modern Anatomical Simulation Labs</span>
+                        </div>
+                        <div class="flex items-center p-3 bg-medical-50/60 rounded-lg border border-medical-100">
+                            <i class="fa-solid fa-circle-check text-medical-600 mr-2.5"></i> <span id="feat-2">ICU & Surgery Clinical Rotations</span>
+                        </div>
+                        <div class="flex items-center p-3 bg-medical-50/60 rounded-lg border border-medical-100">
+                            <i class="fa-solid fa-circle-check text-medical-600 mr-2.5"></i> <span id="feat-3">Emergency Response Training</span>
+                        </div>
+                        <div class="flex items-center p-3 bg-medical-50/60 rounded-lg border border-medical-100">
+                            <i class="fa-solid fa-circle-check text-medical-600 mr-2.5"></i> <span id="feat-4">Globally Recognized Qualifications</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- RIGHT COLUMN: FORM -->
+            <div class="lg:col-span-1">
+                <div class="bg-brand-900 text-white p-6 sm:p-7 rounded-2xl border border-medical-700 shadow-xl sticky top-24">
+                    
+                    <div class="border-b border-slate-700/80 pb-4 mb-5">
+                        <span id="txt-form-badge" class="text-teal-400 text-[11px] font-bold uppercase tracking-wider block mb-1">Direct Admissions</span>
+                        <h3 id="txt-form-title" class="text-xl font-bold text-white">Apply for Faculty</h3>
+                        <p id="txt-form-desc" class="text-xs text-slate-300 mt-1">Fill out the official application to receive full curriculum and fee structure.</p>
+                    </div>
+
+                    <form onsubmit="handleMedicineForm(event)" class="space-y-3.5">
+                        <div>
+                            <label id="lbl-name" class="block text-[11px] font-bold uppercase tracking-wider text-teal-300 mb-1">Full Name *</label>
+                            <input type="text" required placeholder="e.g. John Doe" class="w-full bg-brand-800 border border-slate-700 rounded-lg p-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-medical-500">
+                        </div>
+
+                        <div>
+                            <label id="lbl-email" class="block text-[11px] font-bold uppercase tracking-wider text-teal-300 mb-1">Email Address *</label>
+                            <input type="email" required placeholder="name@example.com" class="w-full bg-brand-800 border border-slate-700 rounded-lg p-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-medical-500">
+                        </div>
+
+                        <div>
+                            <label id="lbl-phone" class="block text-[11px] font-bold uppercase tracking-wider text-teal-300 mb-1">Phone / WhatsApp *</label>
+                            <input type="tel" required placeholder="+12 34 567 4567" class="w-full bg-brand-800 border border-slate-700 rounded-lg p-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-medical-500">
+                        </div>
+
+                        <div>
+                            <label id="lbl-program" class="block text-[11px] font-bold uppercase tracking-wider text-teal-300 mb-1">Program *</label>
+                            <select id="select-program" required class="w-full bg-brand-800 border border-slate-700 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-medical-500">
+                                <option value="md">Doctor of Medicine (MD) - 6 Years</option>
+                                <option value="bsn">BSc in Nursing (BSN) - 4 Years</option>
+                                <option value="prep">Preparatory Course + Medicine</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" id="txt-btn-submit" class="w-full bg-gradient-to-r from-medical-600 to-teal-500 hover:from-medical-700 hover:to-teal-600 text-white font-bold py-3 rounded-xl transition-all shadow-md text-xs sm:text-sm mt-3">
+                            Submit Medical Application <i class="fa-solid fa-paper-plane ml-1.5"></i>
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-900 text-slate-400 py-6 border-t border-slate-800 text-xs text-center">
+        <p id="txt-footer">&copy; 2026 TEU University Vladivostok, Russia. Faculty of Medicine & Nursing. All rights reserved.</p>
+    </footer>
+
+    <!-- COMPLETE TRANSLATION DICTIONARY & LOGIC -->
+    <script>
+        // Hero Image Slider (3 seconds)
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-bg');
+        setInterval(() => {
+            slides[currentSlide].classList.remove('opacity-25');
+            slides[currentSlide].classList.add('opacity-0');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.remove('opacity-0');
+            slides[currentSlide].classList.add('opacity-25');
+        }, 3000);
+
+        // Comprehensive Language Dictionary
+        const translations = {
+            en: {
+                navFacultyBadge: "Faculty",
+                navLocation: "Vladivostok, Russia",
+                navBackBtn: "Main Page",
+                badge: "Faculty of Health & Clinical Sciences",
+                title: 'Faculty of <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-emerald-400">Medicine & Nursing</span>',
+                desc: "Comprehensive clinical education, advanced anatomical simulation labs, and practical surgical internships at leading state hospitals in Vladivostok, Russia.",
+                lblDuration: "Duration",
+                valDuration: "4 - 6 Years",
+                lblMedium: "Medium",
+                valMedium: "English / Russian",
+                lblDegree: "Degree",
+                valDegree: "MD / BSN Recognized",
+                progHead: "Degree Programs Offered",
+                progSub: "Designed to meet international medical council standards with direct clinical hospital exposure.",
+                progMdTitle: "Doctor of Medicine (MD)",
+                progMdDur: "6 Years",
+                progMdDesc: "Includes General Surgery, Internal Medicine, Pediatrics, Clinical Emergency Training, and Hospital Internships.",
+                progBsnTitle: "BSc in Nursing (BSN)",
+                progBsnDur: "4 Years",
+                progBsnDesc: "Focuses on Patient Care, Aseptic Wound Management, Critical Care Nursing, and Clinical Pharmacology.",
+                facilityHead: "Advanced Practical Training Facilities",
+                feat1: "Modern Anatomical Simulation Labs",
+                feat2: "ICU & Surgery Clinical Rotations",
+                feat3: "Emergency Response Training",
+                feat4: "Globally Recognized Qualifications",
+                formBadge: "Direct Admissions",
+                formTitle: "Apply for Faculty",
+                formDesc: "Fill out the official application to receive full curriculum and fee structure.",
+                lblName: "Full Name *",
+                lblEmail: "Email Address *",
+                lblPhone: "Phone / WhatsApp *",
+                lblProgram: "Program *",
+                optMd: "Doctor of Medicine (MD) - 6 Years",
+                optBsn: "BSc in Nursing (BSN) - 4 Years",
+                optPrep: "Preparatory Course + Medicine",
+                btnSubmit: 'Submit Medical Application <i class="fa-solid fa-paper-plane ml-1.5"></i>',
+                footer: "&copy; 2026 TEU University Vladivostok, Russia. Faculty of Medicine & Nursing. All rights reserved."
+            },
+            ru: {
+                navFacultyBadge: "Факультет",
+                navLocation: "Владивосток, Россия",
+                navBackBtn: "Главная страница",
+                badge: "Факультет здравоохранения и клинических наук",
+                title: 'Факультет <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-emerald-400">Медицины и Сестринского Дела</span>',
+                desc: "Комплексное клиническое образование, современные симуляционные лаборатории и практическая стажировка в ведущих государственных больницах Владивостока.",
+                lblDuration: "Срок обучения",
+                valDuration: "4 - 6 Лет",
+                lblMedium: "Язык",
+                valMedium: "Английский / Русский",
+                lblDegree: "Диплом",
+                valDegree: "Признанный MD / BSN",
+                progHead: "Предлагаемые программы обучения",
+                progSub: "Разработано в соответствии с международными медицинскими стандартами с практикой в больницах.",
+                progMdTitle: "Лечебное дело (Врач-специалист / MD)",
+                progMdDur: "6 Лет",
+                progMdDesc: "Включает общую хирургию, терапию, педиатрию, неотложную медицинскую помощь и клиническую практику.",
+                progBsnTitle: "Сестринское дело (Бакалавриат / BSN)",
+                progBsnDur: "4 Года",
+                progBsnDesc: "Обучение уходу за больными, асептической обработке ран, интенсивной терапии и фармакологии.",
+                facilityHead: "Современные базы практической подготовки",
+                feat1: "Анатомические симуляционные классы",
+                feat2: "Клиническая практика в ОРИТ и хирургии",
+                feat3: "Обучение экстренной медицинской помощи",
+                feat4: "Международно признанные дипломы",
+                formBadge: "Прямой прием",
+                formTitle: "Подать заявку на факультет",
+                formDesc: "Заполните официальную заявку, чтобы получить учебный план и стоимость обучения.",
+                lblName: "Полное имя *",
+                lblEmail: "Электронная почта *",
+                lblPhone: "Телефон / WhatsApp *",
+                lblProgram: "Программа *",
+                optMd: "Лечебное дело (MD) - 6 Лет",
+                optBsn: "Сестринское дело (BSN) - 4 Года",
+                optPrep: "Подготовительное отделение + Медицина",
+                btnSubmit: 'Отправить заявку <i class="fa-solid fa-paper-plane ml-1.5"></i>',
+                footer: "&copy; 2026 ТЕУ Университет Владивосток, Россия. Факультет медицины и сестринского дела. Все права защищены."
+            }
+        };
+
+        function changeLanguage(lang) {
+            const d = translations[lang];
+            if (!d) return;
+
+            // Nav
+            document.getElementById('nav-faculty-badge').innerText = d.navFacultyBadge;
+            document.getElementById('nav-location').innerText = d.navLocation;
+            document.getElementById('nav-back-btn').innerText = d.navBackBtn;
+
+            // Hero
+            document.getElementById('txt-badge').innerText = d.badge;
+            document.getElementById('txt-title').innerHTML = d.title;
+            document.getElementById('txt-desc').innerText = d.desc;
+            document.getElementById('lbl-duration').innerText = d.lblDuration;
+            document.getElementById('val-duration').innerText = d.valDuration;
+            document.getElementById('lbl-medium').innerText = d.lblMedium;
+            document.getElementById('val-medium').innerText = d.valMedium;
+            document.getElementById('lbl-degree').innerText = d.lblDegree;
+            document.getElementById('val-degree').innerText = d.valDegree;
+
+            // Content
+            document.getElementById('txt-program-head').innerText = d.progHead;
+            document.getElementById('txt-program-sub').innerText = d.progSub;
+            document.getElementById('prog-md-title').innerText = d.progMdTitle;
+            document.getElementById('prog-md-dur').innerText = d.progMdDur;
+            document.getElementById('prog-md-desc').innerText = d.progMdDesc;
+            document.getElementById('prog-bsn-title').innerText = d.progBsnTitle;
+            document.getElementById('prog-bsn-dur').innerText = d.progBsnDur;
+            document.getElementById('prog-bsn-desc').innerText = d.progBsnDesc;
+
+            document.getElementById('txt-facility-head').innerText = d.facilityHead;
+            document.getElementById('feat-1').innerText = d.feat1;
+            document.getElementById('feat-2').innerText = d.feat2;
+            document.getElementById('feat-3').innerText = d.feat3;
+            document.getElementById('feat-4').innerText = d.feat4;
+
+            // Form
+            document.getElementById('txt-form-badge').innerText = d.formBadge;
+            document.getElementById('txt-form-title').innerText = d.formTitle;
+            document.getElementById('txt-form-desc').innerText = d.formDesc;
+            document.getElementById('lbl-name').innerText = d.lblName;
+            document.getElementById('lbl-email').innerText = d.lblEmail;
+            document.getElementById('lbl-phone').innerText = d.lblPhone;
+            document.getElementById('lbl-program').innerText = d.lblProgram;
+
+            const selectProg = document.getElementById('select-program');
+            selectProg.options[0].text = d.optMd;
+            selectProg.options[1].text = d.optBsn;
+            selectProg.options[2].text = d.optPrep;
+
+            document.getElementById('txt-btn-submit').innerHTML = d.btnSubmit;
+            document.getElementById('txt-footer').innerHTML = d.footer;
+        }
+
+        function handleMedicineForm(event) {
+            event.preventDefault();
+            const currentLang = document.getElementById('langSelect').value;
+            if(currentLang === 'ru') {
+                alert("Спасибо! Ваша заявка на факультет медицины и сестринского дела успешно отправлена.");
+            } else {
+                alert("Thank you! Your application for the Faculty of Medicine & Nursing has been submitted successfully.");
+            }
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>

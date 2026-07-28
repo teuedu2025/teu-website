@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Official Certificate Verification | TEU University</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
+</head>
+<body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col justify-between antialiased">
+
+    <!-- HEADER -->
+    <header class="bg-[#081B33] text-white py-4 shadow-md border-b border-emerald-600">
+        <div class="max-w-4xl mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-emerald-500 flex items-center justify-center text-white font-bold">
+                    <i class="fa-solid fa-graduation-cap text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="font-extrabold text-base tracking-wide leading-tight">TEU UNIVERSITY</h1>
+                    <span class="text-[10px] text-emerald-400 block tracking-wider uppercase">Official Credential Verification Portal</span>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-3">
+                <!-- Language Switcher -->
+                <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-[#0B2545] border border-slate-700 text-xs text-white rounded-lg px-2.5 py-1.5 focus:outline-none cursor-pointer">
+                    <option value="en">🇬🇧 English</option>
+                    <option value="ru">🇷🇺 Русский</option>
+                </select>
+                <!-- Admin Button -->
+                <button onclick="openAdminModal()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 shadow-sm">
+                    <i class="fa-solid fa-lock text-[10px]"></i> Admin Login
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="max-w-xl mx-auto w-full px-4 py-8 flex-1 flex flex-col justify-center">
+        
+        <!-- CARD CONTAINER -->
+        <div class="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 sm:p-8">
+            
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3 border border-emerald-100 shadow-inner">
+                    <i class="fa-solid fa-shield-halved text-2xl"></i>
+                </div>
+                <h2 id="txt-title" class="text-xl font-bold text-[#081B33]">Certificate Authenticity Check</h2>
+                <p id="txt-subtitle" class="text-xs text-slate-500 mt-1">Scan QR or enter the unique certificate serial number to verify details.</p>
+            </div>
+
+            <!-- FORM -->
+            <form onsubmit="verifyCertificate(event)" class="space-y-4">
+                <div>
+                    <label id="lbl-cert-no" class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">Certificate Serial No</label>
+                    <div class="relative">
+                        <input type="text" id="certInput" required placeholder="e.g. 0-00-000-0000" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-emerald-500 font-mono uppercase pr-10">
+                        <i class="fa-solid fa-barcode absolute right-3.5 top-3.5 text-slate-400"></i>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl transition-all shadow-md text-xs sm:text-sm flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span id="btn-text">Verify Credentials</span>
+                </button>
+            </form>
+
+            <!-- RESULT DISPLAY AREA -->
+            <div id="certResult" class="hidden mt-6 p-4 rounded-xl text-xs border"></div>
+
+        </div>
+
+    </main>
+
+    <!-- ADMIN LOGIN MODAL -->
+    <div id="adminModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200">
+            <div class="flex justify-between items-center mb-4 border-b pb-3">
+                <h3 class="font-bold text-base text-[#081B33] flex items-center gap-2">
+                    <i class="fa-solid fa-lock text-emerald-600"></i> Admin Portal Login
+                </h3>
+                <button onclick="closeAdminModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            
+            <form onsubmit="handleAdminLogin(event)" class="space-y-3">
+                <div>
+                    <label class="block text-[11px] font-bold text-slate-700 uppercase mb-1">Admin Password</label>
+                    <input type="password" id="adminPass" required placeholder="Enter password (default: admin123)" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5 text-xs focus:outline-none focus:border-emerald-500">
+                </div>
+                <button type="submit" class="w-full bg-[#081B33] hover:bg-[#0c2647] text-white font-bold py-2.5 rounded-xl text-xs transition-all">Login to Dashboard</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ADMIN DASHBOARD MODAL -->
+    <div id="adminDashboard" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full p-6 shadow-2xl border border-slate-200 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-4 border-b pb-3">
+                <h3 class="font-bold text-base text-[#081B33] flex items-center gap-2">
+                    <i class="fa-solid fa-gauge-high text-emerald-600"></i> Certificate Management Dashboard
+                </h3>
+                <button onclick="logoutAdmin()" class="text-red-500 hover:text-red-700 text-xs font-bold flex items-center gap-1"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+            </div>
+
+            <!-- ADD CERTIFICATE FORM -->
+            <form onsubmit="addNewCertificate(event)" class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3 mb-6">
+                <h4 class="font-bold text-xs text-slate-700 uppercase"><i class="fa-solid fa-plus text-emerald-600"></i> Add New Certificate</h4>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[10px] font-bold text-slate-600 uppercase mb-1">Serial Number *</label>
+                        <input type="text" id="newSerial" required placeholder="e.g. TEU-2026-001" class="w-full bg-white border border-slate-300 rounded-lg p-2 text-xs font-mono uppercase">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-bold text-slate-600 uppercase mb-1">Student Name *</label>
+                        <input type="text" id="newName" required placeholder="FULL NAME" class="w-full bg-white border border-slate-300 rounded-lg p-2 text-xs uppercase">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-bold text-slate-600 uppercase mb-1">Degree Program *</label>
+                        <input type="text" id="newDegree" required placeholder="BSc Nursing (Hons)" class="w-full bg-white border border-slate-300 rounded-lg p-2 text-xs">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-bold text-slate-600 uppercase mb-1">Grade / Class *</label>
+                        <input type="text" id="newGrade" required placeholder="First Class" class="w-full bg-white border border-slate-300 rounded-lg p-2 text-xs">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-bold text-slate-600 uppercase mb-1">Graduation Year *</label>
+                        <input type="text" id="newYear" required placeholder="2026" class="w-full bg-white border border-slate-300 rounded-lg p-2 text-xs">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-bold text-slate-600 uppercase mb-1">Faculty *</label>
+                        <input type="text" id="newFaculty" required placeholder="Faculty of Health Sciences" class="w-full bg-white border border-slate-300 rounded-lg p-2 text-xs">
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 rounded-lg text-xs transition-all">Save Certificate to Database</button>
+            </form>
+
+            <!-- EXISTING LIST -->
+            <h4 class="font-bold text-xs text-slate-700 uppercase mb-2">Issued Certificates List</h4>
+            <div id="certListContainer" class="space-y-2">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-slate-200 py-4 text-center text-slate-500 text-[11px]">
+        &copy; 2026 TEU University Vladivostok, Russia. Secure Verification System.
+    </footer>
+
+    <!-- SCRIPT -->
+    <script>
+        // Initial Default Database with your provided data
+        const defaultDb = {
+            "12-02-2017-8163": {
+                name: "KALU ARACHCHIGE THISARA NAYANAJITH",
+                degree: "BSc Nursing (Hons)",
+                grade: "First Class",
+                year: "2022",
+                faculty: "Faculty of Health & Medical Sciences",
+                status: "VERIFIED & VALID"
+            },
+            "A/F/2025/910/100/815": {
+                name: "UDAHA GEDARAWATHTHE SEWMINI NISANSALA PIYASENA",
+                degree: "BSc Food Processing Technology & Quality Control",
+                grade: "First Class",
+                year: "2026",
+                faculty: "Faculty of Agriculture & Food Technology",
+                status: "VERIFIED & VALID"
+            }
+        };
+
+        // Load DB from localStorage or use default
+        function getDatabase() {
+            const stored = localStorage.getItem('teu_cert_db');
+            if (stored) {
+                return JSON.parse(stored);
+            } else {
+                localStorage.setItem('teu_cert_db', JSON.stringify(defaultDb));
+                return defaultDb;
+            }
+        }
+
+        function saveDatabase(db) {
+            localStorage.setItem('teu_cert_db', JSON.stringify(db));
+        }
+
+        // Auto-check if URL has parameter
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const certId = urlParams.get('id');
+            if (certId) {
+                document.getElementById('certInput').value = certId;
+                processVerification(certId);
+            }
+        };
+
+        function verifyCertificate(e) {
+            e.preventDefault();
+            const certId = document.getElementById('certInput').value.trim().toUpperCase();
+            processVerification(certId);
+        }
+
+        function processVerification(certId) {
+            const resultDiv = document.getElementById('certResult');
+            const lang = document.getElementById('langSelect').value;
+            const db = getDatabase();
+            const cert = db[certId];
+
+            resultDiv.classList.remove('hidden', 'bg-emerald-50', 'border-emerald-200', 'text-emerald-900', 'bg-red-50', 'border-red-200', 'text-red-900');
+
+            if (cert) {
+                resultDiv.classList.add('bg-emerald-50', 'border-emerald-200', 'text-emerald-900');
+                if(lang === 'ru') {
+                    resultDiv.innerHTML = `
+                        <div class="flex items-center gap-2 text-emerald-700 font-bold text-sm mb-2 border-b border-emerald-200 pb-2">
+                            <i class="fa-solid fa-circle-check text-lg"></i> Подлинность Подтверждена
+                        </div>
+                        <div class="space-y-1.5 text-xs">
+                            <p><b>ФИО:</b> ${cert.name}</p>
+                            <p><b>Степень:</b> ${cert.degree}</p>
+                            <p><b>Квалификация:</b> <span class="bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded font-bold">${cert.grade}</span></p>
+                            <p><b>Год выпуска:</b> ${cert.year}</p>
+                            <p><b>Факультет:</b> ${cert.faculty}</p>
+                            <p class="pt-1"><b>Статус:</b> <span class="bg-emerald-200 text-emerald-800 text-[10px] px-2 py-0.5 rounded font-bold">ОФИЦИАЛЬНО</span></p>
+                        </div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <div class="flex items-center gap-2 text-emerald-700 font-bold text-sm mb-2 border-b border-emerald-200 pb-2">
+                            <i class="fa-solid fa-circle-check text-lg"></i> Certificate Authenticated
+                        </div>
+                        <div class="space-y-1.5 text-xs">
+                            <p><b>Student Name:</b> ${cert.name}</p>
+                            <p><b>Degree:</b> ${cert.degree}</p>
+                            <p><b>Class / Grade:</b> <span class="bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded font-bold">${cert.grade}</span></p>
+                            <p><b>Graduation Year:</b> ${cert.year}</p>
+                            <p><b>Faculty:</b> ${cert.faculty}</p>
+                            <p class="pt-1"><b>Status:</b> <span class="bg-emerald-200 text-emerald-800 text-[10px] px-2 py-0.5 rounded font-bold">${cert.status}</span></p>
+                        </div>
+                    `;
+                }
+            } else {
+                resultDiv.classList.add('bg-red-50', 'border-red-200', 'text-red-900');
+                if(lang === 'ru') {
+                    resultDiv.innerHTML = `
+                        <div class="flex items-center gap-2 text-red-700 font-bold text-sm mb-1">
+                            <i class="fa-solid fa-triangle-exclamation"></i> Сертификат не найден
+                        </div>
+                        <p class="text-[11px] text-red-600">Введенный номер сертификата не зарегистрирован в нашей системе.</p>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <div class="flex items-center gap-2 text-red-700 font-bold text-sm mb-1">
+                            <i class="fa-solid fa-triangle-exclamation"></i> Record Not Found
+                        </div>
+                        <p class="text-[11px] text-red-600">The entered serial number does not match any issued certificates in our database.</p>
+                    `;
+                }
+            }
+        }
+
+        // Admin Modal Controls
+        function openAdminModal() { document.getElementById('adminModal').classList.remove('hidden'); }
+        function closeAdminModal() { document.getElementById('adminModal').classList.add('hidden'); }
+        
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            const pass = document.getElementById('adminPass').value;
+            // Default password is 'Kalutn@123'
+            if(pass === 'Kalutn@123') {
+                closeAdminModal();
+                document.getElementById('adminPass').value = '';
+                document.getElementById('adminDashboard').classList.remove('hidden');
+                renderAdminCertList();
+            } else {
+                alert('Incorrect Admin Password!');
+            }
+        }
+
+        function logoutAdmin() {
+            document.getElementById('adminDashboard').classList.add('hidden');
+        }
+
+        function addNewCertificate(e) {
+            e.preventDefault();
+            const serial = document.getElementById('newSerial').value.trim().toUpperCase();
+            const name = document.getElementById('newName').value.trim().toUpperCase();
+            const degree = document.getElementById('newDegree').value.trim();
+            const grade = document.getElementById('newGrade').value.trim();
+            const year = document.getElementById('newYear').value.trim();
+            const faculty = document.getElementById('newFaculty').value.trim();
+
+            const db = getDatabase();
+            db[serial] = {
+                name: name,
+                degree: degree,
+                grade: grade,
+                year: year,
+                faculty: faculty,
+                status: "VERIFIED & VALID"
+            };
+
+            saveDatabase(db);
+            alert('Certificate successfully added!');
+            e.target.reset();
+            renderAdminCertList();
+        }
+
+        function deleteCertificate(serial) {
+            if(confirm('Are you sure you want to delete certificate: ' + serial)) {
+                const db = getDatabase();
+                delete db[serial];
+                saveDatabase(db);
+                renderAdminCertList();
+            }
+        }
+
+        function renderAdminCertList() {
+            const db = getDatabase();
+            const container = document.getElementById('certListContainer');
+            container.innerHTML = '';
+
+            for (const [serial, cert] of Object.entries(db)) {
+                container.innerHTML += `
+                    <div class="bg-white p-3 rounded-lg border border-slate-200 flex justify-between items-center text-xs">
+                        <div>
+                            <p class="font-mono font-bold text-emerald-700">${serial}</p>
+                            <p class="font-bold text-slate-800">${cert.name}</p>
+                            <p class="text-[10px] text-slate-500">${cert.degree} (${cert.year})</p>
+                        </div>
+                        <button onclick="deleteCertificate('${serial}')" class="bg-red-50 hover:bg-red-100 text-red-600 px-2.5 py-1.5 rounded font-bold text-[11px] transition-all">
+                            <i class="fa-solid fa-trash"></i> Delete
+                        </button>
+                    </div>
+                `;
+            }
+        }
+
+        function changeLanguage(lang) {
+            if(lang === 'ru') {
+                document.getElementById('txt-title').innerText = "Проверка Подлинности Сертификата";
+                document.getElementById('txt-subtitle').innerText = "Отсканируйте QR-код или введите номер сертификата.";
+                document.getElementById('lbl-cert-no').innerText = "Серийный номер сертификата";
+                document.getElementById('btn-text').innerText = "Проверить";
+            } else {
+                document.getElementById('txt-title').innerText = "Certificate Authenticity Check";
+                document.getElementById('txt-subtitle').innerText = "Scan QR or enter the unique certificate serial number to verify details.";
+                document.getElementById('lbl-cert-no').innerText = "Certificate Serial No";
+                document.getElementById('btn-text').innerText = "Verify Credentials";
+            }
+            const currentInput = document.getElementById('certInput').value;
+            if(currentInput) processVerification(currentInput);
+        }
+    </script>
+</body>
+</html>
