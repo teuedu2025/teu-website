@@ -87,7 +87,6 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-        // ඔබේ Firebase Configuration එක
         const firebaseConfig = {
             apiKey: "AIzaSyDB3uxYFZCBqoYMahICvrKoTrwPh6pZcVw",
             authDomain: "teu-university.firebaseapp.com",
@@ -101,7 +100,6 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        // Auto-check if URL has parameter (e.g. ?id=FMS/2017/04/098)
         window.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const certId = urlParams.get('id');
@@ -121,7 +119,6 @@
             const resultDiv = document.getElementById('certResult');
             const lang = document.getElementById('langSelect').value;
             
-            // Clean up input (trim spaces and convert to uppercase)
             const searchId = searchIdInput ? searchIdInput.trim().toUpperCase() : "";
 
             resultDiv.classList.remove('hidden', 'bg-emerald-50', 'border-emerald-200', 'text-emerald-900', 'bg-red-50', 'border-red-200', 'text-red-900');
@@ -130,7 +127,6 @@
             resultDiv.classList.remove('hidden');
 
             try {
-                // Fetch all certificates to match flexibly and avoid query mismatch issues
                 const querySnapshot = await getDocs(collection(db, "certificates"));
                 let foundCert = null;
 
@@ -164,7 +160,6 @@
                     return;
                 }
 
-                // If found successfully
                 resultDiv.classList.remove('bg-slate-50', 'border-slate-200', 'text-slate-600');
                 resultDiv.classList.add('bg-emerald-50', 'border-emerald-200', 'text-emerald-900');
 
