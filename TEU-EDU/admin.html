@@ -6,51 +6,38 @@
     <title>Certificate Verification Admin - Trance Eurasian University</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
         body { background: #f1f5f9; display: flex; height: 100vh; overflow: hidden; }
-        
-        .sidebar { width: 260px; min-width: 260px; background: #0f172a; color: white; display: flex; flex-direction: column; padding: 24px; height: 100vh; }
+        .sidebar { width: 260px; background: #0f172a; color: white; display: flex; flex-direction: column; padding: 24px; }
         .sidebar h2 { font-size: 18px; margin-bottom: 40px; color: #38bdf8; }
-        .sidebar a { color: #94a3b8; text-decoration: none; padding: 12px 16px; border-radius: 8px; margin-bottom: 8px; font-weight: 500; transition: 0.3s; font-size: 14px; display: flex; align-items: center; gap: 10px; }
+        .sidebar a { color: #94a3b8; text-decoration: none; padding: 12px 16px; border-radius: 8px; margin-bottom: 8px; font-weight: 500; transition: 0.3s; font-size: 14px; }
         .sidebar a:hover, .sidebar a.active { background: #1e293b; color: white; }
-
-        .main-container { flex: 1; display: flex; flex-direction: column; height: 100vh; overflow: hidden; width: calc(100% - 260px); }
-        .header { background: white; padding: 20px 30px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; min-height: 70px; }
-        .header h1 { color: #1e293b; font-size: 20px; font-weight: 700; }
-        .logout-btn { background: #ef4444; color: white; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 13px; transition: background 0.3s; }
-        .logout-btn:hover { background: #dc2626; }
-
-        .content-grid { flex: 1; padding: 25px; overflow-y: auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 20px; align-items: start; }
-        @media (max-width: 1024px) {
-            .content-grid { grid-template-columns: 1fr; }
-        }
-
-        .card { background: white; padding: 24px; border-radius: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; }
+        .main-content { flex: 1; padding: 30px; overflow-y: auto; display: grid; grid-template-columns: 1fr 1.3fr; gap: 25px; }
+        .header { grid-column: span 2; display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
+        .header h1 { color: #1e293b; font-size: 24px; }
+        .logout-btn { background: #ef4444; color: white; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 13px; }
+        .card { background: white; padding: 25px; border-radius: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); height: fit-content; }
         .form-group { margin-bottom: 14px; }
         label { display: block; margin-bottom: 5px; color: #475569; font-weight: 600; font-size: 12px; text-transform: uppercase; }
-        input, select { width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 13px; outline: none; background: #fff; transition: border-color 0.3s; }
-        input:focus, select:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
-        
-        .submit-btn { background: #2563eb; color: white; border: none; padding: 11px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: background 0.3s; width: 100%; margin-top: 5px; }
+        input, select { width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 13px; outline: none; background: #fff; }
+        input:focus, select:focus { border-color: #2563eb; }
+        .submit-btn { background: #2563eb; color: white; border: none; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: background 0.3s; width: 100%; }
         .submit-btn:hover { background: #1d4ed8; }
         .cancel-btn { background: #64748b; color: white; border: none; padding: 8px 15px; border-radius: 8px; font-size: 12px; font-weight: 600; cursor: pointer; margin-top: 8px; width: 100%; display: none; }
         
-        .cert-list { display: flex; flex-direction: column; gap: 12px; max-height: 550px; overflow-y: auto; padding-right: 4px; }
-        .cert-item { background: #f8fafc; border: 1px solid #e2e8f0; padding: 16px; border-radius: 12px; display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
-        .cert-info h4 { font-size: 15px; color: #1e293b; margin-bottom: 4px; font-weight: 700; }
-        .badges { display: flex; gap: 6px; margin: 6px 0; flex-wrap: wrap; }
-        .badge { font-size: 10px; padding: 3px 8px; border-radius: 6px; font-weight: 600; }
+        .cert-list { display: flex; flex-direction: column; gap: 10px; max-height: 520px; overflow-y: auto; }
+        .cert-item { background: #f8fafc; border: 1px solid #e2e8f0; padding: 14px; border-radius: 10px; display: flex; justify-content: space-between; align-items: flex-start; }
+        .cert-info h4 { font-size: 14px; color: #1e293b; margin-bottom: 2px; }
+        .badges { display: flex; gap: 6px; margin: 4px 0; flex-wrap: wrap; }
+        .badge { font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: 600; }
         .badge-faculty { background: #e0f2fe; color: #0369a1; }
         .badge-grade { background: #dcfce7; color: #15803d; }
         .badge-id { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }
-        .cert-info p { font-size: 12px; color: #64748b; margin-top: 3px; }
-        
-        .action-btns { display: flex; gap: 6px; flex-wrap: wrap; }
-        .edit-btn { background: #f59e0b; color: white; border: none; padding: 7px 10px; border-radius: 6px; cursor: pointer; font-size: 12px; }
-        .delete-btn { background: #ef4444; color: white; border: none; padding: 7px 10px; border-radius: 6px; cursor: pointer; font-size: 12px; }
-        .print-btn { background: #10b981; color: white; border: none; padding: 7px 10px; border-radius: 6px; cursor: pointer; font-size: 12px; }
+        .cert-info p { font-size: 12px; color: #64748b; margin-top: 4px; }
+        .action-btns { display: flex; gap: 6px; }
+        .edit-btn { background: #f59e0b; color: white; border: none; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 11px; }
+        .delete-btn { background: #ef4444; color: white; border: none; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 11px; }
     </style>
 </head>
 <body>
@@ -62,73 +49,71 @@
     </script>
 
     <div class="sidebar">
-        <h2>TEU Admin Panel</h2>
-        <a href="#" class="active"><i class="fa-solid fa-certificate"></i> Certificates</a>
-        <a href="#" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+        <h2>TEU Verification Admin</h2>
+        <a href="#" class="active"><i class="fa-solid fa-certificate mr-2"></i> Certificates</a>
+        <a href="#" onclick="logout()"><i class="fa-solid fa-right-from-bracket mr-2"></i> Logout</a>
     </div>
 
-    <div class="main-container">
+    <div class="main-content">
         <div class="header">
             <h1>Certificate Verification Control Panel</h1>
             <button class="logout-btn" onclick="logout()">Logout</button>
         </div>
 
-        <div class="content-grid">
-            <div class="card">
-                <h3 id="formTitle" style="margin-bottom: 16px; color: #1e293b; font-size: 16px; font-weight: 700;">Issue / Register Certificate</h3>
-                <form id="certForm">
-                    <input type="hidden" id="certDocId">
-                    
-                    <div class="form-group">
-                        <label>Student Full Name</label>
-                        <input type="text" id="studentName" required placeholder="e.g. John Doe">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Certificate / Verification ID</label>
-                        <input type="text" id="certId" required placeholder="e.g. TEU/CERT/2026/089">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Program / Course Title</label>
-                        <input type="text" id="programTitle" required placeholder="e.g. Executive Certificate in HRM">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Faculty</label>
-                        <select id="faculty" required>
-                            <option value="">Select Faculty</option>
-                            <option value="Faculty of Medicine">Faculty of Medicine</option>
-                            <option value="Management Faculty">Management Faculty</option>
-                            <option value="Faculty of Technology">Faculty of Technology</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Grade Achieved</label>
-                        <select id="grade" required>
-                            <option value="">Select Grade</option>
-                            <option value="Distinction">Distinction</option>
-                            <option value="Merit">Merit</option>
-                            <option value="Pass">Pass</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Issue Date</label>
-                        <input type="date" id="issueDate" required>
-                    </div>
-
-                    <button type="submit" class="submit-btn" id="submitBtn">Save Certificate to Cloud</button>
-                    <button type="button" class="cancel-btn" id="cancelBtn" onclick="resetForm()">Cancel Edit</button>
-                </form>
-            </div>
-
-            <div class="card">
-                <h3 style="margin-bottom: 16px; color: #1e293b; font-size: 16px; font-weight: 700;">Verified Database Records</h3>
-                <div id="certList" class="cert-list">
-                    <p style="color: #94a3b8; font-size: 13px;">Loading certificates...</p>
+        <div class="card">
+            <h3 id="formTitle" style="margin-bottom: 16px; color: #1e293b; font-size: 16px;">Issue / Register Certificate</h3>
+            <form id="certForm">
+                <input type="hidden" id="certDocId">
+                
+                <div class="form-group">
+                    <label>Student Full Name</label>
+                    <input type="text" id="studentName" required placeholder="e.g. John Doe">
                 </div>
+
+                <div class="form-group">
+                    <label>Certificate / Verification ID</label>
+                    <input type="text" id="certId" required placeholder="e.g. TEU/CERT/2026/089">
+                </div>
+
+                <div class="form-group">
+                    <label>Program / Course Title</label>
+                    <input type="text" id="programTitle" required placeholder="e.g. Executive Certificate in HRM">
+                </div>
+
+                <div class="form-group">
+                    <label>Faculty</label>
+                    <select id="faculty" required>
+                        <option value="">Select Faculty</option>
+                        <option value="Faculty of Medicine">Faculty of Medicine</option>
+                        <option value="Management Faculty">Management Faculty</option>
+                        <option value="Faculty of Technology">Faculty of Technology</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Grade Achieved</label>
+                    <select id="grade" required>
+                        <option value="">Select Grade</option>
+                        <option value="Distinction">Distinction</option>
+                        <option value="Merit">Merit</option>
+                        <option value="Pass">Pass</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Issue Date</label>
+                    <input type="date" id="issueDate" required>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">Save Certificate to Cloud</button>
+                <button type="button" class="cancel-btn" id="cancelBtn" onclick="resetForm()">Cancel Edit</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h3 style="margin-bottom: 16px; color: #1e293b; font-size: 16px;">Verified Database Records</h3>
+            <div id="certList" class="cert-list">
+                <p style="color: #94a3b8; font-size: 13px;">Loading certificates...</p>
             </div>
         </div>
     </div>
@@ -149,18 +134,6 @@
 
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
-
-        function generateQRCodeBase64(text) {
-            try {
-                const qr = qrcode(0, 'M');
-                qr.addData(text);
-                qr.make();
-                return qr.createDataURL(4, 4);
-            } catch (e) {
-                console.error("QR generation error:", e);
-                return "";
-            }
-        }
 
         async function fetchCertificates() {
             const listContainer = document.getElementById('certList');
@@ -192,7 +165,6 @@
                                 <p style="font-size: 11px; color: #94a3b8; margin-top: 2px;">Issued on: ${cert.issueDate}</p>
                             </div>
                             <div class="action-btns">
-                                <button class="print-btn" title="Print Certificate" onclick="window.printCertificate('${escapeHtml(cert.studentName)}', '${escapeHtml(cert.certId)}', '${escapeHtml(cert.programTitle)}', '${escapeHtml(cert.faculty)}', '${escapeHtml(cert.grade)}', '${escapeHtml(cert.issueDate)}', '${cert.qrCode || ''}')"><i class="fa-solid fa-print"></i></button>
                                 <button class="edit-btn" onclick="window.editCert('${docId}', '${escapeHtml(cert.studentName)}', '${escapeHtml(cert.certId)}', '${escapeHtml(cert.programTitle)}', '${escapeHtml(cert.faculty)}', '${escapeHtml(cert.grade)}', '${escapeHtml(cert.issueDate)}')"><i class="fa-solid fa-pen"></i></button>
                                 <button class="delete-btn" onclick="window.deleteCert('${docId}')"><i class="fa-solid fa-trash"></i></button>
                             </div>
@@ -222,28 +194,21 @@
             const issueDate = document.getElementById('issueDate').value;
             const btn = document.getElementById('submitBtn');
 
-            btn.innerText = 'Generating QR & Saving...';
+            btn.innerText = 'Saving...';
             btn.disabled = true;
 
             try {
-                const verificationUrl = `https://teuedu.com/verify?id=${encodeURIComponent(certId)}`;
-                const qrCodeBase64 = generateQRCodeBase64(verificationUrl);
-
                 if (docId) {
                     await updateDoc(doc(db, "certificates", docId), {
-                        studentName, certId, programTitle, faculty, grade, issueDate,
-                        verificationUrl,
-                        qrCode: qrCodeBase64
+                        studentName, certId, programTitle, faculty, grade, issueDate
                     });
-                    alert("Certificate record and QR code updated successfully!");
+                    alert("Certificate record updated successfully!");
                 } else {
                     await addDoc(collection(db, "certificates"), {
                         studentName, certId, programTitle, faculty, grade, issueDate,
-                        verificationUrl,
-                        qrCode: qrCodeBase64,
                         createdAt: new Date()
                     });
-                    alert("Certificate registered with QR code successfully to cloud!");
+                    alert("Certificate registered successfully to cloud!");
                 }
 
                 resetForm();
@@ -282,77 +247,6 @@
                 }
             }
         }
-
-        window.printCertificate = function(studentName, certId, programTitle, faculty, grade, issueDate, qrCode) {
-            const printWindow = window.open('', '_blank');
-            printWindow.document.write(`
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <title>Certificate - ${certId}</title>
-                    <style>
-                        body { font-family: 'Plus Jakarta Sans', Arial, sans-serif; background: #fff; margin: 0; padding: 40px; display: flex; justify-content: center; align-items: center; height: 100vh; }
-                        .certificate-box { border: 10px solid #0f172a; padding: 50px; text-align: center; width: 850px; position: relative; background: #fffdf9; box-shadow: 0 0 20px rgba(0,0,0,0.1); }
-                        h1 { font-size: 32px; color: #0f172a; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 2px; }
-                        h3 { font-size: 16px; color: #475569; font-weight: 500; margin-bottom: 30px; }
-                        .recipient { font-size: 18px; color: #334155; margin-bottom: 10px; }
-                        .student-name { font-size: 36px; font-weight: bold; color: #1e293b; border-bottom: 2px solid #cbd5e1; display: inline-block; padding-bottom: 5px; margin-bottom: 20px; }
-                        .program { font-size: 20px; color: #0284c7; font-weight: 600; margin-bottom: 30px; }
-                        .details-grid { display: flex; justify-content: space-around; margin-top: 30px; border-top: 1px solid #e2e8f0; padding-top: 20px; }
-                        .detail-item p { font-size: 13px; color: #64748b; text-transform: uppercase; font-weight: bold; margin-bottom: 5px; }
-                        .detail-item h4 { font-size: 16px; color: #1e293b; }
-                        .qr-section { margin-top: 30px; }
-                        .qr-section img { width: 100px; height: 100px; }
-                        .qr-section p { font-size: 11px; color: #94a3b8; margin-top: 5px; }
-                        @media print {
-                            body { padding: 0; }
-                            .certificate-box { border: 8px solid #0f172a; box-shadow: none; width: 100%; height: 100%; }
-                        }
-                    </style>
-                </head>
-                <body>
-                    <div class="certificate-box">
-                        <h1>Trance Eurasian University</h1>
-                        <h3>Certificate of Achievement & Verification</h3>
-                        
-                        <p class="recipient">This is proudly presented to</p>
-                        <div class="student-name">${studentName}</div>
-                        
-                        <p class="recipient">for successfully completing the program</p>
-                        <div class="program">${programTitle}</div>
-                        
-                        <div class="details-grid">
-                            <div class="detail-item">
-                                <p>Faculty</p>
-                                <h4>${faculty}</h4>
-                            </div>
-                            <div class="detail-item">
-                                <p>Grade Achieved</p>
-                                <h4>${grade}</h4>
-                            </div>
-                            <div class="detail-item">
-                                <p>Issue Date</p>
-                                <h4>${issueDate}</h4>
-                            </div>
-                            <div class="detail-item">
-                                <p>Certificate ID</p>
-                                <h4>${certId}</h4>
-                            </div>
-                        </div>
-
-                        <div class="qr-section">
-                            ${qrCode ? `<img src="${qrCode}" alt="Verification QR Code">` : ''}
-                            <p>Scan to verify authenticity via teuedu.com</p>
-                        </div>
-                    </div>
-                    <script>
-                        window.onload = function() { window.print(); }
-                    </script>
-                </body>
-                </html>
-            `);
-            printWindow.document.close();
-        };
 
         window.addEventListener('DOMContentLoaded', fetchCertificates);
     </script>
