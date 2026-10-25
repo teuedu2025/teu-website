@@ -11,36 +11,55 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
         body { background: #f1f5f9; display: flex; height: 100vh; overflow: hidden; }
-        .sidebar { width: 260px; background: #0f172a; color: white; display: flex; flex-direction: column; padding: 24px; }
+        
+        /* Sidebar Styles */
+        .sidebar { width: 260px; min-width: 260px; background: #0f172a; color: white; display: flex; flex-direction: column; padding: 24px; height: 100vh; }
         .sidebar h2 { font-size: 18px; margin-bottom: 40px; color: #38bdf8; }
-        .sidebar a { color: #94a3b8; text-decoration: none; padding: 12px 16px; border-radius: 8px; margin-bottom: 8px; font-weight: 500; transition: 0.3s; font-size: 14px; }
+        .sidebar a { color: #94a3b8; text-decoration: none; padding: 12px 16px; border-radius: 8px; margin-bottom: 8px; font-weight: 500; transition: 0.3s; font-size: 14px; display: flex; align-items: center; gap: 10px; }
         .sidebar a:hover, .sidebar a.active { background: #1e293b; color: white; }
-        .main-content { flex: 1; padding: 30px; overflow-y: auto; display: grid; grid-template-columns: 1fr 1.3fr; gap: 25px; }
-        .header { grid-column: span 2; display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
-        .header h1 { color: #1e293b; font-size: 24px; }
-        .logout-btn { background: #ef4444; color: white; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 13px; }
-        .card { background: white; padding: 25px; border-radius: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); height: fit-content; }
+
+        /* Main Content Layout */
+        .main-container { flex: 1; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+        .header { background: white; padding: 20px 30px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; min-height: 70px; }
+        .header h1 { color: #1e293b; font-size: 20px; font-weight: 700; }
+        .logout-btn { background: #ef4444; color: white; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 13px; transition: background 0.3s; }
+        .logout-btn:hover { background: #dc2626; }
+
+        /* Content Grid */
+        .content-grid { flex: 1; padding: 25px; overflow-y: auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 20px; align-items: start; }
+        @media (max-width: 1024px) {
+            .content-grid { grid-template-columns: 1fr; }
+        }
+
+        .card { background: white; padding: 24px; border-radius: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; }
         .form-group { margin-bottom: 14px; }
         label { display: block; margin-bottom: 5px; color: #475569; font-weight: 600; font-size: 12px; text-transform: uppercase; }
-        input, select { width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 13px; outline: none; background: #fff; }
-        input:focus, select:focus { border-color: #2563eb; }
-        .submit-btn { background: #2563eb; color: white; border: none; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: background 0.3s; width: 100%; }
+        input, select { width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 13px; outline: none; background: #fff; transition: border-color 0.3s; }
+        input:focus, select:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+        
+        .submit-btn { background: #2563eb; color: white; border: none; padding: 11px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: background 0.3s; width: 100%; margin-top: 5px; }
         .submit-btn:hover { background: #1d4ed8; }
         .cancel-btn { background: #64748b; color: white; border: none; padding: 8px 15px; border-radius: 8px; font-size: 12px; font-weight: 600; cursor: pointer; margin-top: 8px; width: 100%; display: none; }
         
-        .cert-list { display: flex; flex-direction: column; gap: 10px; max-height: 520px; overflow-y: auto; }
-        .cert-item { background: #f8fafc; border: 1px solid #e2e8f0; padding: 14px; border-radius: 10px; display: flex; justify-content: space-between; align-items: flex-start; }
-        .cert-info h4 { font-size: 14px; color: #1e293b; margin-bottom: 2px; }
-        .badges { display: flex; gap: 6px; margin: 4px 0; flex-wrap: wrap; }
-        .badge { font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: 600; }
+        /* Certificate List */
+        .cert-list { display: flex; flex-direction: column; gap: 12px; max-height: 550px; overflow-y: auto; padding-right: 4px; }
+        .cert-item { background: #f8fafc; border: 1px solid #e2e8f0; padding: 16px; border-radius: 12px; display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; transition: box-shadow 0.2s; }
+        .cert-item:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .cert-info h4 { font-size: 15px; color: #1e293b; margin-bottom: 4px; font-weight: 700; }
+        .badges { display: flex; gap: 6px; margin: 6px 0; flex-wrap: wrap; }
+        .badge { font-size: 10px; padding: 3px 8px; border-radius: 6px; font-weight: 600; }
         .badge-faculty { background: #e0f2fe; color: #0369a1; }
         .badge-grade { background: #dcfce7; color: #15803d; }
         .badge-id { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }
-        .cert-info p { font-size: 12px; color: #64748b; margin-top: 4px; }
+        .cert-info p { font-size: 12px; color: #64748b; margin-top: 3px; }
+        
         .action-btns { display: flex; gap: 6px; flex-wrap: wrap; }
-        .edit-btn { background: #f59e0b; color: white; border: none; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 11px; }
-        .delete-btn { background: #ef4444; color: white; border: none; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 11px; }
-        .print-btn { background: #10b981; color: white; border: none; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 11px; }
+        .edit-btn { background: #f59e0b; color: white; border: none; padding: 7px 10px; border-radius: 6px; cursor: pointer; font-size: 12px; transition: background 0.2s; }
+        .edit-btn:hover { background: #d97706; }
+        .delete-btn { background: #ef4444; color: white; border: none; padding: 7px 10px; border-radius: 6px; cursor: pointer; font-size: 12px; transition: background 0.2s; }
+        .delete-btn:hover { background: #dc2626; }
+        .print-btn { background: #10b981; color: white; border: none; padding: 7px 10px; border-radius: 6px; cursor: pointer; font-size: 12px; transition: background 0.2s; }
+        .print-btn:hover { background: #059669; }
     </style>
 </head>
 <body>
@@ -52,71 +71,75 @@
     </script>
 
     <div class="sidebar">
-        <h2>TEU Verification Admin</h2>
-        <a href="#" class="active"><i class="fa-solid fa-certificate mr-2"></i> Certificates</a>
-        <a href="#" onclick="logout()"><i class="fa-solid fa-right-from-bracket mr-2"></i> Logout</a>
+        <h2>TEU Admin Panel</h2>
+        <a href="#" class="active"><i class="fa-solid fa-certificate"></i> Certificates</a>
+        <a href="#" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
     </div>
 
-    <div class="main-content">
+    <div class="main-container">
         <div class="header">
             <h1>Certificate Verification Control Panel</h1>
             <button class="logout-btn" onclick="logout()">Logout</button>
         </div>
 
-        <div class="card">
-            <h3 id="formTitle" style="margin-bottom: 16px; color: #1e293b; font-size: 16px;">Issue / Register Certificate</h3>
-            <form id="certForm">
-                <input type="hidden" id="certDocId">
-                
-                <div class="form-group">
-                    <label>Student Full Name</label>
-                    <input type="text" id="studentName" required placeholder="e.g. John Doe">
+        <div class="content-grid">
+            <!-- Left Card: Form -->
+            <div class="card">
+                <h3 id="formTitle" style="margin-bottom: 16px; color: #1e293b; font-size: 16px; font-weight: 700;">Issue / Register Certificate</h3>
+                <form id="certForm">
+                    <input type="hidden" id="certDocId">
+                    
+                    <div class="form-group">
+                        <label>Student Full Name</label>
+                        <input type="text" id="studentName" required placeholder="e.g. John Doe">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Certificate / Verification ID</label>
+                        <input type="text" id="certId" required placeholder="e.g. TEU/CERT/2026/089">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Program / Course Title</label>
+                        <input type="text" id="programTitle" required placeholder="e.g. Executive Certificate in HRM">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Faculty</label>
+                        <select id="faculty" required>
+                            <option value="">Select Faculty</option>
+                            <option value="Faculty of Medicine">Faculty of Medicine</option>
+                            <option value="Management Faculty">Management Faculty</option>
+                            <option value="Faculty of Technology">Faculty of Technology</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Grade Achieved</label>
+                        <select id="grade" required>
+                            <option value="">Select Grade</option>
+                            <option value="Distinction">Distinction</option>
+                            <option value="Merit">Merit</option>
+                            <option value="Pass">Pass</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Issue Date</label>
+                        <input type="date" id="issueDate" required>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">Save Certificate to Cloud</button>
+                    <button type="button" class="cancel-btn" id="cancelBtn" onclick="resetForm()">Cancel Edit</button>
+                </form>
+            </div>
+
+            <!-- Right Card: Records List -->
+            <div class="card">
+                <h3 style="margin-bottom: 16px; color: #1e293b; font-size: 16px; font-weight: 700;">Verified Database Records</h3>
+                <div id="certList" class="cert-list">
+                    <p style="color: #94a3b8; font-size: 13px;">Loading certificates...</p>
                 </div>
-
-                <div class="form-group">
-                    <label>Certificate / Verification ID</label>
-                    <input type="text" id="certId" required placeholder="e.g. TEU/CERT/2026/089">
-                </div>
-
-                <div class="form-group">
-                    <label>Program / Course Title</label>
-                    <input type="text" id="programTitle" required placeholder="e.g. Executive Certificate in HRM">
-                </div>
-
-                <div class="form-group">
-                    <label>Faculty</label>
-                    <select id="faculty" required>
-                        <option value="">Select Faculty</option>
-                        <option value="Faculty of Medicine">Faculty of Medicine</option>
-                        <option value="Management Faculty">Management Faculty</option>
-                        <option value="Faculty of Technology">Faculty of Technology</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>Grade Achieved</label>
-                    <select id="grade" required>
-                        <option value="">Select Grade</option>
-                        <option value="Distinction">Distinction</option>
-                        <option value="Merit">Merit</option>
-                        <option value="Pass">Pass</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>Issue Date</label>
-                    <input type="date" id="issueDate" required>
-                </div>
-
-                <button type="submit" class="submit-btn" id="submitBtn">Save Certificate to Cloud</button>
-                <button type="button" class="cancel-btn" id="cancelBtn" onclick="resetForm()">Cancel Edit</button>
-            </form>
-        </div>
-
-        <div class="card">
-            <h3 style="margin-bottom: 16px; color: #1e293b; font-size: 16px;">Verified Database Records</h3>
-            <div id="certList" class="cert-list">
-                <p style="color: #94a3b8; font-size: 13px;">Loading certificates...</p>
             </div>
         </div>
     </div>
@@ -138,7 +161,6 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        // Function to generate Base64 QR code using qrcode-generator
         function generateQRCodeBase64(text) {
             try {
                 const qr = qrcode(0, 'M');
@@ -215,7 +237,6 @@
             btn.disabled = true;
 
             try {
-                // Generate Verification URL & QR Code Base64 image
                 const verificationUrl = `https://teuedu.com/verify?id=${encodeURIComponent(certId)}`;
                 const qrCodeBase64 = generateQRCodeBase64(verificationUrl);
 
@@ -273,7 +294,6 @@
             }
         }
 
-        // Function to open Print-friendly Certificate window with QR code
         window.printCertificate = function(studentName, certId, programTitle, faculty, grade, issueDate, qrCode) {
             const printWindow = window.open('', '_blank');
             printWindow.document.write(`
