@@ -26,7 +26,6 @@
         .submit-btn:hover { background: #1d4ed8; }
         .cancel-btn { background: #64748b; color: white; border: none; padding: 8px 15px; border-radius: 8px; font-size: 12px; font-weight: 600; cursor: pointer; margin-top: 8px; width: 100%; display: none; }
         
-        /* Certificate List styling */
         .cert-list { display: flex; flex-direction: column; gap: 10px; max-height: 520px; overflow-y: auto; }
         .cert-item { background: #f8fafc; border: 1px solid #e2e8f0; padding: 14px; border-radius: 10px; display: flex; justify-content: space-between; align-items: flex-start; }
         .cert-info h4 { font-size: 14px; color: #1e293b; margin-bottom: 2px; }
@@ -61,7 +60,6 @@
             <button class="logout-btn" onclick="logout()">Logout</button>
         </div>
 
-        <!-- LEFT COLUMN: ADD / EDIT CERTIFICATE FORM -->
         <div class="card">
             <h3 id="formTitle" style="margin-bottom: 16px; color: #1e293b; font-size: 16px;">Issue / Register Certificate</h3>
             <form id="certForm">
@@ -112,7 +110,6 @@
             </form>
         </div>
 
-        <!-- RIGHT COLUMN: ISSUED CERTIFICATES LIST -->
         <div class="card">
             <h3 style="margin-bottom: 16px; color: #1e293b; font-size: 16px;">Verified Database Records</h3>
             <div id="certList" class="cert-list">
@@ -121,7 +118,6 @@
         </div>
     </div>
 
-    <!-- Firebase SDK Scripts -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
@@ -139,7 +135,6 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        // 1. Load Certificates from Firestore
         async function fetchCertificates() {
             const listContainer = document.getElementById('certList');
             listContainer.innerHTML = `<p style="color: #94a3b8; font-size: 13px;">Loading records...</p>`;
@@ -187,7 +182,6 @@
             return text.replace(/'/g, "&apos;").replace(/"/g, "&quot;");
         }
 
-        // 2. Form Submit (Add or Update)
         document.getElementById('certForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
@@ -205,13 +199,11 @@
 
             try {
                 if (docId) {
-                    // Update Record
                     await updateDoc(doc(db, "certificates", docId), {
                         studentName, certId, programTitle, faculty, grade, issueDate
                     });
                     alert("Certificate record updated successfully!");
                 } else {
-                    // Add New Record
                     await addDoc(collection(db, "certificates"), {
                         studentName, certId, programTitle, faculty, grade, issueDate,
                         createdAt: new Date()
@@ -229,7 +221,6 @@
             }
         });
 
-        // 3. Edit Function
         window.editCert = function(docId, studentName, certId, programTitle, faculty, grade, issueDate) {
             document.getElementById('certDocId').value = docId;
             document.getElementById('studentName').value = studentName;
@@ -245,7 +236,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // 4. Delete Function
         window.deleteCert = async function(docId) {
             if(confirm("Are you sure you want to delete this certificate verification record?")) {
                 try {
